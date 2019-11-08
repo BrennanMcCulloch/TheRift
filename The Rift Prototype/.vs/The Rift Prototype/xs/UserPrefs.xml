@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{8EF61A7E-EC37-3A4C-76E1-15DFE8645653}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MoveToClickPoint.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FixDrawStart.cs">
     <Files>
       <File FileName="Assets/Scripts/MoveToClickPoint.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DrawManager.cs" Line="43" Column="47" />
+      <File FileName="Assets/Scripts/FixDrawStart.cs" Line="11" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
