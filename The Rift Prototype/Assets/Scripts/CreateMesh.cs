@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CreateMesh : MonoBehaviour
 {
+    //offsetting the position of rift
+    public float camDis = 5f;
+    public float xOffset;
+    public float yOffset;
 
     private List<Vector3> newVertices;
     private List<int> newTriangles;
     private Mesh mesh;
 
     private float distance;
-    public float camDis = 10f;
 
     private Plane planeObj;
     private Vector3 startPos;
@@ -37,7 +40,7 @@ public class CreateMesh : MonoBehaviour
             if (planeObj.Raycast(mouseRay, out distance))
             {
                 startPos = mouseRay.GetPoint(distance);
-                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x, mouseRay.GetPoint(distance).y, camDis);
+                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x + xOffset, mouseRay.GetPoint(distance).y + yOffset, camDis);
                 newVertices.Add(temp);
             }
         }
@@ -49,7 +52,7 @@ public class CreateMesh : MonoBehaviour
 
             if (planeObj.Raycast(mouseRay, out distance))
             {
-                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x, mouseRay.GetPoint(distance).y, camDis);
+                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x + xOffset, mouseRay.GetPoint(distance).y + yOffset, camDis);
                 newVertices.Add(temp);
             }
         }
@@ -60,11 +63,24 @@ public class CreateMesh : MonoBehaviour
             //If you drew and didn't just click
             if(newVertices.Count > 2)
             {
-                for(int i = 1; i < newVertices.Count - 1; i++)
+                //they drew it clockwise!
+                if (newVertices[0].x < newVertices[1].x)
                 {
-                    newTriangles.Add(0);
-                    newTriangles.Add(i);
-                    newTriangles.Add(i + 1);
+                    for (int i = 1; i < newVertices.Count - 1; i++)
+                    {
+                        newTriangles.Add(0);
+                        newTriangles.Add(i);
+                        newTriangles.Add(i + 1);
+                    }
+                }
+                else //they drew it counter clockwise!
+                {
+                    for (int i = 1; i < newVertices.Count - 1; i++)
+                    {
+                        newTriangles.Add(i + 1);
+                        newTriangles.Add(i);
+                        newTriangles.Add(0);
+                    }
                 }
 
                 mesh.vertices = newVertices.ToArray();
