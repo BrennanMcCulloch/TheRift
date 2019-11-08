@@ -10,7 +10,7 @@ public class FixDrawStart : MonoBehaviour
     void Update()
     {
         Vector3 temp = Input.mousePosition;
-        temp.z = -10f;
+        temp.z = 5f;
         this.transform.position = Camera.main.ScreenToWorldPoint(temp);
     }
 }

@@ -298,6 +298,7 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Scripts/DrawManager.cs"
+"Assets/Scripts/FixDrawStart.cs"
 "Assets/Scripts/FollowObject.cs"
 "Assets/Scripts/MoveToClickPoint.cs"
 "Assets/Scripts/ToggleDead.cs"

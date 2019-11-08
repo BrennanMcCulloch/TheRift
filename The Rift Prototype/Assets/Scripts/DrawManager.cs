@@ -7,10 +7,12 @@ public class DrawManager : MonoBehaviour
 {
     //When something is drawn, we make planes. Trail render. 
     public GameObject drawPrefab;
+   
 
     private GameObject theTrail;
     private Plane planeObj;
     private Vector3 startPos;
+    private float distance;
 
     // Start is called before the first frame update
     void Start()
@@ -23,25 +25,30 @@ public class DrawManager : MonoBehaviour
     {
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
         {
+
             theTrail = (GameObject)Instantiate(drawPrefab, this.transform.position, Quaternion.identity);
 
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float distance;
 
             if(planeObj.Raycast(mouseRay, out distance))
             {
                 startPos = mouseRay.GetPoint(distance);
             }
         }
-        else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0))
+        else if(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance) != startPos && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0))
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float distance;
 
             if (planeObj.Raycast(mouseRay, out distance))
             {
                 theTrail.transform.position = mouseRay.GetPoint(distance);
             }
+        }
+
+        //On mouse up. Bound to need to use this.
+        else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
+        {
+    
         }
     }
 }
