@@ -12,6 +12,7 @@ public class CreateMesh : MonoBehaviour
     private List<Vector3> newVertices;
     private List<int> newTriangles;
     private Mesh mesh;
+    public bool firstHeld;
 
     private float distance;
 
@@ -22,16 +23,19 @@ public class CreateMesh : MonoBehaviour
     void Start()
     {
         planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        firstHeld = true;
     }
-
+        
     // Update is called once per frame
     void Update()
     {
+        //Need to round current Mouse variables for comparison because FUCK FLOATS
+        var currentRoundX = System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).x, 2);
+        var currentRoundY = System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).y, 2);
+
         //On mouse down
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
         {
-            mesh = new Mesh();
-            GetComponent<MeshFilter>().mesh = mesh;
             newVertices = new List<Vector3>();
             newTriangles = new List<int>();
 
@@ -40,14 +44,21 @@ public class CreateMesh : MonoBehaviour
             if (planeObj.Raycast(mouseRay, out distance))
             {
                 startPos = mouseRay.GetPoint(distance);
-                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x + xOffset, mouseRay.GetPoint(distance).y + yOffset, camDis);
-                newVertices.Add(temp);
+                Vector3 temporary = new Vector3(startPos.x + xOffset, startPos.y + yOffset, camDis);
+                newVertices.Add(temporary);
             }
         }
 
         //On mouse held & moved. Getting rid of touch made it work. NEED TO REIMPLEMENT.
-        else if (Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance) != startPos && Input.GetMouseButton(0))
+        else if ((currentRoundX != System.Math.Round(startPos.x, 2)) && (currentRoundY != System.Math.Round(startPos.y, 2)) && Input.GetMouseButton(0))
         {
+            if (firstHeld == true)
+            {
+                mesh = new Mesh();
+                GetComponent<MeshFilter>().mesh = mesh;
+            }
+            firstHeld = false;
+
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (planeObj.Raycast(mouseRay, out distance))
@@ -60,12 +71,16 @@ public class CreateMesh : MonoBehaviour
         //On mouse up. Bound to need to use this.
         else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
+            Debug.Log(newVertices.Count);
+            Debug.Log(System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).x, 2));
+            Debug.Log(System.Math.Round(startPos.x, 2));
             //If you drew and didn't just click
-            if(newVertices.Count > 2)
+            if (newVertices.Count > 2)
             {
+                firstHeld = true;
                 //Make the second set of vertices behind the current set so there's a shape
                 int dontKeepThis = newVertices.Count;
-                for(int i = 0; i < dontKeepThis; i++)
+                for (int i = 0; i < dontKeepThis; i++)
                 {
                     Vector3 temp = new Vector3(newVertices[i].x, newVertices[i].y, newVertices[i].z + 10);
                     newVertices.Add(temp);
@@ -83,7 +98,7 @@ public class CreateMesh : MonoBehaviour
                     }
 
                     //back circle
-                    for(int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
+                    for (int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
                     {
                         newTriangles.Add(newVertices.Count / 2);
                         newTriangles.Add(i);
@@ -149,7 +164,6 @@ public class CreateMesh : MonoBehaviour
                     newTriangles.Add(0);
                     newTriangles.Add(newVertices.Count / 2);
                     newTriangles.Add(newVertices.Count - 1);
-
                 }
 
                 mesh.vertices = newVertices.ToArray();
