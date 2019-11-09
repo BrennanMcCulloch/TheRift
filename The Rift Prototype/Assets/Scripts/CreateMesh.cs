@@ -63,24 +63,93 @@ public class CreateMesh : MonoBehaviour
             //If you drew and didn't just click
             if(newVertices.Count > 2)
             {
+                //Make the second set of vertices behind the current set so there's a shape
+                int dontKeepThis = newVertices.Count;
+                for(int i = 0; i < dontKeepThis; i++)
+                {
+                    Vector3 temp = new Vector3(newVertices[i].x, newVertices[i].y, newVertices[i].z + 10);
+                    newVertices.Add(temp);
+                }
+
                 //they drew it clockwise!
                 if (newVertices[0].x < newVertices[1].x)
                 {
-                    for (int i = 1; i < newVertices.Count - 1; i++)
+                    //front circle
+                    for (int i = 1; i < (newVertices.Count / 2) - 1; i++)
                     {
                         newTriangles.Add(0);
                         newTriangles.Add(i);
                         newTriangles.Add(i + 1);
                     }
+
+                    //back circle
+                    for(int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
+                    {
+                        newTriangles.Add(newVertices.Count / 2);
+                        newTriangles.Add(i);
+                        newTriangles.Add(i + 1);
+                    }
+
+                    //body
+                    int frontVertex = 0;
+                    int backVertex = (newVertices.Count / 2);
+                    while (frontVertex < (newVertices.Count / 2) - 1 && backVertex < newVertices.Count)
+                    {
+                        newTriangles.Add(frontVertex);
+                        newTriangles.Add(backVertex);
+                        newTriangles.Add(backVertex + 1);
+                        newTriangles.Add(frontVertex);
+                        newTriangles.Add(backVertex + 1);
+                        newTriangles.Add(frontVertex + 1);
+                        frontVertex++;
+                        backVertex++;
+                    }
+                    newTriangles.Add((newVertices.Count / 2) - 1);
+                    newTriangles.Add(newVertices.Count - 1);
+                    newTriangles.Add(0);
+                    newTriangles.Add(newVertices.Count - 1);
+                    newTriangles.Add(newVertices.Count / 2);
+                    newTriangles.Add(0);
                 }
                 else //they drew it counter clockwise!
                 {
-                    for (int i = 1; i < newVertices.Count - 1; i++)
+                    //front circle
+                    for (int i = 1; i < (newVertices.Count / 2) - 1; i++)
                     {
                         newTriangles.Add(i + 1);
                         newTriangles.Add(i);
                         newTriangles.Add(0);
                     }
+
+                    //back circle
+                    for (int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
+                    {
+                        newTriangles.Add(i + 1);
+                        newTriangles.Add(i);
+                        newTriangles.Add(newVertices.Count / 2);
+                    }
+
+                    //body
+                    int frontVertex = 0;
+                    int backVertex = (newVertices.Count / 2);
+                    while (frontVertex < (newVertices.Count / 2) - 1 && backVertex < newVertices.Count)
+                    {
+                        newTriangles.Add(backVertex + 1);
+                        newTriangles.Add(backVertex);
+                        newTriangles.Add(frontVertex);
+                        newTriangles.Add(frontVertex + 1);
+                        newTriangles.Add(backVertex + 1);
+                        newTriangles.Add(frontVertex);
+                        frontVertex++;
+                        backVertex++;
+                    }
+                    newTriangles.Add(0);
+                    newTriangles.Add(newVertices.Count - 1);
+                    newTriangles.Add((newVertices.Count / 2) - 1);
+                    newTriangles.Add(0);
+                    newTriangles.Add(newVertices.Count / 2);
+                    newTriangles.Add(newVertices.Count - 1);
+
                 }
 
                 mesh.vertices = newVertices.ToArray();

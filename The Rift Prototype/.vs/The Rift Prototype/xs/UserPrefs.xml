@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{8EF61A7E-EC37-3A4C-76E1-15DFE8645653}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DrawManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CreateMesh.cs">
     <Files>
       <File FileName="Assets/Scripts/DrawManager.cs" Line="15" Column="28" />
       <File FileName="Assets/Scripts/FixDrawStart.cs" Line="13" Column="19" />
