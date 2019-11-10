@@ -71,9 +71,6 @@ public class CreateMesh : MonoBehaviour
         //On mouse up. Bound to need to use this.
         else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
-            Debug.Log(newVertices.Count);
-            Debug.Log(System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).x, 2));
-            Debug.Log(System.Math.Round(startPos.x, 2));
             //If you drew and didn't just click
             if (newVertices.Count > 2)
             {

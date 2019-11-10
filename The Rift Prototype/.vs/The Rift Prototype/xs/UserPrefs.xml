@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{8EF61A7E-EC37-3A4C-76E1-15DFE8645653}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CreateMesh.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/SubTry.shader">
     <Files>
-      <File FileName="Assets/Scripts/DrawManager.cs" Line="15" Column="28" />
-      <File FileName="Assets/Scripts/FixDrawStart.cs" Line="13" Column="19" />
-      <File FileName="Assets/Scripts/CreateMesh.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DrawManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/FixDrawStart.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CreateMesh.cs" Line="73" Column="10" />
+      <File FileName="Assets/Shaders/TryThisOut.shader" Line="18" Column="30" />
+      <File FileName="Assets/Shaders/SubTry.shader" Line="1" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
