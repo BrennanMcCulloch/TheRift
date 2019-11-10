@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 422}
   m_MaxSize: {x: 22012, y: 10022}
   vertical: 0
-  controlID: 1880
+  controlID: 7329
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 422}
   m_MaxSize: {x: 4002, y: 8022}
   vertical: 1
-  controlID: 1881
+  controlID: 7236
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,13 +227,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.18352045, y: 0.18081121, z: -0.03439679, w: -0.9656764}
+    m_Target: {x: -0.20925502, y: -0.4431624, z: 0.10716607, w: -0.8651199}
     speed: 2
-    m_Value: {x: -0.18351251, y: 0.18080339, z: -0.0343953, w: -0.96563464}
+    m_Value: {x: -0.20924482, y: -0.4431408, z: 0.107160844, w: -0.8650777}
   m_Size:
-    m_Target: 13.326464
+    m_Target: 10.675951
     speed: 2
-    m_Value: 13.326464
+    m_Value: 10.675951
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -341,8 +341,8 @@ MonoBehaviour:
     y: 506
     width: 795
     height: 479
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 222}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -405,7 +405,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8efbffffbe2c0000
+      m_ExpandedIDs: dcd2ffff8efbffffbe2c0000c82c0000d62c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -493,19 +493,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/captainstudley/Documents/GitHub/TheRift/The Rift Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d22a0000
-    m_LastClickedID: 10962
+    m_SelectedIDs: 2a2a0000
+    m_LastClickedID: 10794
     m_ExpandedIDs: 000000008a2900000a2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 9c2b0000
-    m_LastClickedInstanceID: 11164
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: dccfffff
+    m_LastClickedInstanceID: -12324
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
