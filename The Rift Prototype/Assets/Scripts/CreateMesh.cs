@@ -72,8 +72,8 @@ public class CreateMesh : MonoBehaviour
         //On mouse up. Bound to need to use this.
         else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
-            //If you drew and didn't just click
-            if (newVertices.Count > 2)
+            //If you drew and didn't just click, 10 for sloppy fingers
+            if (newVertices.Count > 10)
             {
                 firstHeld = true;
                 //Make the second set of vertices behind the current set so there's a shape
