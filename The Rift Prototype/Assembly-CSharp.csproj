@@ -64,6 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CreateMesh.cs" />
     <Compile Include="Assets\Scripts\DeadBounds.cs" />
+    <Compile Include="Assets\Scripts\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\DrawManager.cs" />
     <Compile Include="Assets\Scripts\FixDrawStart.cs" />
     <Compile Include="Assets\Scripts\FollowObject.cs" />

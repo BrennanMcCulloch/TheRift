@@ -23,10 +23,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 985
-  m_MinSize: {x: 917, y: 422}
-  m_MaxSize: {x: 22012, y: 10022}
+  m_MinSize: {x: 911, y: 444}
+  m_MaxSize: {x: 22006, y: 10000}
   vertical: 0
-  controlID: 7329
+  controlID: 23931
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,10 +129,10 @@ MonoBehaviour:
     y: 0
     width: 795
     height: 985
-  m_MinSize: {x: 202, y: 422}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 444}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 7236
+  controlID: 23932
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,9 +196,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.9557133, y: -0.4203421, z: 2.6911573}
+    m_Target: {x: 6.9542637, y: 1.517476, z: -1.8623648}
     speed: 2
-    m_Value: {x: -4.9557133, y: -0.4203421, z: 2.6911573}
+    m_Value: {x: 6.9542637, y: 1.517476, z: -1.8623648}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -227,13 +227,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.20925502, y: -0.4431624, z: 0.10716607, w: -0.8651199}
+    m_Target: {x: -0.08081264, y: 0.21272439, z: -0.017659647, w: -0.9736577}
     speed: 2
-    m_Value: {x: -0.20924482, y: -0.4431408, z: 0.107160844, w: -0.8650777}
+    m_Value: {x: -0.08080846, y: 0.21271338, z: -0.017658735, w: -0.97360736}
   m_Size:
-    m_Target: 10.675951
+    m_Target: 15.015149
     speed: 2
-    m_Value: 10.675951
+    m_Value: 15.015149
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -405,7 +405,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: dcd2ffff8efbffffbe2c0000c82c0000d62c0000
+      m_ExpandedIDs: 42bcffff2abeffffe8bfffff8efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -493,19 +493,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/captainstudley/Documents/GitHub/TheRift/The Rift Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2a2a0000
-    m_LastClickedID: 10794
+    m_SelectedIDs: 8a290000
+    m_LastClickedID: 10634
     m_ExpandedIDs: 000000008a2900000a2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -559,10 +559,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: dccfffff
-    m_LastClickedInstanceID: -12324
+    m_SelectedInstanceIDs: 82bdffff
+    m_LastClickedInstanceID: -17022
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 
+    m_ExpandedInstanceIDs: 0000000074240000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
