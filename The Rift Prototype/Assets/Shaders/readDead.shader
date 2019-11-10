@@ -4,7 +4,6 @@
         _MainTex ("Texture", 2D) = "white" {}
         _Smoothness ("Smoothness", Range(0, 1)) = 0
         _Metallic ("Metalness", Range(0, 1)) = 0
-        [HDR] _Emission ("Emission", color) = (0,0,0)
 
         [IntRange] _StencilRef ("Stencil Reference Value", Range(0,255)) = 0
     }

@@ -56,6 +56,7 @@ public class CreateMesh : MonoBehaviour
             {
                 mesh = new Mesh();
                 GetComponent<MeshFilter>().mesh = mesh;
+                GetComponent<MeshCollider>().sharedMesh = mesh;
             }
             firstHeld = false;
 
