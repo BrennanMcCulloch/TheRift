@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("Starting Convo with " + dialogue.name);
+        nameText.text = dialogue.name;
 
         sentences.Clear();
 
