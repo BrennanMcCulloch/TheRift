@@ -1224,8 +1224,9 @@ MonoBehaviour:
   nameText: {fileID: 1215458713}
   dialogueText: {fileID: 1169671778}
   animator: {fileID: 894207451}
-  button: {fileID: 5014584523240650309, guid: f80fecd5803a74fc59ff5194182fbcda, type: 3}
+  button: {fileID: 5014584523240650311, guid: f80fecd5803a74fc59ff5194182fbcda, type: 3}
   canvas: {fileID: 894207447}
+  player: {fileID: 2059817404}
 --- !u!4 &948651964
 Transform:
   m_ObjectHideFlags: 0
@@ -1512,33 +1513,100 @@ MonoBehaviour:
       Mind: 0
       Soul: 0
       nextDialogueSuccess:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: You successfully did the Body roll!
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
       nextDialogueFail:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: You failed the Body roll.. womp womp.
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
     - whatToSay: Intellect a Motherfucker.
       isChoice: 1
       Body: 0
       Mind: 15
       Soul: 0
       nextDialogueSuccess:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: Holy crap how'd you win that Mind roll
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
       nextDialogueFail:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: As usual, you failed the Mind roll. Womp womp.
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
     - whatToSay: Hug a Motherfucker.
       isChoice: 1
       Body: 0
       Mind: 0
       Soul: 6
       nextDialogueSuccess:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: 'You suggessfully Soul rolled and hugged the Doorman. '
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
       nextDialogueFail:
-        name: 
-        sentences: []
+        name: Doorman
+        sentences:
+        - whatToSay: 'You failed at the Soul roll. The Doorman doesn''t like his Personal
+            Space being invaded. '
+          isChoice: 0
+          Body: 0
+          Mind: 0
+          Soul: 0
+          nextDialogueSuccess:
+            name: 
+            sentences: []
+          nextDialogueFail:
+            name: 
+            sentences: []
     - whatToSay: "Do nothing... \nTo a Motherfucker."
       isChoice: 1
       Body: 0
@@ -2334,6 +2402,7 @@ GameObject:
   - component: {fileID: 2059817405}
   - component: {fileID: 2059817411}
   - component: {fileID: 2059817410}
+  - component: {fileID: 2059817409}
   m_Layer: 0
   m_Name: Esmerelda
   m_TagString: Player
@@ -2415,6 +2484,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2059817409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059817404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8cb31def6344873b24bc5daba639b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Karma: 0
+  Body: 0
+  Mind: 0
+  Soul: 0
+  bars: 0
+  vase: 0
+  water: 0
+  lighter: 0
 --- !u!195 &2059817410
 NavMeshAgent:
   m_ObjectHideFlags: 0

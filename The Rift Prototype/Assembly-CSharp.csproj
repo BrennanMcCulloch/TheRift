@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\FixDrawStart.cs" />
     <Compile Include="Assets\Scripts\FollowObject.cs" />
     <Compile Include="Assets\Scripts\MoveToClickPoint.cs" />
+    <Compile Include="Assets\Scripts\PlayerMethods.cs" />
     <None Include="Assets\Shaders\writeDead.shader" />
     <None Include="Assets\Shaders\readDead.shader" />
     <Reference Include="Unity.Timeline.Editor">
