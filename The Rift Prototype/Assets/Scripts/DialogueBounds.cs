@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadBounds : MonoBehaviour
+public class DialogueBounds : MonoBehaviour
 {
     public GameObject deadDimension;
-    public GameObject toggleA;//set this active
-    public GameObject toggleB;//set this inactive
+    public DialogueTrigger inCaseOfDialogue;
+
+    public Material materialBefore;
+    public Material materialAfter;
+    private Material gameMaterial;
 
     private Collider collider;
     private Collider itemColliding;
@@ -24,6 +27,7 @@ public class DeadBounds : MonoBehaviour
         Vector3 scale = itemColliding.bounds.extents;
         top = new Vector3(middle.x + scale.x, middle.y + scale.y, middle.z + scale.z);
         bottom = new Vector3(middle.x - scale.x, middle.y - scale.y, middle.z - scale.z);
+        gameMaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -33,14 +37,22 @@ public class DeadBounds : MonoBehaviour
 
         if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
         {
-            toggleA.SetActive(true);
-            toggleB.SetActive(false);
+            gameMaterial.color = materialAfter.color;
+            //If it overlaps and you click on it 
+            RaycastHit hit;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Physics.Raycast(ray, out hit);
+                if (hit.collider.gameObject.name == this.name)
+                {
+                    inCaseOfDialogue.TriggerDialogue();
+                }
+            }
         }
-        else
+        else //it doesn't overlap
         {
-            toggleA.SetActive(false);
-            toggleB.SetActive(true);
+            gameMaterial.color = materialBefore.color;
         }
-
     }
 }
