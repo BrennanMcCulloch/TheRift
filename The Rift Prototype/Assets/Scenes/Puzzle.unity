@@ -544,11 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Dwayne Johnson
-    sentences:
-    - Oh my gosh, I definitely need to poop.
-    - Like. It's really bad.
-    - 'Please direct me to the nearest restroom so I may unload my bowels into the
-      bowel unloadment recepticle. '
+    sentences: []
 --- !u!1 &230098994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1224,8 @@ MonoBehaviour:
   nameText: {fileID: 1215458713}
   dialogueText: {fileID: 1169671778}
   animator: {fileID: 894207451}
+  button: {fileID: 5014584523240650309, guid: f80fecd5803a74fc59ff5194182fbcda, type: 3}
+  canvas: {fileID: 894207447}
 --- !u!4 &948651964
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,8 +1456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadDimension: {fileID: 951710623}
   inCaseOfDialogue: {fileID: 1107189086}
-  materialBefore: {fileID: 0}
-  materialAfter: {fileID: 0}
+  materialBefore: {fileID: 2100000, guid: 035eb4ac8bbda4ccb98500bc4e2e17a7, type: 2}
+  materialAfter: {fileID: 2100000, guid: 9234745d7ec5e4e0aac9a5895882cd31, type: 2}
 --- !u!114 &1107189086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,9 +1473,83 @@ MonoBehaviour:
   dialogue:
     name: Doorman
     sentences:
-    - Henlo yes I am doorman yes
-    - pl0x no entry
-    - pl0x develop me more heheheyes
+    - whatToSay: Ok Buddy
+      isChoice: 0
+      Body: 0
+      Mind: 0
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: So
+      isChoice: 0
+      Body: 0
+      Mind: 0
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: 'Here''s your choice:'
+      isChoice: 0
+      Body: 0
+      Mind: 0
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: Punch a Motherfucker.
+      isChoice: 1
+      Body: 10
+      Mind: 0
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: Intellect a Motherfucker.
+      isChoice: 1
+      Body: 0
+      Mind: 15
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: Hug a Motherfucker.
+      isChoice: 1
+      Body: 0
+      Mind: 0
+      Soul: 6
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
+    - whatToSay: "Do nothing... \nTo a Motherfucker."
+      isChoice: 1
+      Body: 0
+      Mind: 0
+      Soul: 0
+      nextDialogueSuccess:
+        name: 
+        sentences: []
+      nextDialogueFail:
+        name: 
+        sentences: []
 --- !u!65 &1107189087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2262,7 +2334,6 @@ GameObject:
   - component: {fileID: 2059817405}
   - component: {fileID: 2059817411}
   - component: {fileID: 2059817410}
-  - component: {fileID: 2059817409}
   m_Layer: 0
   m_Name: Esmerelda
   m_TagString: Player
@@ -2344,24 +2415,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2059817409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059817404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c39950eaaab0411aa08728fb4721e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Esmeralda Perez
-    sentences:
-    - Wow! You clicked on me.
-    - Try clicking on other things in the scene.
-    - 'It may not work, but you can try. '
 --- !u!195 &2059817410
 NavMeshAgent:
   m_ObjectHideFlags: 0

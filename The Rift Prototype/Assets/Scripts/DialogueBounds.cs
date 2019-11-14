@@ -44,7 +44,7 @@ public class DialogueBounds : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 Physics.Raycast(ray, out hit);
-                if (hit.collider.gameObject.name == this.name)
+                if (hit.collider != null && hit.collider.gameObject.name == this.name)
                 {
                     inCaseOfDialogue.TriggerDialogue();
                 }
