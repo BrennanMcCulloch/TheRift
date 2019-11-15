@@ -62,7 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\FindMissingScripts.cs" />
+    <Compile Include="Assets\SerializableCallback-master\Editor\SerializableCallbackDrawer.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/captainstudley/Documents/GitHub/TheRift/The Rift Prototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
