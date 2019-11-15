@@ -48,7 +48,7 @@ public class DrawManager : MonoBehaviour
         //On mouse up. Bound to need to use this.
         else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
-    
+            Destroy(theTrail, 6);//Destroys the game object after 6 second so it's not hogging memory
         }
     }
 }

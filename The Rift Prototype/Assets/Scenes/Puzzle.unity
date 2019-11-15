@@ -542,9 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c39950eaaab0411aa08728fb4721e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Dwayne Johnson
-    sentences: []
+  dialogue: {fileID: 0}
 --- !u!1 &230098994
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +867,7 @@ GameObject:
   - component: {fileID: 649975904}
   - component: {fileID: 649975903}
   - component: {fileID: 649975902}
+  - component: {fileID: 649975905}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -924,6 +923,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &649975905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649975901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &674411386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1434,7 @@ GameObject:
   - component: {fileID: 1107189087}
   - component: {fileID: 1107189086}
   - component: {fileID: 1107189085}
+  - component: {fileID: 1107189090}
   m_Layer: 0
   m_Name: Doorman
   m_TagString: NPC
@@ -1471,153 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c39950eaaab0411aa08728fb4721e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Doorman
-    sentences:
-    - whatToSay: Ok Buddy
-      isChoice: 0
-      Body: 0
-      Mind: 0
-      Soul: 0
-      nextDialogueSuccess:
-        name: 
-        sentences: []
-      nextDialogueFail:
-        name: 
-        sentences: []
-    - whatToSay: So
-      isChoice: 0
-      Body: 0
-      Mind: 0
-      Soul: 0
-      nextDialogueSuccess:
-        name: 
-        sentences: []
-      nextDialogueFail:
-        name: 
-        sentences: []
-    - whatToSay: 'Here''s your choice:'
-      isChoice: 0
-      Body: 0
-      Mind: 0
-      Soul: 0
-      nextDialogueSuccess:
-        name: 
-        sentences: []
-      nextDialogueFail:
-        name: 
-        sentences: []
-    - whatToSay: Punch a Motherfucker.
-      isChoice: 1
-      Body: 10
-      Mind: 0
-      Soul: 0
-      nextDialogueSuccess:
-        name: Doorman
-        sentences:
-        - whatToSay: You successfully did the Body roll!
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-      nextDialogueFail:
-        name: Doorman
-        sentences:
-        - whatToSay: You failed the Body roll.. womp womp.
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-    - whatToSay: Intellect a Motherfucker.
-      isChoice: 1
-      Body: 0
-      Mind: 15
-      Soul: 0
-      nextDialogueSuccess:
-        name: Doorman
-        sentences:
-        - whatToSay: Holy crap how'd you win that Mind roll
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-      nextDialogueFail:
-        name: Doorman
-        sentences:
-        - whatToSay: As usual, you failed the Mind roll. Womp womp.
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-    - whatToSay: Hug a Motherfucker.
-      isChoice: 1
-      Body: 0
-      Mind: 0
-      Soul: 6
-      nextDialogueSuccess:
-        name: Doorman
-        sentences:
-        - whatToSay: 'You suggessfully Soul rolled and hugged the Doorman. '
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-      nextDialogueFail:
-        name: Doorman
-        sentences:
-        - whatToSay: 'You failed at the Soul roll. The Doorman doesn''t like his Personal
-            Space being invaded. '
-          isChoice: 0
-          Body: 0
-          Mind: 0
-          Soul: 0
-          nextDialogueSuccess:
-            name: 
-            sentences: []
-          nextDialogueFail:
-            name: 
-            sentences: []
-    - whatToSay: "Do nothing... \nTo a Motherfucker."
-      isChoice: 1
-      Body: 0
-      Mind: 0
-      Soul: 0
-      nextDialogueSuccess:
-        name: 
-        sentences: []
-      nextDialogueFail:
-        name: 
-        sentences: []
+  dialogue: {fileID: 0}
 --- !u!65 &1107189087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1676,6 +1543,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107189083}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1107189090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107189083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Doorman
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Ok
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: So
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'Here''s your choices:'
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: Punch a Motherfucker.
+    isChoice: 1
+    Body: 10
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &1169671776
 GameObject:
   m_ObjectHideFlags: 0

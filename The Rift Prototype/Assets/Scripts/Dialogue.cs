@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
-public class Dialogue
+public class Dialogue : MonoBehaviour
 {
     public string name;
+
+    public UnityEvent thingToDoOnEntry;
 
     public List<Talkeys> sentences;
 }
@@ -22,3 +25,4 @@ public class Talkeys
     public Dialogue nextDialogueSuccess;
     public Dialogue nextDialogueFail;
 }
+

@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
 
         sentences.Clear();
+        dialogue.thingToDoOnEntry.Invoke();
 
         foreach (Talkeys sentence in dialogue.sentences)
         {
@@ -85,6 +86,7 @@ public class DialogueManager : MonoBehaviour
                 else //it's neutral, but a choice. Maybe do something?
                 {
                     newButton.name = "Neutral";
+                    newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
                 }
 
                 stagger -= 100;
@@ -165,5 +167,11 @@ public class DialogueManager : MonoBehaviour
         {
             StartDialogue(sentence.nextDialogueSuccess);
         }
+    }
+
+    void neutralResult(Talkeys sentence)
+    {
+        destroyButtons();
+        StartDialogue(sentence.nextDialogueSuccess);
     }
 }

@@ -46,6 +46,7 @@ public class PlayerMethods : MonoBehaviour
     public void obtainBars()
     {
         bars++;
+        Debug.Log("Number of Bars: " + bars);
     }
 
     public void loseBars()
