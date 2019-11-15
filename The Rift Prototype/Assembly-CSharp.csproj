@@ -73,6 +73,16 @@
     <Compile Include="Assets\Scripts\FollowObject.cs" />
     <Compile Include="Assets\Scripts\MoveToClickPoint.cs" />
     <Compile Include="Assets\Scripts\PlayerMethods.cs" />
+    <Compile Include="Assets\SerializableCallback-master\Attributes\TargetConstraintAttribute.cs" />
+    <Compile Include="Assets\SerializableCallback-master\InvokableCallback.cs" />
+    <Compile Include="Assets\SerializableCallback-master\InvokableCallbackBase.cs" />
+    <Compile Include="Assets\SerializableCallback-master\InvokableEvent.cs" />
+    <Compile Include="Assets\SerializableCallback-master\InvokableEventBase.cs" />
+    <Compile Include="Assets\SerializableCallback-master\SerializableCallback.cs" />
+    <Compile Include="Assets\SerializableCallback-master\SerializableCallbackBase.cs" />
+    <Compile Include="Assets\SerializableCallback-master\SerializableEvent.cs" />
+    <Compile Include="Assets\SerializableCallback-master\SerializableEventBase.cs" />
+    <Compile Include="Assets\SerializableCallback-master\Test.cs" />
     <None Include="Assets\Shaders\writeDead.shader" />
     <None Include="Assets\Shaders\readDead.shader" />
     <Reference Include="Unity.Timeline.Editor">

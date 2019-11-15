@@ -1864,7 +1864,7 @@ MonoBehaviour:
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 678395048}
-    nextDialogueFail: {fileID: 0}
+    nextDialogueFail: {fileID: 1791471950}
 --- !u!1 &1112237170
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -10,7 +11,7 @@ public class Dialogue : MonoBehaviour
 
     public UnityEvent thingToDoOnEntry;
 
-    public Event neutral = null;
+    public SerializableCallback<bool> neutral = null;
 
     public List<Talkeys> sentences;
 }

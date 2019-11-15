@@ -176,12 +176,13 @@ public class DialogueManager : MonoBehaviour
         if(sentence.nextDialogueSuccess.neutral != null)
         {
             Debug.Log("There's a condition for entry");
-            //if you pass the test
-            if(sentence.nextDialogueSuccess.neutral.)
+            bool result = sentence.nextDialogueSuccess.neutral.Invoke();
+
+            if(result)
             {
                 StartDialogue(sentence.nextDialogueSuccess);
             }
-            else //you failed. Womp womp.
+            else
             {
                 StartDialogue(sentence.nextDialogueFail);
             }
