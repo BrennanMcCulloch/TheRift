@@ -10,8 +10,6 @@ public class Dialogue : MonoBehaviour
 
     public UnityEvent thingToDoOnEntry;
 
-    public Event neutral = null;
-
     public List<Talkeys> sentences;
 }
 

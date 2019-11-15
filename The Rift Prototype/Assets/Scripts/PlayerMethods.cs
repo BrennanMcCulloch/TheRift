@@ -54,22 +54,12 @@ public class PlayerMethods : MonoBehaviour
         bars--;
     }
 
-    public bool getBars()
-    {
-        return bars > 0;
-    }
-
-    public void changeVase()
+    public void getVase()
     {
         vase = !vase;
     }
 
-    public bool getVase()
-    {
-        return vase;
-    }
-
-    public void changeWater()
+    public void getWater()
     {
         if(vase)
         {
@@ -77,18 +67,8 @@ public class PlayerMethods : MonoBehaviour
         }
     }
 
-    public bool getWater()
-    {
-        return water;
-    }
-
-    public void changeLighter()
+    public void getLighter()
     {
         lighter = !lighter;
-    }
-
-    public bool getLighter()
-    {
-        return lighter;
     }
 }
