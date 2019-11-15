@@ -172,6 +172,25 @@ public class DialogueManager : MonoBehaviour
     void neutralResult(Talkeys sentence)
     {
         destroyButtons();
-        StartDialogue(sentence.nextDialogueSuccess);
+        //If there's a conditional that is required for entry
+        if(sentence.nextDialogueSuccess.neutral != null)
+        {
+            Debug.Log("There's a condition for entry");
+            //if you pass the test
+            if(sentence.nextDialogueSuccess.neutral.)
+            {
+                StartDialogue(sentence.nextDialogueSuccess);
+            }
+            else //you failed. Womp womp.
+            {
+                StartDialogue(sentence.nextDialogueFail);
+            }
+        }
+        //no conditional for entry
+        else
+        {
+            Debug.Log("There's no condition for entry");
+            StartDialogue(sentence.nextDialogueSuccess);
+        }
     }
 }
