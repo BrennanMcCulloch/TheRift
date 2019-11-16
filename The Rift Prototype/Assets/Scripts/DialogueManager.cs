@@ -64,29 +64,49 @@ public class DialogueManager : MonoBehaviour
                 newButton.transform.SetParent(canvas.transform, false);
 
                 Talkeys sentenceAgain = sentences.Dequeue();
-                newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
                 if (sentenceAgain.Body > 0)
                 {
+                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
                     newButton.name = "Body Roll";
-                    newButton.GetComponentInChildren<Text>().text += " Body " + sentenceAgain.Body;
+                    newButton.GetComponentInChildren<Text>().text += " (Body " + sentenceAgain.Body + ")";
                     newButton.onClick.AddListener(()=>bodyResult(sentenceAgain));
                 }
                 else if (sentenceAgain.Mind > 0)
                 {
+                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
                     newButton.name = "Mind Roll";
-                    newButton.GetComponentInChildren<Text>().text += " Mind " + sentenceAgain.Mind;
+                    newButton.GetComponentInChildren<Text>().text += " (Mind " + sentenceAgain.Mind + ")";
                     newButton.onClick.AddListener(() => mindResult(sentenceAgain));
                 }
                 else if (sentenceAgain.Soul > 0)
                 {
+                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
                     newButton.name = "Soul Roll";
-                    newButton.GetComponentInChildren<Text>().text += " Soul " + sentenceAgain.Soul;
+                    newButton.GetComponentInChildren<Text>().text += " (Soul " + sentenceAgain.Soul + ")";
                     newButton.onClick.AddListener(() => soulResult(sentenceAgain));
                 }
                 else //it's neutral, but a choice. Maybe do something?
                 {
-                    newButton.name = "Neutral";
-                    newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
+                    if (sentenceAgain.nextDialogueSuccess.neutral.target != null)
+                    {
+                        bool result = sentenceAgain.nextDialogueSuccess.neutral.Invoke();
+                        if(result)
+                        {
+                            newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
+                            newButton.name = "Neutral";
+                            newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
+                        }
+                        else
+                        {
+                            Destroy(newButton);
+                        }
+                    }
+                    else
+                    {
+                        newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
+                        newButton.name = "Neutral";
+                        newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
+                    }
                 }
 
                 stagger -= 100;
@@ -172,52 +192,6 @@ public class DialogueManager : MonoBehaviour
     void neutralResult(Talkeys sentence)
     {
         destroyButtons();
-        //If there's a conditional that is required for entry
-        if (sentence.nextDialogueSuccess.neutral.target != null)
-        {
-            Debug.Log("There's a target for entry");
-            Debug.Log(sentence.nextDialogueSuccess.neutral.target);
-            bool result = sentence.nextDialogueSuccess.neutral.Invoke();
-            Debug.Log(result);
-
-            if (result)
-            {
-                StartDialogue(sentence.nextDialogueSuccess);
-            }
-            else
-            {
-                StartDialogue(sentence.nextDialogueFail);
-            }
-        }
-        //no conditional for entry
-        else
-        {
-            Debug.Log("There's no target for entry");
-            StartDialogue(sentence.nextDialogueSuccess);
-        }
+        StartDialogue(sentence.nextDialogueSuccess);
     }
 }
-
-/*
- * //If there's a conditional that is required for entry
-        if (sentence.nextDialogueSuccess.neutral != null)
-        {
-            Debug.Log("There's a condition for entry");
-            bool result = sentence.nextDialogueSuccess.neutral.Invoke();
-
-            if (result)
-            {
-                StartDialogue(sentence.nextDialogueSuccess);
-            }
-            else
-            {
-                StartDialogue(sentence.nextDialogueFail);
-            }
-        }
-        //no conditional for entry
-        else
-        {
-            Debug.Log("There's no condition for entry");
-            StartDialogue(sentence.nextDialogueSuccess);
-        }
-        */

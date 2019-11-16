@@ -393,6 +393,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152647669}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &183957990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010084826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &209990324
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +697,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: You fail to mind-meld with the doorman. He looks at you, perturbed.
+  - whatToSay: "The Doorman doesn't fall for your shenanigans.\n\"Hey bub, you need
+      to go take a long walk off a short pier. I\u2019m tired of looking at you.\"\nHe
+      then goes back to his bar. "
     isChoice: 0
     Body: 0
     Mind: 0
@@ -783,11 +791,34 @@ MonoBehaviour:
     dirty: 0
   thingToDoOnEntry:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: obtainBars
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: 'You manage to mind-meld with the doorman. You learn of his ex-wife. '
+  - whatToSay: "The Doorman looks back at you flirtatiously.\n\"Sure I can buzz you
+      into the building but I don\u2019t have the extra key to your new apartment.
+      You want a protein bar? They chocolate chip!\u201D\nYou walk up and knock. \nNo
+      answer. \nHuh.\nYou come back down. "
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'The Doorman continues to waggle his protein bar at you.
+
+      You take it, and continue on your way. '
     isChoice: 0
     Body: 0
     Mind: 0
@@ -886,13 +917,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
+  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 7.99, y: 3.22, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 9, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!1 &599018045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,13 +1183,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674411386}
-  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
+  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 9, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!64 &674411391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1241,9 +1272,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: 'The doorman hands you a Nutrigrain bar.
-
-      "You''re not you when you''re hungry", he says. '
+  - whatToSay: "The doorman hands you a bar.\n\u201CSure you can Pal. You\u2019re
+      not you when you\u2019re hungry.\u201D"
     isChoice: 0
     Body: 0
     Mind: 0
@@ -1278,6 +1308,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107189084}
+  - {fileID: 1572326190156678451}
+  - {fileID: 183957990}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1435,8 +1467,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: You try to caress the doorman, but he swats your hand away like a misbehaving
-      fly.
+  - whatToSay: "The Doorman looks in your eyes, but swats away your attempt at empathizing
+      like a misbehaving fly.\n\"How-in-the-hell do you make a living being a private
+      dick. You fucking suck at it. Now go away; you bother me.\u201D\nYou go away."
     isChoice: 0
     Body: 0
     Mind: 0
@@ -1583,8 +1616,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35731316
+  m_Center: {x: 0, y: -0.14268684, z: 0}
 --- !u!23 &951710627
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1630,6 +1663,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951710623}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1010084826
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 705336816}
+    m_Modifications:
+    - target: {fileID: 2707233508792915366, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_Name
+      value: The Witness
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259527928112614518, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 951710623}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d34a717b5b3be455aa0c42059b568461, type: 3}
 --- !u!1 &1028010883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1797,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1058263014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1330311450}
+    m_Modifications:
+    - target: {fileID: 7553728519024557001, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_Name
+      value: Fountain Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916971473207747097, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 951710623}
+    - target: {fileID: 5568202418394393419, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 674411386}
+    - target: {fileID: 5568202418394393419, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: toggleA
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ed86dceec09a4f3d8392712bbd55b3c, type: 3}
 --- !u!1 &1107189083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1921,6 @@ Transform:
   - {fileID: 1150078248}
   - {fileID: 911311059}
   - {fileID: 678395047}
-  - {fileID: 1791471949}
   m_Father: {fileID: 705336816}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1847,59 +2037,63 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: Ok
+  - whatToSay: "The Doorman looks up as you approach. He looks tired, like he's about
+      to fall over.\n\"Hi\", you say. \n\"Hey\", he retorts. "
     isChoice: 0
     Body: 0
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 0}
     nextDialogueFail: {fileID: 0}
-  - whatToSay: So
+  - whatToSay: "You know The Witness, Ms. Swensen, lives here. \nYou know she's on
+      the third floor.\nThe Doorman looks annoyed you've been there for so long.\n\"Private
+      Property PAL (chew) so take your homeless looking ass and hit the bricks. (munch)
+      Nothing gets past me and my protein bar.\""
     isChoice: 0
     Body: 0
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 0}
     nextDialogueFail: {fileID: 0}
-  - whatToSay: 'Here''s your choices:'
+  - whatToSay: 'Now, what to say, to get what you want... '
     isChoice: 0
     Body: 0
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 0}
     nextDialogueFail: {fileID: 0}
-  - whatToSay: Punch a Motherfucker.
+  - whatToSay: "Call me homeless again BUDDY and I\u2019ll stick that protein bar
+      so far up your \u2018pooter you\u2019ll be coughing chocolate chips for a week. "
     isChoice: 1
     Body: 10
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 1486927671}
     nextDialogueFail: {fileID: 1112237172}
-  - whatToSay: 'Intellect a Motherfucker. '
+  - whatToSay: "Hey sexy beast, I just moved into unit 12 and left my keys inside.
+      I\u2019ve been shopping all day and am hangry. Can you buzz me in?"
     isChoice: 1
     Body: 0
-    Mind: 15
+    Mind: 12
     Soul: 0
     nextDialogueSuccess: {fileID: 310194651}
     nextDialogueFail: {fileID: 253303659}
-  - whatToSay: Caress a Motherfucker.
+  - whatToSay: "I\u2019m just a simple gum-shoe. I\u2019m on a murder case and I just
+      need to talk to Ms. Swensen. Can you please buzz me in so I can do that?"
     isChoice: 1
     Body: 0
     Mind: 0
     Soul: 6
     nextDialogueSuccess: {fileID: 1150078249}
     nextDialogueFail: {fileID: 911311060}
-  - whatToSay: 'Do nothing...
-
-      To a Motherfucker.
-
-      Also, get a Nutrigrain bar. '
+  - whatToSay: "Hey pal, I\u2019ve not had breakfast yet and I got a bad case of the
+      Monday morn sweats, can I get one of those protein bars off ya?"
     isChoice: 1
     Body: 0
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 678395048}
-    nextDialogueFail: {fileID: 1791471950}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &1112237170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +2151,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: 'You try to punch him, but a gust of wind knocks your blow astray. '
+  - whatToSay: "You try to punch him, but a gust of wind knocks your blow astray.
+      \n\u201CI swear to you on my granny\u2019s grave I will toss you in that fountain
+      if you do not get out of my face with a quickness!\u201D He yells back.\nHe
+      then sits back down, and continues to eat his bar."
     isChoice: 0
     Body: 0
     Mind: 0
@@ -2017,11 +2214,29 @@ MonoBehaviour:
     dirty: 0
   thingToDoOnEntry:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: obtainBars
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: 'You caress the doorman. He begins to cry tears of relief. '
+  - whatToSay: "The Doorman smiles, understanding.\n\u201CSure, I can do that but
+      who you really want to talk to is old Hobo Joe over there. Life hasn\u2019t
+      been kind to old joe, his brain is kinda scrambled, but the old dude sees everything.
+      Back in the day he hung out around that fountain. Before PG&E shut it off that
+      is. Now he just sleeps in that corner. Here, take a protein bar and crinkle
+      the wrapper. He\u2019ll wake up and talk your ear off. There is prob something
+      there you will want to here.\u201D\nHe then hands you one of his protein bars.
+      \n\"Thanks,\" you reply. "
     isChoice: 0
     Body: 0
     Mind: 0
@@ -2278,6 +2493,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1330311449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330311450}
+  m_Layer: 0
+  m_Name: Dead NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330311450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330311449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9344127, y: 2.1635294, z: -4.5104933}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1572326188582797876}
+  - {fileID: 1396832595}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1396832595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1058263014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1486927669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2588,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sentences:
-  - whatToSay: 'You punch him. In the face. Hard. '
+  - whatToSay: "The Doorman looks taken aback.\n\u201DNo need to get salty friend.
+      I\u2019ll buzz them\u2026.. Whoops, they aint home\u2026 too bad. Now beat it
+      or I\u2019ll throw your mildly vagrant looking ass into that fountain. I\u2019ll
+      bet even Hobo Joe over there would find that amusing!\u201D\nHe goes back to
+      his bar."
     isChoice: 0
     Body: 0
     Mind: 0
@@ -2713,81 +2970,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706518270}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1791471948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1791471949}
-  - component: {fileID: 1791471950}
-  m_Layer: 0
-  m_Name: Neutral Fail
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1791471949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791471948}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1107189084}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1791471950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791471948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Doorman
-  neutral:
-    _target: {fileID: 0}
-    _methodName: 
-    _args: []
-    _dynamic: 0
-    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    dirty: 0
-  thingToDoOnEntry:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  sentences:
-  - whatToSay: 'For whatever reason, he refuses to give you the nutrigrain bar.  '
-    isChoice: 0
-    Body: 0
-    Mind: 0
-    Soul: 0
-    nextDialogueSuccess: {fileID: 0}
-    nextDialogueFail: {fileID: 0}
 --- !u!1 &2001478966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,8 +2997,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001478966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9, y: 2.29, z: 1.67}
-  m_LocalScale: {x: 5, y: 0.29999998, z: 2.5}
+  m_LocalPosition: {x: 2.85, y: 2.29, z: 1.67}
+  m_LocalScale: {x: 6.9735003, y: 0.29999998, z: 2.5}
   m_Children: []
   m_Father: {fileID: 1232384755}
   m_RootOrder: 3
@@ -3090,3 +3272,173 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1572326188582797876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5568202418820245864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1572326190156678451 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+    type: 3}
+  m_PrefabInstance: {fileID: 4848821912539659721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4848821912539659721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 705336816}
+    m_Modifications:
+    - target: {fileID: 2707233508792915366, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_Name
+      value: Hobo Joe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259527928112614518, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 951710623}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d34a717b5b3be455aa0c42059b568461, type: 3}
+--- !u!1001 &5568202418820245864
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1330311450}
+    m_Modifications:
+    - target: {fileID: 7553728519024557001, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_Name
+      value: Client
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916971473207747097, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 951710623}
+    - target: {fileID: 5568202418394393419, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 674411386}
+    - target: {fileID: 5568202418394393419, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: toggleA
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ed86dceec09a4f3d8392712bbd55b3c, type: 3}
