@@ -173,12 +173,12 @@ public class DialogueManager : MonoBehaviour
     {
         destroyButtons();
         //If there's a conditional that is required for entry
-        if(sentence.nextDialogueSuccess.neutral != null)
+        if (sentence.nextDialogueSuccess.neutral != null)
         {
             Debug.Log("There's a condition for entry");
             bool result = sentence.nextDialogueSuccess.neutral.Invoke();
 
-            if(result)
+            if (result)
             {
                 StartDialogue(sentence.nextDialogueSuccess);
             }
