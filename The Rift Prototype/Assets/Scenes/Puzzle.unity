@@ -7853,9 +7853,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Karma: 0
-  Body: 0
-  Mind: 0
-  Soul: 0
+  Body: 10
+  Mind: 10
+  Soul: 10
   bars: 0
   vase: 0
   water: 0
