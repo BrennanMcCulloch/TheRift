@@ -23,10 +23,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 976
-  m_MinSize: {x: 913, y: 422}
+  m_MinSize: {x: 913, y: 444}
   m_MaxSize: {x: 22008, y: 10022}
   vertical: 0
-  controlID: 167
+  controlID: 27757
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,10 +129,10 @@ MonoBehaviour:
     y: 0
     width: 795
     height: 976
-  m_MinSize: {x: 202, y: 422}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 444}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 168
+  controlID: 27736
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -152,8 +152,8 @@ MonoBehaviour:
     y: 0
     width: 795
     height: 501
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -196,9 +196,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.8557367, y: 1.517476, z: 3.5376353}
+    m_Target: {x: -4.4354477, y: 2.7031875, z: -2.7949486}
     speed: 2
-    m_Value: {x: -5.8557367, y: 1.517476, z: 3.5376353}
+    m_Value: {x: -4.4354477, y: 2.7031875, z: -2.7949486}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -227,13 +227,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.028712012, y: -0.08028452, z: 0.0023428467, w: -0.99640954}
+    m_Target: {x: -0.13336937, y: 0.027357718, z: -0.0036317757, w: -0.99074274}
     speed: 2
-    m_Value: {x: -0.028710471, y: -0.080280215, z: 0.002342721, w: -0.99635607}
+    m_Value: {x: -0.13336135, y: 0.027356075, z: -0.0036315576, w: -0.9906832}
   m_Size:
-    m_Target: 22
+    m_Target: 8.133827
     speed: 2
-    m_Value: 22
+    m_Value: 8.133827
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -405,7 +405,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8efbffff
+      m_ExpandedIDs: 7a5fffff1e96ffff8efbffff0a2d0000402d0000542d00005e2d00009e2d0000e02d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -448,8 +448,8 @@ MonoBehaviour:
     y: 0
     width: 414
     height: 976
-  m_MinSize: {x: 234, y: 272}
-  m_MaxSize: {x: 10004, y: 10022}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -493,20 +493,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/captainstudley/Documents/GitHub/TheRift/The Rift Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3a2a0000
-    m_LastClickedID: 10810
-    m_ExpandedIDs: 00000000942900002e2c0000
+    m_SelectedIDs: 002b0000
+    m_LastClickedID: 11008
+    m_ExpandedIDs: 00000000aa2900004e2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,7 +534,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000942900002e2c0000
+    m_ExpandedIDs: 00000000aa2900004e2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -559,8 +559,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b82d0000
-    m_LastClickedInstanceID: 11704
+    m_SelectedInstanceIDs: e85affff
+    m_LastClickedInstanceID: -42264
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 0000000074240000
     m_RenameOverlay:

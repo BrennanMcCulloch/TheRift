@@ -14,6 +14,16 @@ public class PlayerMethods : MonoBehaviour
     public bool water;
     public bool lighter;
 
+    public void karmaLoss()
+    {
+        Karma--;
+    }
+
+    public void karmaGain()
+    {
+        Karma++;
+    }
+
     public int bodyRoll()
     {
         Karma--;
