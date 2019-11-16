@@ -120,6 +120,70 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &113510653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113510654}
+  - component: {fileID: 113510655}
+  m_Layer: 0
+  m_Name: Body Fail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113510654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113510653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113510655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113510653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Fuck you you're not my dad
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1001 &142243575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +613,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
+--- !u!1 &227039989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227039990}
+  - component: {fileID: 227039992}
+  - component: {fileID: 227039991}
+  m_Layer: 0
+  m_Name: Fountain, but dead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227039990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227039989}
+  m_LocalRotation: {x: -0, y: 0.13429248, z: -0, w: 0.99094176}
+  m_LocalPosition: {x: -11.27, y: 0.7, z: 2.52}
+  m_LocalScale: {x: 3.25, y: 3.25, z: 3.25}
+  m_Children: []
+  m_Father: {fileID: 275380633}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 15.435, z: 0}
+--- !u!23 &227039991
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227039989}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9b95fc781a0ea4879a9be9f7561b2d20, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &227039992
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227039989}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &230098994
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +876,7 @@ Transform:
   m_Children:
   - {fileID: 1615221083}
   - {fileID: 152647670}
+  - {fileID: 227039990}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1015,6 +1157,139 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &625939021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625939022}
+  - component: {fileID: 625939023}
+  m_Layer: 0
+  m_Name: WaterDump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625939022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625939021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1572326190156678451}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &625939023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625939021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Hobo Joe
+  neutral:
+    _target: {fileID: 2059817409}
+    _methodName: getWater
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: changeWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: karmaLoss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: "You dump the water on Hobo Joe.\n\u201CJUMPING JESUS ON A FUCKING
+      POGO STICK!\" He jumps.\n\"You can fuck right off mate! Or not. I dunno you.\u201D\nWhat
+      do you say?"
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'Look Joe, Harry is dead. That lady in 21 B might be a witness. Did
+      you see anything interesting happen around here last tuesday night?
+
+'
+    isChoice: 1
+    Body: 0
+    Mind: 8
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: "Look you little puke, you tell me what I need to know or so help me
+      god I\u2019ll make sure the asylum knows you're here!"
+    isChoice: 1
+    Body: 6
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'You see the Doorman? Blueberry and chocolate are my favorite kind
+      of bar. If you can, tell me about the nice lady Janice that lives in this building.
+
+'
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 8
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: "Hey Joe, This place isn\u2019t very pretty, why do you choose to hang
+      out here? It seems to me there are a lot of more comfortable joints to crash
+      at."
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: Hey, there were some kids that used to live here and play in the fountain.
+      What were their names?
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &649975901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1383,7 @@ GameObject:
   - component: {fileID: 674411388}
   - component: {fileID: 674411387}
   - component: {fileID: 674411391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DeadDimension
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,6 +2072,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1031634255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031634256}
+  - component: {fileID: 1031634257}
+  m_Layer: 0
+  m_Name: Mind Success
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031634256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031634255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1572326190156678451}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031634257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031634255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: 
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1001 &1058263014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1808,6 +2147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fountain Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553728519024557001, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
         type: 3}
@@ -1869,6 +2213,131 @@ PrefabInstance:
       propertyPath: deadDimension
       value: 
       objectReference: {fileID: 951710623}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: name
+      value: Fountain Kids
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[0].whatToSay
+      value: Intro to the fountain kids.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[1].whatToSay
+      value: Can I please have some water?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[1].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[1].Soul
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[2].whatToSay
+      value: 'I want your water. Give it. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[2].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[2].Body
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[3].whatToSay
+      value: 'Hey, Steve and Emma, can I have some water? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[3].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[4].whatToSay
+      value: Who are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[4].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[4].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 1356747759}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[1].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 1560750108}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[1].nextDialogueFail
+      value: 
+      objectReference: {fileID: 1334422339}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[2].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 1769818308}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[2].nextDialogueFail
+      value: 
+      objectReference: {fileID: 113510655}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: sentences.Array.data[3].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 1937482831}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2059817409}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeKids
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: thingToDoOnEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5568202418394393419, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
         type: 3}
       propertyPath: deadDimension
@@ -1896,6 +2365,7 @@ GameObject:
   - component: {fileID: 1107189086}
   - component: {fileID: 1107189085}
   - component: {fileID: 1107189090}
+  - component: {fileID: 1107189091}
   m_Layer: 0
   m_Name: Doorman
   m_TagString: NPC
@@ -2094,6 +2564,25 @@ MonoBehaviour:
     Soul: 0
     nextDialogueSuccess: {fileID: 678395048}
     nextDialogueFail: {fileID: 0}
+--- !u!95 &1107189091
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107189083}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ded2569dead274e8a8c9e0c4cd2e68d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1112237170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2948,119 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &1224868551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2707233508792915366, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_Name
+      value: Vase
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474930642677815520, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259527928112614518, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: deadDimension
+      value: 
+      objectReference: {fileID: 951710623}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: name
+      value: Vase
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[0].whatToSay
+      value: 'It''s a busted-up vase.
+
+        On the ground.
+
+        Pick it up?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].whatToSay
+      value: Sure.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 1708034576}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d34a717b5b3be455aa0c42059b568461, type: 3}
 --- !u!1 &1232384754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +3095,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1241937031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241937032}
+  - component: {fileID: 1241937033}
+  m_Layer: 0
+  m_Name: You have the vase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1241937032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241937031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241937033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241937031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 2059817409}
+    _methodName: getVase
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: changeWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: 'Cool! Here''s some water. '
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &1330311449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,11 +3202,151 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1334422337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334422338}
+  - component: {fileID: 1334422339}
+  m_Layer: 0
+  m_Name: Soul Fail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1334422338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334422337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334422339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334422337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: No!
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+--- !u!1 &1356747757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1356747758}
+  - component: {fileID: 1356747759}
+  m_Layer: 0
+  m_Name: WhoWeAre
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1356747758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356747757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1356747759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356747757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Backstory!
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!4 &1396832595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
     type: 3}
   m_PrefabInstance: {fileID: 1058263014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1426199838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2707233508792915366, guid: d34a717b5b3be455aa0c42059b568461,
+    type: 3}
+  m_PrefabInstance: {fileID: 1224868551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1426199845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
+    type: 3}
+  m_PrefabInstance: {fileID: 1224868551}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1486927669
 GameObject:
@@ -2598,6 +3415,77 @@ MonoBehaviour:
     Mind: 0
     Soul: 0
     nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+--- !u!1 &1560750106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560750107}
+  - component: {fileID: 1560750108}
+  m_Layer: 0
+  m_Name: Soul Success
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560750107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560750106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560750108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560750106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Yeah, we'll give you some water. If you have the vase.
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'Yeah, I''ve got it. '
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 1241937033}
     nextDialogueFail: {fileID: 0}
 --- !u!1 &1615221079
 GameObject:
@@ -2970,6 +3858,234 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706518270}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1708034574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708034575}
+  - component: {fileID: 1708034576}
+  m_Layer: 0
+  m_Name: YouHaveVase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708034575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708034574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1426199845}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1708034576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708034574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Vase that isn't there
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: changeVase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1426199838}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Cool.
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+--- !u!1 &1769818306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769818307}
+  - component: {fileID: 1769818308}
+  m_Layer: 0
+  m_Name: Body Success
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769818307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769818306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1769818308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769818306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 0}
+    _methodName: 
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Aww man, ok. Do you have the vase?
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'Yeah, sure. '
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 1241937033}
+    nextDialogueFail: {fileID: 0}
+--- !u!1 &1937482829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937482830}
+  - component: {fileID: 1937482831}
+  m_Layer: 0
+  m_Name: YouRememberUs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1937482830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937482829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1396832595}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937482831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937482829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fountain Kids
+  neutral:
+    _target: {fileID: 2059817409}
+    _methodName: getNames
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: Hey, you remember us! Do you have the vase?
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
+  - whatToSay: 'Yeah, sure. '
+    isChoice: 1
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 1241937033}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &2001478966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,6 +4177,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001478966}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2037662377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037662378}
+  - component: {fileID: 2037662379}
+  m_Layer: 0
+  m_Name: WrapperCrinkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037662378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037662377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1572326190156678451}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037662379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037662377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Hobo Joe
+  neutral:
+    _target: {fileID: 2059817409}
+    _methodName: getBars
+    _args: []
+    _dynamic: 0
+    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    dirty: 0
+  thingToDoOnEntry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2059817409}
+        m_MethodName: loseBars
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  sentences:
+  - whatToSay: YOU GOTS FOODS!!
+    isChoice: 0
+    Body: 0
+    Mind: 0
+    Soul: 0
+    nextDialogueSuccess: {fileID: 0}
+    nextDialogueFail: {fileID: 0}
 --- !u!1 &2059817404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,6 +4368,8 @@ MonoBehaviour:
   vase: 0
   water: 0
   lighter: 0
+  names: 0
+  seenKids: 0
 --- !u!195 &2059817410
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3356,6 +4549,48 @@ PrefabInstance:
       propertyPath: deadDimension
       value: 
       objectReference: {fileID: 951710623}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: name
+      value: Hobo Joe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[0].whatToSay
+      value: "You see a homeless man camped out against a dumpster. He snores, a half-smoked
+        cigarette hanging out his mouth. \n\"ZZZZZZZ *snork* blub-blub-blub- mumble
+        Madonna\u2019s tittys blub-blub-blub zzzzzzz.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].isChoice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].whatToSay
+      value: Dump the water on him.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[1].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 625939023}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[2].whatToSay
+      value: 'Crinkle the Bar wrapper next to his ear. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: sentences.Array.data[2].nextDialogueSuccess
+      value: 
+      objectReference: {fileID: 2037662379}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d34a717b5b3be455aa0c42059b568461, type: 3}
 --- !u!1001 &5568202418820245864
@@ -3369,6 +4604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Client
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553728519024557001, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382793434578938716, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
         type: 3}

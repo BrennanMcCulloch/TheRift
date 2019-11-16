@@ -13,6 +13,8 @@ public class PlayerMethods : MonoBehaviour
     public bool vase;
     public bool water;
     public bool lighter;
+    public bool names;
+    public bool seenKids;
 
     public void karmaLoss()
     {
@@ -100,5 +102,25 @@ public class PlayerMethods : MonoBehaviour
     public bool getLighter()
     {
         return lighter;
+    }
+
+    public void changeNames()
+    {
+        names = !names;
+    }
+
+    public bool getNames()
+    {
+        return names;
+    }
+
+    public void changeKids()
+    {
+        seenKids = !seenKids;
+    }
+
+    public bool getKids()
+    {
+        return seenKids;
     }
 }

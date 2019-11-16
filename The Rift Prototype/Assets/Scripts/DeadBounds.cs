@@ -33,13 +33,25 @@ public class DeadBounds : MonoBehaviour
 
         if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
         {
-            toggleA.SetActive(true);
-            toggleB.SetActive(false);
+            if(toggleA != null)
+            {
+                toggleA.SetActive(true);
+            }
+            if(toggleB != null)
+            {
+                toggleB.SetActive(false);
+            }
         }
         else
         {
-            toggleA.SetActive(false);
-            toggleB.SetActive(true);
+            if (toggleA != null)
+            {
+                toggleA.SetActive(false);
+            }
+            if (toggleB != null)
+            {
+                toggleB.SetActive(true);
+            }
         }
 
     }
