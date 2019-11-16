@@ -173,6 +173,33 @@ public class DialogueManager : MonoBehaviour
     {
         destroyButtons();
         //If there's a conditional that is required for entry
+        if (sentence.nextDialogueSuccess.neutral.target != null)
+        {
+            Debug.Log("There's a target for entry");
+            Debug.Log(sentence.nextDialogueSuccess.neutral.target);
+            bool result = sentence.nextDialogueSuccess.neutral.Invoke();
+            Debug.Log(result);
+
+            if (result)
+            {
+                StartDialogue(sentence.nextDialogueSuccess);
+            }
+            else
+            {
+                StartDialogue(sentence.nextDialogueFail);
+            }
+        }
+        //no conditional for entry
+        else
+        {
+            Debug.Log("There's no target for entry");
+            StartDialogue(sentence.nextDialogueSuccess);
+        }
+    }
+}
+
+/*
+ * //If there's a conditional that is required for entry
         if (sentence.nextDialogueSuccess.neutral != null)
         {
             Debug.Log("There's a condition for entry");
@@ -193,5 +220,4 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("There's no condition for entry");
             StartDialogue(sentence.nextDialogueSuccess);
         }
-    }
-}
+        */

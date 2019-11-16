@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{8EF61A7E-EC37-3A4C-76E1-15DFE8645653}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Dialogue.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DialogueManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Dialogue.cs" Line="14" Column="47" />
-      <File FileName="Assets/Scripts/DialogueManager.cs" Line="178" Column="39" />
+      <File FileName="Assets/Scripts/Dialogue.cs" Line="19" Column="22" />
+      <File FileName="Assets/Scripts/DialogueManager.cs" Line="179" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

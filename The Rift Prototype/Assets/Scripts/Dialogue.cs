@@ -9,11 +9,17 @@ public class Dialogue : MonoBehaviour
 {
     public string name;
 
-    public SerializableCallback<bool> neutral;
+    public Conditional neutral;
 
     public UnityEvent thingToDoOnEntry;
 
     public List<Talkeys> sentences;
+}
+
+[System.Serializable]
+public class Conditional : SerializableCallback<bool>
+{
+
 }
 
 ///    public SerializableCallback<bool> neutral = null;
