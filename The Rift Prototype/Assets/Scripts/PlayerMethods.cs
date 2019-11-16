@@ -14,7 +14,12 @@ public class PlayerMethods : MonoBehaviour
     public bool water;
     public bool lighter;
     public bool names;
+
     public bool seenKids;
+    public bool seenDoorman;
+    public bool seenHobo;
+
+    public bool gameOver;
 
     public void karmaLoss()
     {
@@ -96,7 +101,7 @@ public class PlayerMethods : MonoBehaviour
 
     public void changeLighter()
     {
-        lighter = !lighter;
+        lighter = true;
     }
 
     public bool getLighter()
@@ -106,7 +111,7 @@ public class PlayerMethods : MonoBehaviour
 
     public void changeNames()
     {
-        names = !names;
+        names = true;
     }
 
     public bool getNames()
@@ -116,11 +121,51 @@ public class PlayerMethods : MonoBehaviour
 
     public void changeKids()
     {
-        seenKids = !seenKids;
+        seenKids = true;
     }
 
     public bool getKids()
     {
         return seenKids;
+    }
+
+    public void changeDoorman()
+    {
+        seenDoorman = true;
+    }
+
+    public bool getDoorman()
+    {
+        return seenDoorman;
+    }
+
+    public void changeHobo()
+    {
+        seenHobo = true;
+    }
+
+    public bool getHobo()
+    {
+        return seenHobo;
+    }
+
+    public void makeTheGameOver()
+    {
+        gameOver = true;
+    }
+
+    public bool isTheGameOver()
+    {
+        return gameOver;
+    }
+
+    public bool playerBad()
+    {
+        return Karma < 0;
+    }
+
+    public bool playerGood()
+    {
+        return Karma > 0;
     }
 }

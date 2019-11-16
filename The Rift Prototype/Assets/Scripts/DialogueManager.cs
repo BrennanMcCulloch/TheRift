@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,18 +26,44 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("isOpen", true);
-        nameText.text = dialogue.name;
-
-        sentences.Clear();
-        dialogue.thingToDoOnEntry.Invoke();
-
-        foreach (Talkeys sentence in dialogue.sentences)
+        if (dialogue.neutral.target != null)
         {
-            sentences.Enqueue(sentence);
-        }
+            bool result = dialogue.neutral.Invoke();
+            if (result)
+            {
+                animator.SetBool("isOpen", true);
+                nameText.text = dialogue.name;
 
-        DisplayNextSentence();
+                sentences.Clear();
+                dialogue.thingToDoOnEntry.Invoke();
+
+                foreach (Talkeys sentence in dialogue.sentences)
+                {
+                    sentences.Enqueue(sentence);
+                }
+
+                DisplayNextSentence();
+            }
+            else
+            {
+                //literally do nothing
+            }
+        }
+        else
+        {
+            animator.SetBool("isOpen", true);
+            nameText.text = dialogue.name;
+
+            sentences.Clear();
+            dialogue.thingToDoOnEntry.Invoke();
+
+            foreach (Talkeys sentence in dialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+            }
+
+            DisplayNextSentence();
+        }
     }
 
     public void DisplayNextSentence()
@@ -51,7 +78,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence.whatToSay;
 
         //if the next option is a choice, display the rest of the queue
-        if(sentences.Peek().isChoice)
+        if (sentences.Peek().isChoice)
         {
             int stagger = 200;
             while(sentences.Count > 0)
@@ -133,15 +160,13 @@ public class DialogueManager : MonoBehaviour
 
     void destroyButtons()
     {
-        GameObject buttonAgain;
-        buttonAgain = GameObject.Find("Body Roll");
-        Destroy(buttonAgain);
-        buttonAgain = GameObject.Find("Mind Roll");
-        Destroy(buttonAgain);
-        buttonAgain = GameObject.Find("Soul Roll");
-        Destroy(buttonAgain);
-        buttonAgain = GameObject.Find("Neutral");
-        Destroy(buttonAgain);
+        foreach(Button gameObj in GameObject.FindObjectsOfType<Button>())
+        {
+            if(gameObj.name == "Body Roll" || gameObj.name == "Mind Roll" || gameObj.name == "Soul Roll" || gameObj.name == "Neutral" || gameObj.name == "Button(Clone)" || gameObj.name == "Roll Result")
+            {
+                Destroy(gameObj.gameObject);
+            }
+        }
     }
 
     void bodyResult(Talkeys sentence)
@@ -149,6 +174,13 @@ public class DialogueManager : MonoBehaviour
         destroyButtons();
         Debug.Log("Needed Value: " + sentence.Body);
         int roll = player.GetComponent<PlayerMethods>().bodyRoll();
+        Button newButton = Instantiate(button) as Button;
+        Vector3 temp = newButton.transform.position;
+        temp.y = -525;
+        newButton.transform.position = temp;
+        newButton.transform.SetParent(canvas.transform, false);
+        newButton.name = "Roll Result";
+        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
         if (roll < sentence.Body)
         {
             StartDialogue(sentence.nextDialogueFail);
@@ -164,6 +196,13 @@ public class DialogueManager : MonoBehaviour
         destroyButtons();
         Debug.Log("Needed Value: " + sentence.Mind);
         int roll = player.GetComponent<PlayerMethods>().mindRoll();
+        Button newButton = Instantiate(button) as Button;
+        Vector3 temp = newButton.transform.position;
+        temp.y = -525;
+        newButton.transform.position = temp;
+        newButton.transform.SetParent(canvas.transform, false);
+        newButton.name = "Roll Result";
+        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
         if (roll < sentence.Mind)
         {
             StartDialogue(sentence.nextDialogueFail);
@@ -179,6 +218,13 @@ public class DialogueManager : MonoBehaviour
         destroyButtons();
         Debug.Log("Needed Value: " + sentence.Soul);
         int roll = player.GetComponent<PlayerMethods>().soulRoll();
+        Button newButton = Instantiate(button) as Button;
+        Vector3 temp = newButton.transform.position;
+        temp.y = -525;
+        newButton.transform.position = temp;
+        newButton.transform.SetParent(canvas.transform, false);
+        newButton.name = "Roll Result";
+        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
         if (roll < sentence.Soul)
         {
             StartDialogue(sentence.nextDialogueFail);
