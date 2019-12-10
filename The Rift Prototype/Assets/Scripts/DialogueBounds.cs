@@ -11,7 +11,7 @@ public class DialogueBounds : MonoBehaviour
     public Material materialAfter;
     private Material gameMaterial;
 
-    private Collider collider;
+    new private Collider collider;
     private Collider itemColliding;
 
     private Vector3 top;

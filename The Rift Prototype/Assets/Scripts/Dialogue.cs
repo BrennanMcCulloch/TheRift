@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class Dialogue : MonoBehaviour
 {
-    public string name;
+    new public string name;
 
     public Conditional neutral;
 

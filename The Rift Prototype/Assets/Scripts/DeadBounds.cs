@@ -8,7 +8,7 @@ public class DeadBounds : MonoBehaviour
     public GameObject toggleA;//set this active
     public GameObject toggleB;//set this inactive
 
-    private Collider collider;
+    new private Collider collider;
     private Collider itemColliding;
 
     private Vector3 top;
