@@ -156,6 +156,7 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
         destroyButtons();
+        StateManager.returnToPreviousState();
     }
 
     void destroyButtons()
@@ -194,7 +195,7 @@ public class DialogueManager : MonoBehaviour
     void mindResult(Talkeys sentence)
     {
         destroyButtons();
-        Debug.Log("Needed Value: " + sentence.Mind);
+        //Debug.Log("Needed Value: " + sentence.Mind);//test
         int roll = player.GetComponent<PlayerMethods>().mindRoll();
         Button newButton = Instantiate(button) as Button;
         Vector3 temp = newButton.transform.position;

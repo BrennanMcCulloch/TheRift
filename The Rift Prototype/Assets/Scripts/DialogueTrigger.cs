@@ -9,6 +9,9 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
+        //Set state to talking
+        StateManager.setState((int)StateManager.StateEnum.Talking);
+        //Begin dialogue
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

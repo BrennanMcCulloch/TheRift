@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DrawManager : MonoBehaviour
 {
+    //This makes the class act as a singleton
+    public static DrawManager instance;
+
     //When something is drawn, we make planes. Trail render. 
     public GameObject drawPrefab;
    
@@ -13,6 +16,12 @@ public class DrawManager : MonoBehaviour
     private Plane planeObj;
     private Vector3 startPos;
     private float distance;
+
+    // Awake is called once before start
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +32,13 @@ public class DrawManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
+        if(/*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)||*/ Input.GetMouseButtonDown(0))
         {
-
+            //formerly FixDrawStart
+            Vector3 temp = Input.mousePosition;
+            temp.z = 5f;
+            this.transform.position = Camera.main.ScreenToWorldPoint(temp);
+            //generate trail
             theTrail = (GameObject)Instantiate(drawPrefab, this.transform.position, Quaternion.identity);
 
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
