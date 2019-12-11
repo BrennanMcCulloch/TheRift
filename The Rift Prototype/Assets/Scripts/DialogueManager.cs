@@ -24,7 +24,8 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<Talkeys>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    //Attempts to begin dialogue, returns whether or not this was a success
+    public bool StartDialogue(Dialogue dialogue)
     {
         if (dialogue.neutral.target != null)
         {
@@ -46,7 +47,8 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                //literally do nothing
+                //Dialogue failed
+                return false;
             }
         }
         else
@@ -64,6 +66,8 @@ public class DialogueManager : MonoBehaviour
 
             DisplayNextSentence();
         }
+        //Dialogue successfully began
+        return true;
     }
 
     public void DisplayNextSentence()

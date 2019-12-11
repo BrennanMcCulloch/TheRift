@@ -15,7 +15,7 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stateScripts[(int)StateEnum.Drawing] = new MonoBehaviour[] {DrawManager.instance, CreateMesh.instance};
+        stateScripts[(int)StateEnum.Drawing] = new MonoBehaviour[] {DrawManager.instance, CreateMesh.instance, MoveToClickPoint.instance};
         stateScripts[(int)StateEnum.Talking] = new MonoBehaviour[0]; //no scripts for this yet
     }
 
