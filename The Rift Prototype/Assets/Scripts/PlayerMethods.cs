@@ -35,18 +35,20 @@ public class PlayerMethods : MonoBehaviour
     {
         Karma--;
         int dice = (int) Mathf.Round(Random.Range(1, 12));
-        Debug.Log("Body Roll: " + dice);
-        Debug.Log("Body Stat: " + Body);
-        Debug.Log("Body Total: " + (dice + Body));
+        //test
+        //Debug.Log("Body Roll: " + dice);//test
+        //Debug.Log("Body Stat: " + Body);//test
+        //Debug.Log("Body Total: " + (dice + Body));//test
         return dice + Body;
     }
 
     public int mindRoll()
     {
         int dice = (int)Mathf.Round(Random.Range(1, 12));
-        Debug.Log("Mind Roll: " + dice);
-        Debug.Log("Mind Stat: " + Mind);
-        Debug.Log("Mind Total: " + (dice + Mind));
+        //test
+        //Debug.Log("Mind Roll: " + dice);//test
+        //Debug.Log("Mind Stat: " + Mind);//test
+        //Debug.Log("Mind Total: " + (dice + Mind));//test
         return dice + Mind;
     }
 
@@ -54,16 +56,16 @@ public class PlayerMethods : MonoBehaviour
     {
         Karma++;
         int dice = (int)Mathf.Round(Random.Range(1, 12));
-        Debug.Log("Soul Roll: " + dice);
-        Debug.Log("Soul Stat: " + Soul);
-        Debug.Log("Soul Total: " + (dice + Soul));
+        //Debug.Log("Soul Roll: " + dice);//test
+        //Debug.Log("Soul Stat: " + Soul);//test
+        //Debug.Log("Soul Total: " + (dice + Soul));//test
         return dice + Soul;
     }
 
     public void obtainBars()
     {
         bars++;
-        Debug.Log("Number of Bars: " + bars);
+        //Debug.Log("Number of Bars: " + bars); //test
     }
 
     public void loseBars()

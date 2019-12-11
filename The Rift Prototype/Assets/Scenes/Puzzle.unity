@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -174,8 +174,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "Hobo Joe looks unfazed.\n\u201CTee-hee asylum she says, like that\u2019s
       a bad thing. Go fuck yourself lady or give me five bucks. Either way I\u2026.zzzzzzzzz.\u201D"
@@ -269,8 +267,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"NO! That is NOT how you''re supposed to ask! MOM!!!"
 
@@ -428,6 +424,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -534,6 +531,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -608,7 +606,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 209990324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -653,8 +651,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!222 &209990327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -672,7 +668,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 209990324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -681,8 +677,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f8798db70b5d347c792e844c114278af, type: 3}
     m_FontSize: 20
@@ -767,6 +761,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -858,6 +853,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -932,8 +928,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201COh sweetie, it\u2019s been my experience that if you have an
       uncommunicative man, throw some water on him. That\u2019ll loosen that tongue
@@ -999,8 +993,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "Whoa, that's an intrusive thought. \nDo you even have something to
       light the flowers on fire with?"
@@ -1104,6 +1096,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1178,8 +1171,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman doesn't fall for your shenanigans.\n\"Hey bub, you need
       to go take a long walk off a short pier. I\u2019m tired of looking at you.\"\nHe
@@ -1277,8 +1268,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "Hobo Joe smiles back at you, then realizes he doesn't want to say
       anything. He frowns. \n\"Yea, we all like those flavors and Janice is none of
@@ -1354,8 +1343,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman looks back at you flirtatiously.\n\"Sure I can buzz you
       into the building but I don\u2019t have the extra key to your new apartment.
@@ -1463,6 +1450,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1540,8 +1528,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Hmm. Ok. What have you done recently?"'
     isChoice: 0
@@ -1626,8 +1612,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'Huh. Something tells you that maybe, the flowers in the dead-world
       don''t behave the same way our world''s flowers do.
@@ -1700,8 +1684,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CHmm... well, it looks like Joe needs some tough love. Try intimidating
       him into complying.\u201D"
@@ -1765,8 +1747,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\"Well, bless your heart\u2026. The water goes IN the vase sweetheart.
       Try again.\u201D"
@@ -1831,8 +1811,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'Ok, cool idea. Something tells you that''ll get her attention.
 
@@ -1937,6 +1915,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2014,8 +1993,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Ok. Well, sweetie, how are you feeling?"'
     isChoice: 0
@@ -2132,6 +2109,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2206,8 +2184,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CSeems to me like you only got one option. Take some flowers
       to Janice. Poor some water in the box and wa-la. It\u2019s not rocket science
@@ -2371,8 +2347,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CWell, I\u2019d bet Janice would be a lot more talkative about
       who murdered me if you picked her some of her favorite flowers.\u201D\n"
@@ -2584,8 +2558,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You dump the water on Hobo Joe.\n\u201CJUMPING JESUS ON A FUCKING
       POGO STICK!\" He jumps.\n\"You can fuck right off mate! Or not. I dunno you.\u201D\nWhat
@@ -2695,8 +2667,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'Huh. She thinks you''re weird for just standing there...
 
@@ -2737,7 +2707,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 649975901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
@@ -2756,7 +2726,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 649975901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
@@ -2785,7 +2755,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 649975901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
@@ -2850,6 +2820,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2963,8 +2934,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The doorman hands you a bar.\n\u201CSure you can Pal. You\u2019re
       not you when you\u2019re hungry.\u201D"
@@ -3061,8 +3030,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CJoe looks hungry. Offer him a protein bar. Bet that loosens
       him up.\u201D"
@@ -3158,8 +3125,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Well, if you wanna set the world on fire, do you have anything to
       do it with?"
@@ -3254,8 +3219,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You crinkle the bar wrapper in Hobo Joe's ear. \nHe snaps awake. \n\"YUSSSS
       you gots grub!! GIVE IT!\"\nHe then snatches it out of your hand.\nWhat do you
@@ -3359,7 +3322,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 894207447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -3368,8 +3331,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3379,6 +3340,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &894207450
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3460,8 +3422,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman looks in your eyes, but swats away your attempt at empathizing
       like a misbehaving fly.\n\"How-in-the-hell do you make a living being a private
@@ -3554,8 +3514,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences: []
 --- !u!4 &931087348
 Transform:
@@ -3707,6 +3665,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3781,8 +3740,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201DWell, you're gonna need to get some water sweetie. I've got
       a plan. It's rather nefarious, but it'll be fun at the very least!\u201D"
@@ -4050,8 +4007,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "He seems to remember something.\n\u201COh you mean Janice? Yea, she\u2019s
       a real nice lady. She used to bake me cookies ever now and then. She really
@@ -4343,8 +4298,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CHobo Joe has loitered outside this building for a long time.
       I\u2019d bet if you talked to him you could learn some things. Maybe he's hungry!\u201D"
@@ -4465,6 +4418,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4519,8 +4473,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman looks up as you approach. He looks tired, like he's about
       to fall over.\n\"Hi\", you say. \n\"Hey\", he retorts. "
@@ -4652,8 +4604,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You try to punch him, but a gust of wind knocks your blow astray.
       \n\u201CI swear to you on my granny\u2019s grave I will toss you in that fountain
@@ -4730,8 +4680,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman smiles, understanding.\n\u201CSure, I can do that but
       who you really want to talk to is old Hobo Joe over there. Life hasn\u2019t
@@ -4793,7 +4741,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169671776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -4802,8 +4750,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f8798db70b5d347c792e844c114278af, type: 3}
     m_FontSize: 20
@@ -4883,8 +4829,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Have you spoken to those lovely children near the fountain?"'
     isChoice: 0
@@ -4961,8 +4905,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CHmm. Well, that fountain seems to have a story to tell, why
       don\u2019t you open a rift near it and see what you can learn.\u201D\n"
@@ -5059,6 +5001,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -5107,7 +5050,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1215458712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -5116,8 +5059,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f8798db70b5d347c792e844c114278af, type: 3}
     m_FontSize: 40
@@ -5168,7 +5109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1215458712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -5213,8 +5154,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &1224868551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5287,11 +5226,6 @@ PrefabInstance:
       propertyPath: deadDimension
       value: 
       objectReference: {fileID: 951710623}
-    - target: {fileID: 3474930642677815520, guid: d34a717b5b3be455aa0c42059b568461,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
         type: 3}
       propertyPath: sentences.Array.size
@@ -5326,6 +5260,11 @@ PrefabInstance:
       propertyPath: sentences.Array.data[1].nextDialogueSuccess
       value: 
       objectReference: {fileID: 1708034576}
+    - target: {fileID: 3474930642677815520, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d34a717b5b3be455aa0c42059b568461, type: 3}
 --- !u!1 &1232384754
@@ -5427,8 +5366,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Cool! Here''s some water!"
 
@@ -5494,8 +5431,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Well, sweetie, It''s probably a good idea if you go do that."'
     isChoice: 0
@@ -5590,8 +5525,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'The kids look at you funny.
 
@@ -5656,8 +5589,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The kids look up at you.\n\u201CWe are not supposed to talk to strangers.
       In fact, its been a long time since we\u2019ve talked to anyone. If we become
@@ -5723,8 +5654,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CHey sweetie, those kids are very lonely. Please go talk to them.
       I bet they know stuff too.\u201D"
@@ -5828,8 +5757,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'His eyes shoot wide open, and he begins to scream.
 
@@ -5898,8 +5825,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "The Doorman looks taken aback.\n\u201DNo need to get salty friend.
       I\u2019ll buzz them\u2026.. Whoops, they aint home\u2026 too bad. Now beat it
@@ -5968,8 +5893,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Oh, amazing! Well, then, have you spoken to that lovely man Joe over
       there yet?"'
@@ -6069,8 +5992,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You pour the water onto the flowers under the windowsill. \nSuddenly,
       they start to grow. Higher. And higher.\nAll the way up to Ms. Swensen's window.
@@ -6151,8 +6072,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Sure you can! If you''ve got the vase. Mom says we can only drink
       the fountain water if we use the vase."'
@@ -6212,6 +6131,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -6300,8 +6220,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\u201CIf you can\u2019t get Janice\u2019s attention I\u2019d suggest
       lighting a fire under her window.\u201D"
@@ -6397,8 +6315,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Great! Have you put water in the vase yet?"'
     isChoice: 0
@@ -6492,6 +6408,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -6541,7 +6458,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1704271864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -6558,7 +6475,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1704271864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
@@ -6695,6 +6612,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -6791,8 +6709,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: Cool.
     isChoice: 0
@@ -6858,8 +6774,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Ok, that''s understandable. How are you feeling?"'
     isChoice: 0
@@ -6945,8 +6859,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Ok, do you have the vase?"'
     isChoice: 0
@@ -7023,8 +6935,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'Hobo Joe sighs, remembering.
 
@@ -7116,8 +7026,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You light fire to the flowers under your feet. \nThey start to smoke.
       You feel a little bad, for disturbing the afterlife in this way.\nBut fuck it.
@@ -7199,8 +7107,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Ok, I suppose... IF you have the vase."'
     isChoice: 0
@@ -7281,8 +7187,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: 'Hobo Joe tries very hard to remember.
 
@@ -7349,8 +7253,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "Hobo Joe smiles back at you. \n\u201CJanice, she likes the flowers.
       She spends a lot of time tending them. Or rather, she used to. I like the yellow
@@ -7416,8 +7318,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "\"Oh sweetie, the kids want that vase to hold the water for the flowers
       or for drinking.\u201D"
@@ -7481,8 +7381,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "You pick the flowers under the windowsill. You feel a little bad,
       for disturbing the afterlife in this way.\nYou put them in the vase, and present
@@ -7563,8 +7461,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: '"Ok, That will work" They smile.
 
@@ -7654,6 +7550,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -7728,8 +7625,6 @@ MonoBehaviour:
   thingToDoOnEntry:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   sentences:
   - whatToSay: "He seems to remember something, but doesn't want to tell you about
       it.\n\u201CBE GONE VILE DEMONESS!!!! When the rapture happens it will be Jezabels
@@ -7802,6 +7697,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

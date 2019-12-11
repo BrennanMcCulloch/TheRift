@@ -33,7 +33,7 @@ public class DialogueBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
+        //deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
 
         if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
         {

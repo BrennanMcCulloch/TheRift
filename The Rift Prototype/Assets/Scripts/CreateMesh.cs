@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CreateMesh : MonoBehaviour
 {
+    //singleton
+    public static CreateMesh instance;
     //offsetting the position of rift
     public float camDis = 5f;
     public float xOffset;
     public float yOffset;
+
 
     private List<Vector3> newVertices;
     private List<int> newTriangles;
@@ -18,6 +21,12 @@ public class CreateMesh : MonoBehaviour
 
     private Plane planeObj;
     private Vector3 startPos;
+
+    // Awake is called once before start
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
