@@ -177,7 +177,7 @@ public class DialogueManager : MonoBehaviour
     void bodyResult(Talkeys sentence)
     {
         destroyButtons();
-        Debug.Log("Needed Value: " + sentence.Body);
+        //Debug.Log("Needed Value: " + sentence.Body);//test
         int roll = player.GetComponent<PlayerMethods>().bodyRoll();
         Button newButton = Instantiate(button) as Button;
         Vector3 temp = newButton.transform.position;
