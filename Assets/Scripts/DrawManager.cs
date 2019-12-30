@@ -15,21 +15,16 @@ public class DrawManager : MonoBehaviour
     private GameObject theTrail;
     private Plane planeObj;
     private List<Vector3> points;
+    private List<Segment> segments;
     private Vector3 startPos;
     private float distance;
-
-    // Structure for line segments
-    struct segment
-    {
-        public Vector3 StartPoint;
-        public Vector3 EndPoint;
-    };
 
     // Awake is called once before start
     void Awake()
     {
         instance = this;
-        points = new List<Vector3> ();
+        points = new List<Vector3>();
+        segments = new List<Segment>();
     }
 
     // Start is called before the first frame update
@@ -49,6 +44,8 @@ public class DrawManager : MonoBehaviour
             this.transform.position = Camera.main.ScreenToWorldPoint(temp);
             //replace/create trail
             Destroy(theTrail);
+            points.Clear();
+            segments.Clear();
             theTrail = (GameObject)Instantiate(drawPrefab, this.transform.position, Quaternion.identity);
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(planeObj.Raycast(mouseRay, out distance))
@@ -85,60 +82,21 @@ public class DrawManager : MonoBehaviour
         //add point
         points.Add(point);
         theTrail.transform.position = point;
-        //check for collision
-        if(isLineCollide())
+        //if this is not the fist point, add a segment and check collision
+        if(points.Count > 1)
         {
-            Debug.Log("Is collide");
-        } else
-        {
-            Debug.Log("Not collide");
-        }
-    }
-
-    // Checks if currentLine (line drawn by last two points) collided with line   
-    private bool isLineCollide()
-    {
-        if(points.Count < 2) return false;
-        int TotalLines = points.Count - 1;
-        segment[] lines = new segment[TotalLines];
-        if(TotalLines > 1)
-        {
-            for(int i=0; i<TotalLines; i++)
+            segments.Add(new Segment(points[points.Count - 2], point));
+            //check for collision
+            for(int i = 0; i < segments.Count - 1; i++)
             {
-                lines [i].StartPoint = (Vector3)points [i];
-                lines [i].EndPoint = (Vector3)points [i + 1];
+                if(segments[segments.Count - 1].intersects(segments[i]))
+                {
+                    Debug.Log("Is collide");
+                } else
+                {
+                    Debug.Log("Not collide");
+                }
             }
         }
-        for(int i=0; i<TotalLines-1; i++)
-        {
-            segment currentLine;
-            currentLine.StartPoint = (Vector3)points [points.Count - 2];
-            currentLine.EndPoint = (Vector3)points [points.Count - 1];
-            if(isLinesIntersect (lines [i], currentLine)) return true;
-        }
-        return false;
-    }
-  
-    // Check whether given two points are same or not  
-    private bool checkPoints(Vector3 pointA, Vector3 pointB)
-    {
-        return(pointA.x == pointB.x && pointA.y == pointB.y);
-    }
- 
-    // Checks whether given two line intersect or not 
-    private bool isLinesIntersect(segment L1, segment L2)
-    {
-        if( checkPoints(L1.StartPoint, L2.StartPoint) ||
-            checkPoints(L1.StartPoint, L2.EndPoint) ||
-            checkPoints(L1.EndPoint, L2.StartPoint) ||
-            checkPoints(L1.EndPoint, L2.EndPoint)
-        ) return false;
-        
-        return(
-            (Mathf.Max(L1.StartPoint.x, L1.EndPoint.x) >= Mathf.Min (L2.StartPoint.x, L2.EndPoint.x)) &&
-            (Mathf.Max(L2.StartPoint.x, L2.EndPoint.x) >= Mathf.Min (L1.StartPoint.x, L1.EndPoint.x)) &&
-            (Mathf.Max(L1.StartPoint.y, L1.EndPoint.y) >= Mathf.Min (L2.StartPoint.y, L2.EndPoint.y)) &&
-            (Mathf.Max(L2.StartPoint.y, L2.EndPoint.y) >= Mathf.Min (L1.StartPoint.y, L1.EndPoint.y)) 
-        );
     }
 }
