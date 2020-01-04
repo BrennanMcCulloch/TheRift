@@ -4,55 +4,31 @@ using UnityEngine;
 
 public class DialogueBounds : MonoBehaviour
 {
-    public GameObject deadDimension;
     public DialogueTrigger inCaseOfDialogue;
 
-    public Material materialBefore;
-    public Material materialAfter;
-    private Material gameMaterial;
+     private Material material;
 
-    new private Collider collider;
-    private Collider itemColliding;
+    private bool interactable;
 
-    private Vector3 top;
-    private Vector3 middle;
-    private Vector3 bottom;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        collider = deadDimension.GetComponent<Collider>();
-        itemColliding = this.GetComponent<Collider>();
-        middle = itemColliding.bounds.center;
-        Vector3 scale = itemColliding.bounds.extents;
-        top = new Vector3(middle.x + scale.x, middle.y + scale.y, middle.z + scale.z);
-        bottom = new Vector3(middle.x - scale.x, middle.y - scale.y, middle.z - scale.z);
-        gameMaterial = GetComponent<Renderer>().material;
+    void Start() {
+        material = gameObject.GetComponent<MeshRenderer>().material;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        //deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
+        // Todo (matt) - These methods assume that the player is the only object that will be moving around and triggering things.
+        // if at some point this is no longer the case, add logic to bail unless the colliding object is the player.
+        material.color = Color.green;
+        interactable = true;
+    }
 
-        if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
-        {
-            gameMaterial.color = materialAfter.color;
-            //If it overlaps and you click on it 
-            RaycastHit hit;
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Physics.Raycast(ray, out hit);
-                if (hit.collider != null && hit.collider.gameObject.name == this.name)
-                {
-                    inCaseOfDialogue.TriggerDialogue();
-                }
-            }
-        }
-        else //it doesn't overlap
-        {
-            gameMaterial.color = materialBefore.color;
-        }
+    private void OnTriggerExit(Collider other) {
+        material.color = Color.yellow;
+        interactable = false;
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        if (interactable) inCaseOfDialogue.TriggerDialogue();
     }
 }
