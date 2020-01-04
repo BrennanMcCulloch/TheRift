@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 67830117}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SeeingGrandma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3097,7 +3097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 838005477}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SeeingDeadFlowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3116,7 +3116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2059817408}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &849784032
 GameObject:
@@ -6287,7 +6287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643143789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SeeingADeadThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7700,7 +7700,7 @@ GameObject:
   - component: {fileID: 2059817411}
   - component: {fileID: 2059817410}
   - component: {fileID: 2059817409}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Esmerelda
   m_TagString: Player
   m_Icon: {fileID: 0}
