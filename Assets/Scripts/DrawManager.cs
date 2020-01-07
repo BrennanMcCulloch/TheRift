@@ -18,6 +18,9 @@ public class DrawManager : MonoBehaviour
     private List<Segment> segments;
     private Vector3 startPos;
     private float distance;
+    private int loopStart = 0;
+    private int loopEnd = 0;
+
 
     // Awake is called once before start
     void Awake()
@@ -36,6 +39,7 @@ public class DrawManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //handle first frame of input
         if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0))
         {
             //formerly FixDrawStart
@@ -46,6 +50,8 @@ public class DrawManager : MonoBehaviour
             Destroy(theTrail);
             points.Clear();
             segments.Clear();
+            loopEnd = 0;
+            loopStart = 0;
             theTrail = (GameObject)Instantiate(drawPrefab, this.transform.position, Quaternion.identity);
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(planeObj.Raycast(mouseRay, out distance))
@@ -55,7 +61,8 @@ public class DrawManager : MonoBehaviour
                 addPoint(point);
             }
         }
-        else if(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance) != startPos && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0))
+        //mouse held down
+        else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0))
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -68,35 +75,41 @@ public class DrawManager : MonoBehaviour
                 }
             }
         }
-
         //On mouse up. Bound to need to use this.
         else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
+            //create mesh is there was a collision
+            if(loopEnd - 10 > loopStart)
+            {
+                CreateMesh.Create(loopStart, loopEnd, points);
+            }
             //destroy the game object 6 seconds after drawing
             Destroy(theTrail, 6);
         }
     }
 
-    // Adds a point and handles what to do if a rift is drawn
+    // Adds a point and handles what to do if a rift was drawn
     private void addPoint(Vector3 point) {
         //add point
         points.Add(point);
         theTrail.transform.position = point;
-        //if this is not the fist point, add a segment and check collision
+        //if this is not the fist point, add a segment and check for a loop
         if(points.Count > 1)
         {
             segments.Add(new Segment(points[points.Count - 2], point));
             //check for collision
             for(int i = 0; i < segments.Count - 1; i++)
             {
-                if(segments[segments.Count - 1].intersects(segments[i]))
+                if(segments[segments.Count - 1].intersects(segments[i]) && loopEnd == 0)
                 {
-                    Debug.Log("Is collide");
-                } else
-                {
-                    Debug.Log("Not collide");
+                    //Debug.Log("Is collide");//test
+                    //create collider for rift
+                    loopStart = i + 1;
+                    loopEnd = points.Count - 2;
+                    return;
                 }
             }
+            //Debug.Log("Not collide");//test
         }
     }
 }

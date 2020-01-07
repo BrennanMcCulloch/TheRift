@@ -8,13 +8,10 @@ public class CreateMesh : MonoBehaviour
     public static CreateMesh instance;
     //offsetting the position of rift
     public float camDis = 5f;
-    public float xOffset;
-    public float yOffset;
+    //public float xOffset;
+    //public float yOffset;
 
-
-    private List<Vector3> newVertices;
-    private List<int> newTriangles;
-    private Mesh mesh;
+    static private Mesh mesh;
     public bool firstHeld;
 
     private float distance;
@@ -34,150 +31,69 @@ public class CreateMesh : MonoBehaviour
         planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
         firstHeld = true;
     }
-        
-    // Update is called once per frame
-    void Update()
+
+    // Create polygon collider connecting points from one index to another of a list
+    public static void Create(int start, int end, List<Vector3> points)
     {
-        //Need to round current Mouse variables for comparison because FUCK FLOATS
-        var currentRoundX = System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).x, 2);
-        var currentRoundY = System.Math.Round(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(distance).y, 2);
-
-        //On mouse down
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
+        List<Vector3> newVertices = points.GetRange(start, points.Count - start - (points.Count - end));
+        //adjust points for camera and add new ones for the back face
+        int halfCount = newVertices.Count;
+        for (int i = 0; i < halfCount; i++)
         {
-            newVertices = new List<Vector3>();
-            newTriangles = new List<int>();
-
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (planeObj.Raycast(mouseRay, out distance))
-            {
-                startPos = mouseRay.GetPoint(distance);
-                Vector3 temporary = new Vector3(startPos.x + xOffset, startPos.y + yOffset, camDis);
-                newVertices.Add(temporary);
-            }
+            newVertices[i] = new Vector3(newVertices[i].x, newVertices[i].y, instance.camDis);
+            newVertices.Add(newVertices[i] + new Vector3(0, 0, 10));
+        }
+        //set triangles for mesh
+        List<int> newTriangles = new List<int>();
+        //draw front with normals facing both ways for visibility
+        //front circle cw
+        for (int i = 1; i < (halfCount) - 1; i++)
+        {
+            newTriangles.Add(0);
+            newTriangles.Add(i);
+            newTriangles.Add(i + 1);
+        }
+        //front circle cc
+        for (int i = 1; i < halfCount - 1; i++)
+        {
+            newTriangles.Add(i + 1);
+            newTriangles.Add(i);
+            newTriangles.Add(0);
         }
 
-        //On mouse held & moved. Getting rid of touch made it work. NEED TO REIMPLEMENT.
-        else if ((currentRoundX != System.Math.Round(startPos.x, 2)) && (currentRoundY != System.Math.Round(startPos.y, 2)) && Input.GetMouseButton(0))
+        //back circle cw
+        for (int i = (halfCount) + 1; i < newVertices.Count - 1; i++)
         {
-            if (firstHeld == true)
-            {
-                mesh = new Mesh();
-                GetComponent<MeshFilter>().mesh = mesh;
-                GetComponent<MeshCollider>().sharedMesh = mesh;
-            }
-            firstHeld = false;
-
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (planeObj.Raycast(mouseRay, out distance))
-            {
-                Vector3 temp = new Vector3(mouseRay.GetPoint(distance).x + xOffset, mouseRay.GetPoint(distance).y + yOffset, camDis);
-                newVertices.Add(temp);
-            }
+            newTriangles.Add(halfCount);
+            newTriangles.Add(i);
+            newTriangles.Add(i + 1);
         }
 
-        //On mouse up. Bound to need to use this.
-        else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
+        //body cw
+        int frontVertex = 0;
+        int backVertex = halfCount;
+        while (frontVertex < halfCount - 1 && backVertex < newVertices.Count)
         {
-            //If you drew and didn't just click, 10 for sloppy fingers
-            if (newVertices.Count > 10)
-            {
-                firstHeld = true;
-                //Make the second set of vertices behind the current set so there's a shape
-                int dontKeepThis = newVertices.Count;
-                for (int i = 0; i < dontKeepThis; i++)
-                {
-                    Vector3 temp = new Vector3(newVertices[i].x, newVertices[i].y, newVertices[i].z + 10);
-                    newVertices.Add(temp);
-                }
-
-                //they drew it clockwise!
-                if (newVertices[0].x < newVertices[1].x)
-                {
-                    //front circle
-                    for (int i = 1; i < (newVertices.Count / 2) - 1; i++)
-                    {
-                        newTriangles.Add(0);
-                        newTriangles.Add(i);
-                        newTriangles.Add(i + 1);
-                    }
-
-                    //back circle
-                    for (int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
-                    {
-                        newTriangles.Add(newVertices.Count / 2);
-                        newTriangles.Add(i);
-                        newTriangles.Add(i + 1);
-                    }
-
-                    //body
-                    int frontVertex = 0;
-                    int backVertex = (newVertices.Count / 2);
-                    while (frontVertex < (newVertices.Count / 2) - 1 && backVertex < newVertices.Count)
-                    {
-                        newTriangles.Add(frontVertex);
-                        newTriangles.Add(backVertex);
-                        newTriangles.Add(backVertex + 1);
-                        newTriangles.Add(frontVertex);
-                        newTriangles.Add(backVertex + 1);
-                        newTriangles.Add(frontVertex + 1);
-                        frontVertex++;
-                        backVertex++;
-                    }
-                    newTriangles.Add((newVertices.Count / 2) - 1);
-                    newTriangles.Add(newVertices.Count - 1);
-                    newTriangles.Add(0);
-                    newTriangles.Add(newVertices.Count - 1);
-                    newTriangles.Add(newVertices.Count / 2);
-                    newTriangles.Add(0);
-                }
-                else //they drew it counter clockwise!
-                {
-                    //front circle
-                    for (int i = 1; i < (newVertices.Count / 2) - 1; i++)
-                    {
-                        newTriangles.Add(i + 1);
-                        newTriangles.Add(i);
-                        newTriangles.Add(0);
-                    }
-
-                    //back circle
-                    for (int i = (newVertices.Count / 2) + 1; i < newVertices.Count - 1; i++)
-                    {
-                        newTriangles.Add(i + 1);
-                        newTriangles.Add(i);
-                        newTriangles.Add(newVertices.Count / 2);
-                    }
-
-                    //body
-                    int frontVertex = 0;
-                    int backVertex = (newVertices.Count / 2);
-                    while (frontVertex < (newVertices.Count / 2) - 1 && backVertex < newVertices.Count)
-                    {
-                        newTriangles.Add(backVertex + 1);
-                        newTriangles.Add(backVertex);
-                        newTriangles.Add(frontVertex);
-                        newTriangles.Add(frontVertex + 1);
-                        newTriangles.Add(backVertex + 1);
-                        newTriangles.Add(frontVertex);
-                        frontVertex++;
-                        backVertex++;
-                    }
-                    newTriangles.Add(0);
-                    newTriangles.Add(newVertices.Count - 1);
-                    newTriangles.Add((newVertices.Count / 2) - 1);
-                    newTriangles.Add(0);
-                    newTriangles.Add(newVertices.Count / 2);
-                    newTriangles.Add(newVertices.Count - 1);
-                }
-
-                mesh.vertices = newVertices.ToArray();
-                mesh.triangles = newTriangles.ToArray();
-            }
-
-
+            newTriangles.Add(frontVertex);
+            newTriangles.Add(backVertex);
+            newTriangles.Add(backVertex + 1);
+            newTriangles.Add(frontVertex);
+            newTriangles.Add(backVertex + 1);
+            newTriangles.Add(frontVertex + 1);
+            frontVertex++;
+            backVertex++;
         }
+        newTriangles.Add((halfCount) - 1);
+        newTriangles.Add(newVertices.Count - 1);
+        newTriangles.Add(0);
+        newTriangles.Add(newVertices.Count - 1);
+        newTriangles.Add(halfCount);
+        newTriangles.Add(0);
+
+        mesh = new Mesh();
+        instance.GetComponent<MeshFilter>().mesh = mesh;
+        instance.GetComponent<MeshCollider>().sharedMesh = mesh;
+        mesh.vertices = newVertices.ToArray();
+        mesh.triangles = newTriangles.ToArray();
     }
 }
