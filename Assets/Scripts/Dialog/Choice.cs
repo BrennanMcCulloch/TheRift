@@ -52,10 +52,8 @@ namespace DialogueTree {
             switch (result) {
                 case ChoiceResult.succeeded:
                     return successPage;
-                    break;
                 case ChoiceResult.failed:
                     return failurePage;
-                    break;
             }
 
             // Todo (matt) - we should never get to this point
