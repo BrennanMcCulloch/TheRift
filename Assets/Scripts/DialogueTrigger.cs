@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using DialogueTree;
+
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(MeshRenderer))]
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -30,16 +34,9 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (interactable) TriggerDialogue();
-    }
-
-    public void TriggerDialogue()
-    {
-        //Attempt to begin dialogue
-        if(FindObjectOfType<DialogueManager>().StartDialogue(dialogue))
+        if (interactable && dialogue != null)
         {
-            //Set state to talking if dialogue properly started
-            StateManager.setState((int)StateManager.StateEnum.Talking);
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         }
     }
 }
