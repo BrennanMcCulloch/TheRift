@@ -5,93 +5,80 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DialogueTree;
 
 public class DialogueManager : MonoBehaviour
 {
+    // Direct access to the UI elements we want to control
+    public GameObject canvas; //THIS NEEDS TO BE THE DIALOGUE BOX
     public Text nameText;
     public Text dialogueText;
+    public GameObject navButtonsPanel;
+    public Button rollButton;
+    public Button continueButton;
+    public Button[] choiceButtons;
+    public GameObject choiceButtonsPanel;
+
+    // Access to data from scene objects
+    public Dialogue dialogue;
     public Animator animator;
-    public Button button;
-    public GameObject canvas; //THIS NEEDS TO BE THE DIALOGUE BOX
-    public GameObject player;
-    private Coroutine typingSentence;
-    private Queue<Talkeys> sentences;
-    private Talkeys currentSentence;
 
-    // Start is called before the first frame update
-    void Start()
+    // Allows us to stop the coroutine on the fly, and prevent simultaneous execution
+    private Coroutine typingPage;
+
+    public void StartDialogue(Dialogue newDialogue)
     {
-        sentences = new Queue<Talkeys>();
+        dialogue = newDialogue;
+        animator.SetBool("isOpen", true);
+        nameText.text = dialogue.title;
+
+        // start the coroutine that 'types' the text in the dialogue window
+        typingPage = StartCoroutine("TypeSentence", dialogue.currentPage.Text());
+
+        // Stops us from moving around when dialoguing
+        StateManager.setState((int)StateManager.StateEnum.Talking);
     }
 
-    //Attempts to begin dialogue, returns whether or not this was a success
-    public bool StartDialogue(Dialogue dialogue)
+    void EndDialogue()
     {
-        if (dialogue.neutral.target != null)
-        {
-            bool result = dialogue.neutral.Invoke();
-            if (result)
-            {
-                animator.SetBool("isOpen", true);
-                nameText.text = dialogue.name;
-
-                sentences.Clear();
-                dialogue.thingToDoOnEntry.Invoke();
-
-                foreach (Talkeys sentence in dialogue.sentences)
-                {
-                    sentences.Enqueue(sentence);
-                }
-
-                DisplayNextSentence();
-            }
-            else
-            {
-                //Dialogue failed
-                return false;
-            }
+        animator.SetBool("isOpen", false);
+        dialogue = null;
+        if (typingPage != null) {
+            StopCoroutine(typingPage);
+            typingPage = null;
         }
-        else
-        {
-            animator.SetBool("isOpen", true);
-            nameText.text = dialogue.name;
 
-            sentences.Clear();
-            dialogue.thingToDoOnEntry.Invoke();
-
-            foreach (Talkeys sentence in dialogue.sentences)
-            {
-                sentences.Enqueue(sentence);
-            }
-
-            DisplayNextSentence();
-        }
-        //Dialogue successfully began
-        return true;
+        // Lets us start moving again
+        StateManager.returnToPreviousState();
     }
 
-    public void DisplayNextSentence()
-    {
-        if (typingSentence != null) {
-            StopCoroutine(typingSentence);
-            typingSentence = null;
-            dialogueText.text = currentSentence.whatToSay;
-            DisplayChoices();
+    // Triggered by the 'Continue' button in the UI.
+    // The UI 'types out' the current page.
+    // We dont want to go to the next page if it's still typing;
+    // instead we want to 'fast forward' the current typing
+    public void NextPage() {
+        // if we're typing...
+        if (typingPage != null) {
+            FinishTyping();
+            DisplayChoicesIfPresent();
         }
         else {
-            if(sentences.Count == 0) {
-                EndDialogue();
-                return;
+            if (dialogue.NextPage())
+            {
+                typingPage = StartCoroutine("TypeSentence", dialogue.currentPage.Text());
             }
-            else {
-                currentSentence = sentences.Dequeue();
-                // the choices are displayed from the coroutine once it finishes typing the sentence
-                typingSentence = StartCoroutine("TypeSentence", currentSentence.whatToSay);
-            }
+            else EndDialogue();
         }
     }
 
+    // Immediately types out the current page and clears the coroutine
+    private void FinishTyping() {
+        StopCoroutine(typingPage);
+        typingPage = null;
+        dialogueText.text = dialogue.currentPage.Text();
+    }
+
+    // Creates a typewriter effect for the current page text
     IEnumerator TypeSentence (string sentence)
     {
         dialogueText.text = "";
@@ -101,161 +88,60 @@ public class DialogueManager : MonoBehaviour
             float jitter = Random.Range(0.01f, 0.075f);
             yield return new WaitForSeconds(jitter);
         }
-        DisplayChoices();
-        typingSentence = null;
+        DisplayChoicesIfPresent();
+        typingPage = null;
     }
 
-    private void DisplayChoices() {
-        //if the next option is a choice, display the rest of the queue
-        if (sentences.Peek().isChoice)
-        {
-            int stagger = 200;
-            while(sentences.Count > 0)
-            {
-                Button newButton = Instantiate(button) as Button;
-                Vector3 temp = newButton.transform.position;
-                temp.x += 25;
-                temp.y += stagger;
-                newButton.transform.position = temp;
-                newButton.transform.SetParent(canvas.transform, false);
+    private void DisplayChoicesIfPresent() {
+        // Reasons why we dont want to show the choices:
+        // 1. there are no choices to show
+        if (dialogue.currentPage.Choices().Length == 0) return;
+        // 2. the page is locked per unmet prerequisites
+        if (dialogue.currentPage.Locked()) return;
+        // Swap visibility on the choice buttons and the continue button
+        navButtonsPanel.gameObject.SetActive(false);
+        choiceButtonsPanel.gameObject.SetActive(true);
 
-                Talkeys sentenceAgain = sentences.Dequeue();
-                if (sentenceAgain.Body > 0)
-                {
-                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
-                    newButton.name = "Body Roll";
-                    newButton.GetComponentInChildren<Text>().text += " (Body " + sentenceAgain.Body + ")";
-                    newButton.onClick.AddListener(()=>bodyResult(sentenceAgain));
-                }
-                else if (sentenceAgain.Mind > 0)
-                {
-                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
-                    newButton.name = "Mind Roll";
-                    newButton.GetComponentInChildren<Text>().text += " (Mind " + sentenceAgain.Mind + ")";
-                    newButton.onClick.AddListener(() => mindResult(sentenceAgain));
-                }
-                else if (sentenceAgain.Soul > 0)
-                {
-                    newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
-                    newButton.name = "Soul Roll";
-                    newButton.GetComponentInChildren<Text>().text += " (Soul " + sentenceAgain.Soul + ")";
-                    newButton.onClick.AddListener(() => soulResult(sentenceAgain));
-                }
-                else //it's neutral, but a choice. Maybe do something?
-                {
-                    if (sentenceAgain.nextDialogueSuccess.neutral.target != null)
-                    {
-                        bool result = sentenceAgain.nextDialogueSuccess.neutral.Invoke();
-                        if(result)
-                        {
-                            newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
-                            newButton.name = "Neutral";
-                            newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
-                        }
-                        else
-                        {
-                            Destroy(newButton);
-                        }
-                    }
-                    else
-                    {
-                        newButton.GetComponentInChildren<Text>().text = sentenceAgain.whatToSay;
-                        newButton.name = "Neutral";
-                        newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
-                    }
-                }
-                stagger -= 100;
-            }
+        for (int i = 0; i < dialogue.currentPage.Choices().Length; i++) {
+            Button button = choiceButtons[i];
+            Choice choice = dialogue.currentPage.Choices()[i];
+
+            // Prepare data for button text
+            string rollType = choice.statCheck.statType.ToString();
+            string buttonName = rollType + " Roll";
+            string buttonText = " (" + rollType + " " + choice.statCheck.statRequirement + ") " + choice.text;
+
+            // Populate button with text
+            button.name = buttonName;
+            button.GetComponentInChildren<Text>().text = buttonText;
+
+            // Remove old click listeners and act upon the current choice when we click
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(()=>DispalyResult(choice));
         }
     }
 
-    void EndDialogue()
+    // Performs a roll check,
+    void DispalyResult(Choice choice)
     {
-        animator.SetBool("isOpen", false);
-        destroyButtons();
-        StateManager.returnToPreviousState();
-    }
+        // Once a choice has been made, show the continue button
+        navButtonsPanel.gameObject.SetActive(true);
+        choiceButtonsPanel.gameObject.SetActive(false);
 
-    void destroyButtons()
-    {
-        foreach(Button gameObj in GameObject.FindObjectsOfType<Button>())
-        {
-            if(gameObj.name == "Body Roll" || gameObj.name == "Mind Roll" || gameObj.name == "Soul Roll" || gameObj.name == "Neutral" || gameObj.name == "Button(Clone)" || gameObj.name == "Roll Result")
-            {
-                Destroy(gameObj.gameObject);
-            }
-        }
-    }
+        // Perform and display a roll.
+        int roll = Player.Instance.StatRoll(choice.statCheck.statType);
+        // Todo (matt) - we can probably do something with this result value
+        ChoiceResult result = choice.CheckResult(roll);
+        rollButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
 
-    void bodyResult(Talkeys sentence)
-    {
-        destroyButtons();
-        //Debug.Log("Needed Value: " + sentence.Body);//test
-        int roll = player.GetComponent<PlayerMethods>().bodyRoll();
-        Button newButton = Instantiate(button) as Button;
-        Vector3 temp = newButton.transform.position;
-        temp.y = -525;
-        newButton.transform.position = temp;
-        newButton.transform.SetParent(canvas.transform, false);
-        newButton.name = "Roll Result";
-        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
-        if (roll < sentence.Body)
-        {
-            StartDialogue(sentence.nextDialogueFail);
-        }
-        else
-        {
-            StartDialogue(sentence.nextDialogueSuccess);
-        }
-    }
+        // If there is a results page, insert it after the current dialogue page and then call nextpage.
+        // Todo (matt) - this is a very hacky way to do this. there is an architecture problem somewhere.
+        Page resultsPage = choice.ResultsPage();
+        if (resultsPage != null) dialogue.InsertNext(resultsPage);
+        NextPage();
 
-    void mindResult(Talkeys sentence)
-    {
-        destroyButtons();
-        //Debug.Log("Needed Value: " + sentence.Mind);//test
-        int roll = player.GetComponent<PlayerMethods>().mindRoll();
-        Button newButton = Instantiate(button) as Button;
-        Vector3 temp = newButton.transform.position;
-        temp.y = -525;
-        newButton.transform.position = temp;
-        newButton.transform.SetParent(canvas.transform, false);
-        newButton.name = "Roll Result";
-        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
-        if (roll < sentence.Mind)
-        {
-            StartDialogue(sentence.nextDialogueFail);
-        }
-        else
-        {
-            StartDialogue(sentence.nextDialogueSuccess);
-        }
-    }
+        // Todo(matt) - after introducing 'repeatable' to pages and choices, rework this page direction.
+        // actually, probably rework how this all works anyway. not in love with the insertnext logic.
 
-    void soulResult(Talkeys sentence)
-    {
-        destroyButtons();
-        Debug.Log("Needed Value: " + sentence.Soul);
-        int roll = player.GetComponent<PlayerMethods>().soulRoll();
-        Button newButton = Instantiate(button) as Button;
-        Vector3 temp = newButton.transform.position;
-        temp.y = -525;
-        newButton.transform.position = temp;
-        newButton.transform.SetParent(canvas.transform, false);
-        newButton.name = "Roll Result";
-        newButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
-        if (roll < sentence.Soul)
-        {
-            StartDialogue(sentence.nextDialogueFail);
-        }
-        else
-        {
-            StartDialogue(sentence.nextDialogueSuccess);
-        }
-    }
-
-    void neutralResult(Talkeys sentence)
-    {
-        destroyButtons();
-        StartDialogue(sentence.nextDialogueSuccess);
     }
 }
