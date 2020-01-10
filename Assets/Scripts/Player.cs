@@ -43,11 +43,9 @@ public class Player : Singleton<Player>
             case StatType.body:
                 stats[StatType.karma]--;
                 return NEGATIVE_KARMA_MESSAGE;
-                break;
             case StatType.soul:
                 stats[StatType.karma]++;
                 return POSITIVE_KARMA_MESSAGE;
-                break;
         }
         return null;
     }
