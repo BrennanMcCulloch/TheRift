@@ -73,21 +73,22 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-        else if (typingSentence != null) {
+        if (typingSentence != null) {
             StopCoroutine(typingSentence);
             typingSentence = null;
             dialogueText.text = currentSentence.whatToSay;
             DisplayChoices();
         }
         else {
-            currentSentence = sentences.Dequeue();
-            // the choices are displayed from the coroutine once it finishes typing the sentence
-            typingSentence = StartCoroutine("TypeSentence", currentSentence.whatToSay);
+            if(sentences.Count == 0) {
+                EndDialogue();
+                return;
+            }
+            else {
+                currentSentence = sentences.Dequeue();
+                // the choices are displayed from the coroutine once it finishes typing the sentence
+                typingSentence = StartCoroutine("TypeSentence", currentSentence.whatToSay);
+            }
         }
     }
 
