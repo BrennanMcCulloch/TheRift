@@ -100,16 +100,16 @@ public class DrawManager : MonoBehaviour
             //check for collision
             for(int i = 0; i < segments.Count - 1; i++)
             {
-                if(segments[segments.Count - 1].intersects(segments[i]) && loopEnd == 0)
+                Vector3 intersection = Segment.Intersection(segments[segments.Count - 1], segments[i]);
+                if(intersection != Vector3.zero && loopEnd == 0)
                 {
-                    //Debug.Log("Is collide");//test
-                    //create collider for rift
+                    //set points to encapsulate the loop created
                     loopStart = i + 1;
-                    loopEnd = points.Count - 2;
+                    points[points.Count - 1] = intersection;
+                    loopEnd = points.Count - 1;
                     return;
                 }
             }
-            //Debug.Log("Not collide");//test
         }
     }
 }
