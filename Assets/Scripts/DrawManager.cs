@@ -104,7 +104,8 @@ public class DrawManager : MonoBehaviour
                 if(intersection != Vector3.zero && loopEnd == 0)
                 {
                     //set points to encapsulate the loop created
-                    loopStart = i + 1;
+                    points[i] = intersection;
+                    loopStart = i;
                     points[points.Count - 1] = intersection;
                     loopEnd = points.Count - 1;
                     return;

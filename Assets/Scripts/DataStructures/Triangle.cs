@@ -26,27 +26,30 @@ public class Triangle
     }
 
     //Returns true if point is inside this
-    public bool Contains(Vector3 point)
+    public bool Contains(Vector3 p)
     {
-        //find area of triangles formed by point with a, b and c
-        float area1 = Area(point, a, b);
-        float area2 = Area(point, b, c);
-        float area3 = Area(point, c, a);
-        bool has_neg = (area1 < 0) || (area2 < 0) || (area3 < 0);
-        bool has_pos = (area1 > 0) || (area2 > 0) || (area3 > 0);
-        return (area1 + area2 + area3 < Area(a, b, c) - 0.5);
+        bool isWithinTriangle = false;
+        //based on Barycentric coordinates
+        float denominator = ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
+
+        float ba = ((b.y - c.y) * (p.x - c.x) + (c.x - b.x) * (p.y - c.y)) / denominator;
+        float bb = ((c.y - a.y) * (p.x - c.x) + (a.x - c.x) * (p.y - c.y)) / denominator;
+        float bc = 1 - ba - bb;
+
+        //the point is within the triangle
+        if (ba > 0f && ba < 1f && bb > 0f && bb < 1f && bc > 0f && bc < 1f)
+        {
+            isWithinTriangle = true;
+        }
+
+        return isWithinTriangle;
     }
 
     //Returns true if the point at the index is convex (counter clockwise)
     public bool Convex()
     {
-        if (Area(a, b, c) <= 0)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
+        float det = a.x * b.y + c.x * a.y + b.x * c.y - a.x * c.y - c.x * b.y - b.x * a.y;
+        return det <= 0f;
     }
 
 }

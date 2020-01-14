@@ -24,8 +24,8 @@ public class CircularList<T>
             this.nodes[i].prev = nodes[i - 1];
             this.nodes[i].next = nodes[i + 1];
         }
-        this.nodes[items.Length - 1].prev = nodes[0];
-        this.nodes[items.Length - 1].next = nodes[items.Length - 2];
+        this.nodes[items.Length - 1].prev = nodes[items.Length - 2];
+        this.nodes[items.Length - 1].next = nodes[0];
     }
 
     public void Remove(int index)

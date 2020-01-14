@@ -11,13 +11,19 @@ public class CreateMesh : MonoBehaviour
     //public float xOffset;
     //public float yOffset;
 
-    static private Mesh mesh;
+    private static Mesh mesh;
+    private static List<Vector3> meshPoints;
+    private static CircularList<int> activeIndices;
+    private static List<int> convexIndices;
+    private static bool[] convexBool;
+    private static List<int> reflexIndices;
+    private static List<int> earIndices;
+    private static bool flipConvex;
     public bool firstHeld;
-
-    private float distance;
 
     private Plane planeObj;
     private Vector3 startPos;
+    private float distance;
 
     // Awake is called once before start
     void Awake()
@@ -35,65 +41,221 @@ public class CreateMesh : MonoBehaviour
     // Create polygon collider connecting points from one index to another of a list
     public static void Create(int start, int end, List<Vector3> points)
     {
-        List<Vector3> newVertices = points.GetRange(start, points.Count - start - (points.Count - end));
+        //limit mesh points to those within the closed polygon
+        meshPoints = points.GetRange(start, points.Count - start - (points.Count - end));
         //adjust points for camera and add new ones for the back face
-        int halfCount = newVertices.Count;
+        int halfCount = meshPoints.Count;
         for (int i = 0; i < halfCount; i++)
         {
-            newVertices[i] = new Vector3(newVertices[i].x, newVertices[i].y, instance.camDis);
-            newVertices.Add(newVertices[i] + new Vector3(0, 0, 10));
+            meshPoints[i] = new Vector3(meshPoints[i].x, meshPoints[i].y, instance.camDis);
+            meshPoints.Add(meshPoints[i] + new Vector3(0, 0, 10));
         }
+        //fill the list of point indices not yet fully handled
+        int[] allIndices = new int[halfCount];
+        for (int i = 0; i < allIndices.Length; i++)
+        {
+            allIndices[i] = i;
+        }
+        activeIndices = new CircularList<int>(allIndices);
+        //find reflex/ convex points
+        flipConvex = false;
+        convexIndices = new List<int>();
+        reflexIndices = new List<int>();
+        convexBool = new bool[halfCount];
+        for (int i = 0; i < activeIndices.Count; i++)
+        {
+            SortPoint(i);
+        }
+        Debug.Log("old convex = " + convexIndices.Count);//test
+        Debug.Log("old reflex = " + reflexIndices.Count);//test
+        //if our sort yeilded more reflex that convex, we have to flip our terms
+        if (convexIndices.Count < reflexIndices.Count)
+        {
+            flipConvex = true;
+            convexIndices = new List<int>();
+            reflexIndices = new List<int>();
+            convexBool = new bool[halfCount];
+            for (int i = 0; i < activeIndices.Count; i++)
+            {
+                SortPoint(i);
+            }
+            Debug.Log("new convex = " + convexIndices.Count);//test
+            Debug.Log("new reflex = " + reflexIndices.Count);//test
+        }
+        //find ears
+        earIndices = new List<int>();
+        foreach (int i in convexIndices)
+        {
+            if (IsEar(i)) earIndices.Add(i);
+        }
+        //buffer/remove ears one at a time
+        List<int> meshIndices = new List<int>();
+        Debug.Log("ears = " + earIndices.Count);//test
+        Debug.Log("active = " + activeIndices.Count);//test
+
+        while (activeIndices.Count > 2 && earIndices.Count > 0)
+        {
+            Debug.Log("ears now = " + earIndices.Count);//test
+            int i = earIndices[0];
+            //get neighboring indices
+            int prev = activeIndices.ValueBefore(i);
+            int next = activeIndices.ValueAfter(i);
+            //draw front face both directions
+            meshIndices.Add(i);
+            meshIndices.Add(prev);
+            meshIndices.Add(next);
+            meshIndices.Add(i);
+            meshIndices.Add(next);
+            meshIndices.Add(prev);
+            //remove ear
+            activeIndices.Remove(i);
+            earIndices.Remove(i);
+            //check new status of adjacent points
+            ReSortPoint(prev);
+            ReSortPoint(next);
+            if (convexBool[prev] == true && !earIndices.Contains(prev) && IsEar(prev)) earIndices.Add(prev);
+            if (convexBool[next] == true && !earIndices.Contains(next) && IsEar(next)) earIndices.Add(next);
+        }
+        Debug.Log("ears end = " + earIndices.Count);//test
+        Debug.Log("active end = " + activeIndices.Count);//test
+        //draw body connecting the two faces
+        int frontVertex = 0;
+        int backVertex = halfCount;
+        while (frontVertex < halfCount - 1 && backVertex < meshPoints.Count)
+        {
+            meshIndices.Add(frontVertex);
+            meshIndices.Add(backVertex);
+            meshIndices.Add(backVertex + 1);
+            meshIndices.Add(frontVertex);
+            meshIndices.Add(backVertex + 1);
+            meshIndices.Add(frontVertex + 1);
+            frontVertex++;
+            backVertex++;
+        }
+        meshIndices.Add((halfCount) - 1);
+        meshIndices.Add(meshPoints.Count - 1);
+        meshIndices.Add(0);
+        meshIndices.Add(meshPoints.Count - 1);
+        meshIndices.Add(halfCount);
+        meshIndices.Add(0);
+        //load in the new mesh
+        mesh = new Mesh();
+        instance.GetComponent<MeshFilter>().mesh = mesh;
+        instance.GetComponent<MeshCollider>().sharedMesh = mesh;
+        mesh.vertices = meshPoints.ToArray();
+        mesh.triangles = meshIndices.ToArray();
+
+       /* 
         //set triangles for mesh
-        List<int> newTriangles = new List<int>();
+        List<int> meshIndices = new List<int>();
         //draw front with normals facing both ways for visibility
         //front circle cw
         for (int i = 1; i < (halfCount) - 1; i++)
         {
-            newTriangles.Add(0);
-            newTriangles.Add(i);
-            newTriangles.Add(i + 1);
+            meshIndices.Add(0);
+            meshIndices.Add(i);
+            meshIndices.Add(i + 1);
         }
         //front circle cc
         for (int i = 1; i < halfCount - 1; i++)
         {
-            newTriangles.Add(i + 1);
-            newTriangles.Add(i);
-            newTriangles.Add(0);
+            meshIndices.Add(i + 1);
+            meshIndices.Add(i);
+            meshIndices.Add(0);
         }
 
         //back circle cw
-        for (int i = (halfCount) + 1; i < newVertices.Count - 1; i++)
+        for (int i = (halfCount) + 1; i < meshPoints.Count - 1; i++)
         {
-            newTriangles.Add(halfCount);
-            newTriangles.Add(i);
-            newTriangles.Add(i + 1);
+            meshIndices.Add(halfCount);
+            meshIndices.Add(i);
+            meshIndices.Add(i + 1);
         }
 
-        //body cw
-        int frontVertex = 0;
-        int backVertex = halfCount;
-        while (frontVertex < halfCount - 1 && backVertex < newVertices.Count)
-        {
-            newTriangles.Add(frontVertex);
-            newTriangles.Add(backVertex);
-            newTriangles.Add(backVertex + 1);
-            newTriangles.Add(frontVertex);
-            newTriangles.Add(backVertex + 1);
-            newTriangles.Add(frontVertex + 1);
-            frontVertex++;
-            backVertex++;
-        }
-        newTriangles.Add((halfCount) - 1);
-        newTriangles.Add(newVertices.Count - 1);
-        newTriangles.Add(0);
-        newTriangles.Add(newVertices.Count - 1);
-        newTriangles.Add(halfCount);
-        newTriangles.Add(0);
 
-        mesh = new Mesh();
-        instance.GetComponent<MeshFilter>().mesh = mesh;
-        instance.GetComponent<MeshCollider>().sharedMesh = mesh;
-        mesh.vertices = newVertices.ToArray();
-        mesh.triangles = newTriangles.ToArray();
+        */
+    }
+
+    //Sorts the index into the convex or reflex list
+    private static void SortPoint(int index)
+    {
+        if (GetTriangleFor(index).Convex())
+        {
+            convexBool[index] = true;
+            convexIndices.Add(index);
+        } else
+        {
+            convexBool[index] = false;
+            reflexIndices.Add(index);
+        }
+    }
+
+    private static void ReSortPoint(int index)
+    {
+        if (GetTriangleFor(index).Convex() == true)
+        {
+            if(convexBool[index] == false)
+            {
+                convexBool[index] = true;
+                convexIndices.Add(index);
+                //reflexIndices.Remove(index);
+            }
+        } else if(convexBool[index] == true)
+        {
+            convexBool[index] = true;
+            reflexIndices.Add(index);
+            convexIndices.Remove(index);
+        }
+    }
+
+    //Returns true if no other active point is inside the triangle
+    private static bool IsEar(int index)
+    {
+        Triangle tri = GetTriangleFor(index);
+        foreach(int reflex in reflexIndices)
+        {
+            if (tri.Contains(meshPoints[reflex]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Returns the triangle centered around a given index
+    private static Triangle GetTriangleFor(int index)
+    {
+        //make triangle in opposite order depending on user drawing direction
+        if (flipConvex == true)
+        {
+            return new Triangle(GetActivePointAt(index),
+                                GetActivePointAfter(index),
+                                GetActivePointBefore(index)
+                               );
+        } else
+        {
+            return new Triangle(GetActivePointAt(index),
+                                GetActivePointBefore(index),
+                                GetActivePointAfter(index)
+                               );
+        }
+    }
+
+    //Returns the point represented by an active index
+    private static Vector3 GetActivePointBefore(int index)
+    {
+        return meshPoints[activeIndices.ValueBefore(index)];
+    }
+
+    //Returns the point represented by an active index
+    private static Vector3 GetActivePointAt(int index)
+    {
+        return meshPoints[index];
+    }
+
+    //Returns the point represented by an active index
+    private static Vector3 GetActivePointAfter(int index)
+    {
+        return meshPoints[activeIndices.ValueAfter(index)];
     }
 }
