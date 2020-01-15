@@ -79,7 +79,7 @@ public class DrawManager : MonoBehaviour
         else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
         {
             //create mesh is there was a collision
-            if(loopEnd - 10 > loopStart)
+            if(loopEnd - loopStart > 5)
             {
                 CreateMesh.Create(loopStart, loopEnd, points);
             }
@@ -103,12 +103,14 @@ public class DrawManager : MonoBehaviour
                 Vector3 intersection = Segment.Intersection(segments[segments.Count - 1], segments[i]);
                 if(intersection != Vector3.zero && loopEnd == 0)
                 {
-                    //set points to encapsulate the loop created
-                    points[i] = intersection;
-                    loopStart = i;
-                    points[points.Count - 1] = intersection;
-                    loopEnd = points.Count - 1;
-                    return;
+                    if(points.Count - i > 5)
+                    {
+                        //set points to encapsulate the loop created
+                        loopStart = i + 1;
+                        points[points.Count - 1] = intersection;
+                        loopEnd = points.Count - 1;
+                        return;
+                    }
                 }
             }
         }

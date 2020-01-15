@@ -26,10 +26,10 @@ public class Segment
         ) return Vector3.zero;
 
         if(
-            (Mathf.Max(s1.start.x, s1.end.x) >= Mathf.Min (s2.start.x, s2.end.x)) &&
-            (Mathf.Max(s2.start.x, s2.end.x) >= Mathf.Min (s1.start.x, s1.end.x)) &&
-            (Mathf.Max(s1.start.y, s1.end.y) >= Mathf.Min (s2.start.y, s2.end.y)) &&
-            (Mathf.Max(s2.start.y, s2.end.y) >= Mathf.Min (s1.start.y, s1.end.y)) 
+            (Mathf.Max(s1.start.x, s1.end.x) > Mathf.Min (s2.start.x, s2.end.x)) &&
+            (Mathf.Max(s2.start.x, s2.end.x) > Mathf.Min (s1.start.x, s1.end.x)) &&
+            (Mathf.Max(s1.start.y, s1.end.y) > Mathf.Min (s2.start.y, s2.end.y)) &&
+            (Mathf.Max(s2.start.y, s2.end.y) > Mathf.Min (s1.start.y, s1.end.y)) 
         )
         {
             //find and return point of intersection

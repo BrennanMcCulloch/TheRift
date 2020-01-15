@@ -66,8 +66,6 @@ public class CreateMesh : MonoBehaviour
         {
             SortPoint(i);
         }
-        Debug.Log("old convex = " + convexIndices.Count);//test
-        Debug.Log("old reflex = " + reflexIndices.Count);//test
         //if our sort yeilded more reflex that convex, we have to flip our terms
         if (convexIndices.Count < reflexIndices.Count)
         {
@@ -79,8 +77,6 @@ public class CreateMesh : MonoBehaviour
             {
                 SortPoint(i);
             }
-            Debug.Log("new convex = " + convexIndices.Count);//test
-            Debug.Log("new reflex = " + reflexIndices.Count);//test
         }
         //find ears
         earIndices = new List<int>();
@@ -90,12 +86,8 @@ public class CreateMesh : MonoBehaviour
         }
         //buffer/remove ears one at a time
         List<int> meshIndices = new List<int>();
-        Debug.Log("ears = " + earIndices.Count);//test
-        Debug.Log("active = " + activeIndices.Count);//test
-
         while (activeIndices.Count > 2 && earIndices.Count > 0)
         {
-            Debug.Log("ears now = " + earIndices.Count);//test
             int i = earIndices[0];
             //get neighboring indices
             int prev = activeIndices.ValueBefore(i);
@@ -113,11 +105,8 @@ public class CreateMesh : MonoBehaviour
             //check new status of adjacent points
             ReSortPoint(prev);
             ReSortPoint(next);
-            if (convexBool[prev] == true && !earIndices.Contains(prev) && IsEar(prev)) earIndices.Add(prev);
             if (convexBool[next] == true && !earIndices.Contains(next) && IsEar(next)) earIndices.Add(next);
         }
-        Debug.Log("ears end = " + earIndices.Count);//test
-        Debug.Log("active end = " + activeIndices.Count);//test
         //draw body connecting the two faces
         int frontVertex = 0;
         int backVertex = halfCount;
@@ -144,36 +133,6 @@ public class CreateMesh : MonoBehaviour
         instance.GetComponent<MeshCollider>().sharedMesh = mesh;
         mesh.vertices = meshPoints.ToArray();
         mesh.triangles = meshIndices.ToArray();
-
-       /* 
-        //set triangles for mesh
-        List<int> meshIndices = new List<int>();
-        //draw front with normals facing both ways for visibility
-        //front circle cw
-        for (int i = 1; i < (halfCount) - 1; i++)
-        {
-            meshIndices.Add(0);
-            meshIndices.Add(i);
-            meshIndices.Add(i + 1);
-        }
-        //front circle cc
-        for (int i = 1; i < halfCount - 1; i++)
-        {
-            meshIndices.Add(i + 1);
-            meshIndices.Add(i);
-            meshIndices.Add(0);
-        }
-
-        //back circle cw
-        for (int i = (halfCount) + 1; i < meshPoints.Count - 1; i++)
-        {
-            meshIndices.Add(halfCount);
-            meshIndices.Add(i);
-            meshIndices.Add(i + 1);
-        }
-
-
-        */
     }
 
     //Sorts the index into the convex or reflex list
@@ -190,21 +149,23 @@ public class CreateMesh : MonoBehaviour
         }
     }
 
+    //Used to properly identify convex/ear points after their neighbors are removed
     private static void ReSortPoint(int index)
     {
-        if (GetTriangleFor(index).Convex() == true)
-        {
-            if(convexBool[index] == false)
-            {
-                convexBool[index] = true;
-                convexIndices.Add(index);
-                //reflexIndices.Remove(index);
-            }
-        } else if(convexBool[index] == true)
+        if (GetTriangleFor(index).Convex() && convexBool[index] == false)
         {
             convexBool[index] = true;
-            reflexIndices.Add(index);
-            convexIndices.Remove(index);
+            convexIndices.Add(index);
+            if (!earIndices.Contains(index) && IsEar(index))
+            {
+                earIndices.Add(index);
+                return;
+            }
+        }
+        if (earIndices.Contains(index) && !IsEar(index))
+        {
+            earIndices.Remove(index);
+            return;
         }
     }
 
