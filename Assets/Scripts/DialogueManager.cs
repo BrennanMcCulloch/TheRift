@@ -14,9 +14,10 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public Button button;
     public GameObject canvas; //THIS NEEDS TO BE THE DIALOGUE BOX
-    public GameObject player; 
-
+    public GameObject player;
+    private Coroutine typingSentence;
     private Queue<Talkeys> sentences;
+    private Talkeys currentSentence;
 
     // Start is called before the first frame update
     void Start()
@@ -72,15 +73,39 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
+        if (typingSentence != null) {
+            StopCoroutine(typingSentence);
+            typingSentence = null;
+            dialogueText.text = currentSentence.whatToSay;
+            DisplayChoices();
         }
+        else {
+            if(sentences.Count == 0) {
+                EndDialogue();
+                return;
+            }
+            else {
+                currentSentence = sentences.Dequeue();
+                // the choices are displayed from the coroutine once it finishes typing the sentence
+                typingSentence = StartCoroutine("TypeSentence", currentSentence.whatToSay);
+            }
+        }
+    }
 
-        Talkeys sentence = sentences.Dequeue();
-        dialogueText.text = sentence.whatToSay;
+    IEnumerator TypeSentence (string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            float jitter = Random.Range(0.01f, 0.075f);
+            yield return new WaitForSeconds(jitter);
+        }
+        DisplayChoices();
+        typingSentence = null;
+    }
 
+    private void DisplayChoices() {
         //if the next option is a choice, display the rest of the queue
         if (sentences.Peek().isChoice)
         {
@@ -139,20 +164,8 @@ public class DialogueManager : MonoBehaviour
                         newButton.onClick.AddListener(() => neutralResult(sentenceAgain));
                     }
                 }
-
                 stagger -= 100;
             }
-        }
-    }
-
-    //DOESN'T WORK, NEED TO FIX
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
-        {
-            dialogueText.text += letter;
-            yield return null; //makes it skip a frame
         }
     }
 
