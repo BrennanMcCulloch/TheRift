@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4448567187148515115}
   - component: {fileID: 4448567187148515112}
-  - component: {fileID: 4448567187148515114}
   m_Layer: 0
   m_Name: DrawManager
   m_TagString: Untagged
@@ -46,15 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawPrefab: {fileID: 562974624165314349, guid: 225812ed0f6eb4b46b28ddcc656d6661,
     type: 3}
---- !u!114 &4448567187148515114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4448567187148515113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2707bcdc5ea084e31b22ff6b2dce6479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

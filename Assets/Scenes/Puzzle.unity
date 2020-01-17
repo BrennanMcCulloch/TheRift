@@ -284,6 +284,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4448567187148515112, guid: d7d78b72c51c94ccf901b1803a4d32db,
+        type: 3}
+      propertyPath: drawPrefab
+      value: 
+      objectReference: {fileID: 562974624165314349, guid: 225812ed0f6eb4b46b28ddcc656d6661,
+        type: 3}
     - target: {fileID: 4448567187148515113, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_Name
@@ -2827,8 +2833,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camDis: -5
-  xOffset: 0
-  yOffset: 0
   firstHeld: 0
 --- !u!23 &674411388
 MeshRenderer:
@@ -2884,7 +2888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674411386}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2902,7 +2906,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
-  m_CookingOptions: -1
+  m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!1 &678395046
 GameObject:
