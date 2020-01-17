@@ -12,11 +12,9 @@ GameObject:
   - component: {fileID: 6216930763087026460}
   - component: {fileID: 1938038899168423662}
   - component: {fileID: 3474930642677815520}
-  - component: {fileID: 2259527928112614518}
   - component: {fileID: 2341917352179031236}
-  - component: {fileID: 4165462193797350200}
   m_Layer: 0
-  m_Name: Hobo Joe
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -94,22 +93,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2259527928112614518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707233508792915366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddd66fcff5374b589c6d3498dcd16c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deadDimension: {fileID: 0}
-  inCaseOfDialogue: {fileID: 2341917352179031236}
-  materialBefore: {fileID: 2100000, guid: 035eb4ac8bbda4ccb98500bc4e2e17a7, type: 2}
-  materialAfter: {fileID: 2100000, guid: 9234745d7ec5e4e0aac9a5895882cd31, type: 2}
 --- !u!114 &2341917352179031236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,30 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c39950eaaab0411aa08728fb4721e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 4165462193797350200}
---- !u!114 &4165462193797350200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707233508792915366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 
-  neutral:
-    _target: {fileID: 0}
-    _methodName: 
-    _args: []
-    _dynamic: 0
-    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    dirty: 0
-  thingToDoOnEntry:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  sentences: []
+  dialogue: {fileID: 0}

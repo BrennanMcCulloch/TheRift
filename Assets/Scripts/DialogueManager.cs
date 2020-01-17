@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.title;
 
         // start the coroutine that 'types' the text in the dialogue window
-        typingPage = StartCoroutine("TypeSentence", dialogue.currentPage.Text());
+        typingPage = StartCoroutine("TypeSentence", dialogue.CurrentPage().Text());
 
         // Stops us from moving around when dialoguing
         StateManager.setState((int)StateManager.StateEnum.Talking);
@@ -42,7 +42,10 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        dialogue.Reset();
         dialogue = null;
+        choiceButtonsPanel.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(true);
         if (typingPage != null) {
             StopCoroutine(typingPage);
             typingPage = null;
@@ -52,30 +55,39 @@ public class DialogueManager : MonoBehaviour
         StateManager.returnToPreviousState();
     }
 
-    // Triggered by the 'Continue' button in the UI.
-    // The UI 'types out' the current page.
-    // We dont want to go to the next page if it's still typing;
-    // instead we want to 'fast forward' the current typing
     public void NextPage() {
-        // if we're typing...
         if (typingPage != null) {
             FinishTyping();
             DisplayChoicesIfPresent();
         }
-        else {
-            if (dialogue.NextPage())
-            {
-                typingPage = StartCoroutine("TypeSentence", dialogue.currentPage.Text());
-            }
-            else EndDialogue();
+        else if (dialogue.CurrentPage().resolutionType == PageResolutionType.endDialogue || dialogue.CurrentPage().Locked()) {
+            EndDialogue();
         }
+        else {
+            dialogue.NextPage();
+            ShowPage();
+        }
+    }
+
+     public void Back() {
+        FinishTyping();
+        choiceButtonsPanel.gameObject.SetActive(false);
+        dialogue.LastPage();
+        if (dialogue.CurrentPage() == null) EndDialogue();
+        else ShowPage();
+    }
+
+
+    public void ShowPage() {
+        typingPage = StartCoroutine("TypeSentence", dialogue.CurrentPage().Text());
+        continueButton.gameObject.SetActive(true);
     }
 
     // Immediately types out the current page and clears the coroutine
     private void FinishTyping() {
-        StopCoroutine(typingPage);
+        if (typingPage != null) StopCoroutine(typingPage);
         typingPage = null;
-        dialogueText.text = dialogue.currentPage.Text();
+        dialogueText.text = dialogue.CurrentPage().Text();
     }
 
     // Creates a typewriter effect for the current page text
@@ -95,16 +107,17 @@ public class DialogueManager : MonoBehaviour
     private void DisplayChoicesIfPresent() {
         // Reasons why we dont want to show the choices:
         // 1. there are no choices to show
-        if (dialogue.currentPage.Choices().Length == 0) return;
+        if (dialogue.CurrentPage().Choices().Length == 0) return;
         // 2. the page is locked per unmet prerequisites
-        if (dialogue.currentPage.Locked()) return;
-        // Swap visibility on the choice buttons and the continue button
-        navButtonsPanel.gameObject.SetActive(false);
-        choiceButtonsPanel.gameObject.SetActive(true);
+        if (dialogue.CurrentPage().Locked()) return;
 
-        for (int i = 0; i < dialogue.currentPage.Choices().Length; i++) {
+        // hide continue button, show choices panel
+        choiceButtonsPanel.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(false);
+
+        for (int i = 0; i < dialogue.CurrentPage().Choices().Length; i++) {
             Button button = choiceButtons[i];
-            Choice choice = dialogue.currentPage.Choices()[i];
+            Choice choice = dialogue.CurrentPage().Choices()[i];
 
             // Prepare data for button text
             string rollType = choice.statCheck.statType.ToString();
@@ -117,31 +130,16 @@ public class DialogueManager : MonoBehaviour
 
             // Remove old click listeners and act upon the current choice when we click
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(()=>DispalyResult(choice));
+            button.onClick.AddListener(()=>Choose(choice));
         }
     }
 
-    // Performs a roll check,
-    void DispalyResult(Choice choice)
-    {
-        // Once a choice has been made, show the continue button
-        navButtonsPanel.gameObject.SetActive(true);
+    public void Choose(Choice choice) {
         choiceButtonsPanel.gameObject.SetActive(false);
 
-        // Perform and display a roll.
         int roll = Player.Instance.StatRoll(choice.statCheck.statType);
-        // Todo (matt) - we can probably do something with this result value
-        ChoiceResult result = choice.CheckResult(roll);
         rollButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
-
-        // If there is a results page, insert it after the current dialogue page and then call nextpage.
-        // Todo (matt) - this is a very hacky way to do this. there is an architecture problem somewhere.
-        Page resultsPage = choice.ResultsPage();
-        if (resultsPage != null) dialogue.InsertNext(resultsPage);
-        NextPage();
-
-        // Todo(matt) - after introducing 'repeatable' to pages and choices, rework this page direction.
-        // actually, probably rework how this all works anyway. not in love with the insertnext logic.
-
+        dialogue.MakeChoice(choice, roll);
+        ShowPage();
     }
 }
