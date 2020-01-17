@@ -96,23 +96,38 @@ public class DrawManager : MonoBehaviour
         //if this is not the fist point, add a segment and check for a loop
         if(points.Count > 1)
         {
+            //check for direct intersection
+            for (int i = 0; i < points.Count - 5; i++)
+            {
+                if (Vector3.Distance(point, points[i]) < 0.15f)
+                {
+                    handleLoop(i, point);
+                    return;
+                }
+            }
+            //check for line crossing
             segments.Add(new Segment(points[points.Count - 2], point));
-            //check for collision
             for(int i = 0; i < segments.Count - 1; i++)
             {
                 Vector3 intersection = Segment.Intersection(segments[segments.Count - 1], segments[i]);
                 if(intersection != Vector3.zero && loopEnd == 0)
                 {
-                    if(points.Count - i > 5)
-                    {
-                        //set points to encapsulate the loop created
-                        loopStart = i + 1;
-                        points[points.Count - 1] = intersection;
-                        loopEnd = points.Count - 1;
-                        return;
-                    }
+                    handleLoop(i, intersection);
                 }
             }
+        }
+    }
+
+    //Sets variables to represent the created loop if it is big enough
+    private void handleLoop(int index, Vector3 intersection)
+    {
+        if(points.Count - index > 5)
+        {
+            //set points to encapsulate the loop created
+            loopStart = index + 1;
+            points[points.Count - 1] = intersection;
+            loopEnd = points.Count - 1;
+            return;
         }
     }
 }
