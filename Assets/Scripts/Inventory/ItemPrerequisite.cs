@@ -8,9 +8,10 @@ namespace Inventory {
     public class ItemPrerequisite : Prerequisite
     {
         public Item requisiteItem;
+        public bool destroyItem;
 
         public override bool Met() {
-            return InventoryManager.Instance.itemBoxes.Contains(requisiteItem);
+            return (requisiteItem == null) || InventoryManager.Instance.HasItem(requisiteItem);
         }
     }
 }
