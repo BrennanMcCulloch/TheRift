@@ -115,6 +115,10 @@ namespace DialogueTree {
             }
             return false;
         }
+
+        public bool EndsDialogue() {
+             return (resolutionType == PageResolutionType.endDialogue) || Locked() || nextPage == null;
+        }
     }
 
 }
