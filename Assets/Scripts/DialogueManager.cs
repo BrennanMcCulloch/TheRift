@@ -25,16 +25,14 @@ public class DialogueManager : MonoBehaviour
 
     // Allows us to stop the coroutine on the fly, and prevent simultaneous execution
     private Coroutine typingPage;
+    private string currentText;
 
     public void StartDialogue(Dialogue newDialogue)
     {
         dialogue = newDialogue;
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.title;
-
-        // start the coroutine that 'types' the text in the dialogue window
-        typingPage = StartCoroutine("TypeSentence", dialogue.CurrentPage().Text());
-
+        ShowPage();
         // Stops us from moving around when dialoguing
         StateManager.setState((int)StateManager.StateEnum.Talking);
     }
@@ -83,15 +81,17 @@ public class DialogueManager : MonoBehaviour
 
 
     public void ShowPage() {
-        typingPage = StartCoroutine("TypeSentence", dialogue.CurrentPage().Text());
+        currentText = dialogue.CurrentPage().Text();
+        typingPage = StartCoroutine("TypeSentence", currentText);
         continueButton.gameObject.SetActive(true);
+        dialogue.CurrentPage().Visited();
     }
 
     // Immediately types out the current page and clears the coroutine
     private void FinishTyping() {
         if (typingPage != null) StopCoroutine(typingPage);
         typingPage = null;
-        dialogueText.text = dialogue.CurrentPage().Text();
+        dialogueText.text = currentText;
     }
 
     // Creates a typewriter effect for the current page text
@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(jitter);
         }
         DisplayChoicesIfPresent();
-        typingPage = null;
+        FinishTyping();
     }
 
     private void DisplayChoicesIfPresent() {
