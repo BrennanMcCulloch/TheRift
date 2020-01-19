@@ -83,7 +83,7 @@ namespace DialogueTree {
         }
 
         public Choice[] Choices() {
-            return choices.ToArray();
+            return choices.Where(choice => !choice.Hidden() ).ToArray();
         }
 
         public Page NextPage() {
