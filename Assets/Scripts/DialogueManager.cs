@@ -115,6 +115,7 @@ public class DialogueManager : MonoBehaviour
         // 2. the page is locked per unmet prerequisites
         if (dialogue.CurrentPage().Locked()) return;
 
+        ClearChoicePanel();
         // hide continue button, show choices panel
         choiceButtonsPanel.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(false);
@@ -131,10 +132,18 @@ public class DialogueManager : MonoBehaviour
             // Populate button with text
             button.name = buttonName;
             button.GetComponentInChildren<Text>().text = buttonText;
+            button.gameObject.SetActive(true);
 
             // Remove old click listeners and act upon the current choice when we click
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(()=>Choose(choice));
+        }
+    }
+
+    private void ClearChoicePanel() {
+        foreach (Button choiceButton in choiceButtons) {
+            choiceButton.gameObject.SetActive(false);
+            choiceButton.GetComponentInChildren<Text>().text = null;
         }
     }
 
