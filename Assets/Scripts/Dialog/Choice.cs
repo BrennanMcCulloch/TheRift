@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory;
 
 namespace DialogueTree {
     public enum ChoiceResult { unanswered, succeeded, failed }
@@ -43,14 +44,6 @@ namespace DialogueTree {
             return !PrerequisitesMet() || (removeAfterAttempt && Visited());
         }
 
-        // used by Hidden() to conditionally show or hide this choice
-        private bool PrerequisitesMet() {
-            foreach (Prerequisite prerequisite in prerequisites) {
-                if (!prerequisite.Met()) return false;
-            }
-            return true;
-        }
-
         // The page to show after the choice is made
         public Page NextPage() {
             Debug.Log(result);
@@ -75,8 +68,26 @@ namespace DialogueTree {
 
         // Called by DialogueManager when a choice is made in the UI
         public ChoiceResult CheckResult(int statRoll) {
+            ConsumeRequisiteItems();
             result = statRoll > statCheck.statRequirement ? ChoiceResult.succeeded : ChoiceResult.failed;
             return result;
+        }
+
+        // Some items are consumed by a dialogue choice
+        private void ConsumeRequisiteItems() {
+            foreach (ItemPrerequisite  itemPrerequisite in GetComponents<ItemPrerequisite>()) {
+                if (itemPrerequisite.destroyItem == true) {
+                    InventoryManager.Instance.RemoveItem(itemPrerequisite.requisiteItem);
+                }
+            }
+        }
+
+        // used by Hidden() to conditionally show or hide this choice
+        private bool PrerequisitesMet() {
+            foreach (Prerequisite prerequisite in prerequisites) {
+                if (!prerequisite.Met()) return false;
+            }
+            return true;
         }
     }
 }
