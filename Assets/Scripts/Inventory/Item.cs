@@ -5,5 +5,7 @@ namespace Inventory {
     public class Item : MonoBehaviour
     {
         public Sprite itemSprite;
+        public string description;
+
     }
 }
