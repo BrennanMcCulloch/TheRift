@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,7 +41,6 @@ namespace DialogueTree {
 
         // NextPage resolves in a few different ways.
         public void NextPage() {
-            // mark current page as visited so we see different text the next time we go there
             currentPage.Visited();
             switch (currentPage.resolutionType) {
                 case PageResolutionType.nextPage:
@@ -60,12 +59,17 @@ namespace DialogueTree {
             currentPage = currentPage.LastPage();
         }
 
+        public void NextChapter() {
+            chapters.RemoveAt(0);
+            currentChapter = chapters[0];
+            currentPage = currentChapter;
+        }
+
         public void MakeChoice(Choice choice, int roll) {
             choice.CheckResult(roll);
-            // Todo (matt) - hacky way to do this, revisit when there's time
-            currentPage.Visited();
             currentPage = choice.NextPage();
         }
+
         public void Reset() {
             currentPage = currentChapter;
         }

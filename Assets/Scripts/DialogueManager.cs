@@ -63,6 +63,10 @@ public class DialogueManager : MonoBehaviour
         else if (dialogue.CurrentPage().EndsDialogue() ) {
             EndDialogue();
         }
+        else if (dialogue.CurrentPage().resolutionType == PageResolutionType.nextChapter) {
+            dialogue.NextChapter();
+            ShowPage();
+        }
         else {
             dialogue.NextPage();
             ShowPage();
