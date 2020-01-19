@@ -1,6 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Inventory;
 
 namespace DialogueTree {
     public enum PageResolutionType { nextPage, previousPage, rootPage, endDialogue }
@@ -26,6 +28,7 @@ namespace DialogueTree {
 
         private Page nextPage, lastPage, lastChoicePage;
         private bool visited;
+        private List<Item> items;
 
         void Awake() {
             LoadChoices();
@@ -35,10 +38,15 @@ namespace DialogueTree {
 
         private void LoadChoices() {
             choices = new List<Choice>();
+            items = new List<Item>();
             // get choices from first level children only
             foreach (Transform t in gameObject.transform) {
                 Choice choice = t.GetComponent<Choice>();
                 if (choice != null) choices.Add(choice);
+                else {
+                    Item pageItem = t.GetComponent<Item>();
+                    if (pageItem != null) items.Add(pageItem);
+                }
             }
         }
 
@@ -87,7 +95,16 @@ namespace DialogueTree {
         }
         public void Visited() {
             visited = true;
+            GiveItems();
         }
+
+        private void GiveItems() {
+            if (items !=  null && items.Count > 0) {
+                InventoryManager.Instance.AddItems(items);
+                items = null;
+            }
+        }
+
         // Return true if even one prerequisite isn't met
         public bool Locked() {
             // bail if there's nothing to check
