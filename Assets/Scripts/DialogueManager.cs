@@ -1,4 +1,4 @@
-﻿//got this from a tutorial
+//got this from a tutorial
 
 using System.Collections;
 using System.Collections.Generic;
@@ -60,7 +60,7 @@ public class DialogueManager : MonoBehaviour
             FinishTyping();
             DisplayChoicesIfPresent();
         }
-        else if (dialogue.CurrentPage().resolutionType == PageResolutionType.endDialogue || dialogue.CurrentPage().Locked()) {
+        else if (dialogue.CurrentPage().EndsDialogue() ) {
             EndDialogue();
         }
         else {
