@@ -5,7 +5,7 @@ using System.Linq;
 using Inventory;
 
 namespace DialogueTree {
-    public enum PageResolutionType { nextPage, previousPage, rootPage, endDialogue }
+    public enum PageResolutionType { nextPage, previousPage, nextChapter, rootPage, endDialogue }
     public class Page : MonoBehaviour
     {
         [Tooltip("This text is shown at the top of the dialogue window.")]
