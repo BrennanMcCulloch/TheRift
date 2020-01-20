@@ -15,7 +15,7 @@ public class Narration : MonoBehaviour
     }
 
     // Plays an audio clip
-    public static void narrate (AudioClip newClip)
+    public static void Narrate (AudioClip newClip)
     {
         source.clip = newClip;
         source.Play();

@@ -43,7 +43,7 @@ public class DeadBounds : MonoBehaviour
                 //read the narration once
                 if(narrationReady == true)
                 {
-                    Narration.narrate(narrationClip);
+                    Narration.Narrate(narrationClip);
                     narrationReady = false;
                 }
                 //make changes to the scene in response to this being revealed

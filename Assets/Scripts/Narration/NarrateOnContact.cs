@@ -11,7 +11,7 @@ public class NarrateOnContact : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Narration.narrate(narrationClip);
+            Narration.Narrate(narrationClip);
         }
     }
     

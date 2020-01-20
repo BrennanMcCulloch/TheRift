@@ -22,7 +22,7 @@ namespace Inventory {
             //play any necessary narration
             if(newItem.pickupNarrationReady)
             {
-                Narration.narrate(newItem.pickupNarrationClip);
+                Narration.Narrate(newItem.pickupNarrationClip);
             }
         }
         public void AddItems(List<Item> items) {
