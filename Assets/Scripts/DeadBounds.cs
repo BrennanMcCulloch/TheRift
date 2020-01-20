@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class DeadBounds : MonoBehaviour
 {
-    public GameObject deadDimension;
     public GameObject toggleA;//set this active
     public GameObject toggleB;//set this inactive
 
-    new private Collider collider;
     private Collider itemColliding;
-
     private Vector3 top;
     private Vector3 middle;
     private Vector3 bottom;
@@ -18,7 +15,6 @@ public class DeadBounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider = deadDimension.GetComponent<Collider>();
         itemColliding = this.GetComponent<Collider>();
         middle = itemColliding.bounds.center;
         Vector3 scale = itemColliding.bounds.extents;
@@ -29,30 +25,44 @@ public class DeadBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
+        //deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
+    }
 
-        if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
+    // If this collides with DeadDimension, turn it "on"
+    void OnTriggerEnter (Collider other)
+    {
+        Debug.Log("seeing");//test
+        if (other.gameObject.tag == "DeadDimension")
         {
-            if(toggleA != null)
+            Debug.Log("believing");//test
+            if (other.bounds.Contains(top) &&
+                other.bounds.Contains(middle) &&
+                other.bounds.Contains(bottom))
             {
-                toggleA.SetActive(true);
-            }
-            if(toggleB != null)
-            {
-                toggleB.SetActive(false);
+                Debug.Log("all in");//test
+                RiftMeshManager.AddDeadObject(this);
+                if(toggleA != null)
+                {
+                    toggleA.SetActive(true);
+                }
+                if(toggleB != null)
+                {
+                    toggleB.SetActive(false);
+                }
             }
         }
-        else
-        {
-            if (toggleA != null)
-            {
-                toggleA.SetActive(false);
-            }
-            if (toggleB != null)
-            {
-                toggleB.SetActive(true);
-            }
-        }
+    }
 
+    //This is essentially works like "OnTriggerExit" for when the rift is redrawn
+    public void DeadOutOfBounds ()
+    {
+        if (toggleA != null)
+        {
+            toggleA.SetActive(false);
+        }
+        if (toggleB != null)
+        {
+            toggleB.SetActive(true);
+        }
     }
 }

@@ -81,7 +81,7 @@ public class DrawManager : MonoBehaviour
             //create mesh is there was a collision
             if(loopEnd - loopStart > 5)
             {
-                CreateMesh.Create(loopStart, loopEnd, points);
+                RiftMeshManager.Create(loopStart, loopEnd, points);
             }
             //destroy the game object 6 seconds after drawing
             Destroy(theTrail, 6);
@@ -121,7 +121,7 @@ public class DrawManager : MonoBehaviour
     //Sets variables to represent the created loop if it is big enough
     private void handleLoop(int index, Vector3 intersection)
     {
-        if(points.Count - index > 5)
+        if(points.Count - index > 10)
         {
             //set points to encapsulate the loop created
             loopStart = index + 1;

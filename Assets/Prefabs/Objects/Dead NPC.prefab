@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 1945769505306244979}
   - component: {fileID: 6315021416580399233}
   - component: {fileID: 9043040702644008591}
-  - component: {fileID: 5916971473207747097}
   - component: {fileID: 7910031739322675883}
-  - component: {fileID: 8397114693814889815}
   - component: {fileID: 5568202418394393419}
+  - component: {fileID: 7920449156829570333}
   m_Layer: 9
-  m_Name: NPC 1
+  m_Name: Dead NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -95,22 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5916971473207747097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7553728519024557001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddd66fcff5374b589c6d3498dcd16c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deadDimension: {fileID: 0}
-  inCaseOfDialogue: {fileID: 7910031739322675883}
-  materialBefore: {fileID: 2100000, guid: 9b95fc781a0ea4879a9be9f7561b2d20, type: 2}
-  materialAfter: {fileID: 2100000, guid: 45460254f37f64ea3adc6b6c7e50a7be, type: 2}
 --- !u!114 &7910031739322675883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,33 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c39950eaaab0411aa08728fb4721e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 8397114693814889815}
---- !u!114 &8397114693814889815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7553728519024557001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b054a8b2ba843c7b51cdfcc36446d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 
-  neutral:
-    _target: {fileID: 0}
-    _methodName: 
-    _args: []
-    _dynamic: 0
-    _typeName: Conditional, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    dirty: 0
-  thingToDoOnEntry:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  sentences: []
+  dialogue: {fileID: 0}
 --- !u!114 &5568202418394393419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607b33315e15d4a06b4254a19113f13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadDimension: {fileID: 0}
   toggleA: {fileID: 0}
   toggleB: {fileID: 0}
+--- !u!54 &7920449156829570333
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553728519024557001}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
