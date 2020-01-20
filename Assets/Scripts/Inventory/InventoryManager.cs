@@ -19,6 +19,11 @@ namespace Inventory {
         // Moves the item from it's place in the world into the inventory UI
         public void AddItem(Item newItem){
             itemBoxes.Add(BuildItemBox(newItem));
+            //play any necessary narration
+            if(newItem.pickupNarrationReady)
+            {
+                Narration.narrate(newItem.pickupNarrationClip);
+            }
         }
         public void AddItems(List<Item> items) {
             foreach (Item item in items) {
