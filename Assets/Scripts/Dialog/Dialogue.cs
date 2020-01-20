@@ -84,7 +84,7 @@ namespace DialogueTree {
         // Plays the start narration once, if possible
         public void playStartNarration()
         {
-            if (startNarrationReady)
+            if (startNarrationReady == true)
             {
                 Narration.Narrate(startNarrationClip);
                 startNarrationReady = false;
@@ -94,7 +94,7 @@ namespace DialogueTree {
         // Plays the exit narration once, if possible
         public void PlayExitNarration()
         {
-            if (exitNarrationReady)
+            if (exitNarrationReady == true)
             {
                 Narration.Narrate(exitNarrationClip);
                 exitNarrationReady = false;

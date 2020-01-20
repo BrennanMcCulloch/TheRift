@@ -20,10 +20,7 @@ namespace Inventory {
         public void AddItem(Item newItem){
             itemBoxes.Add(BuildItemBox(newItem));
             //play any necessary narration
-            if(newItem.pickupNarrationReady)
-            {
-                Narration.Narrate(newItem.pickupNarrationClip);
-            }
+            newItem.PlayPickupNarration();
         }
         public void AddItems(List<Item> items) {
             foreach (Item item in items) {

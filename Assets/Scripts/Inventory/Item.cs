@@ -18,5 +18,25 @@ namespace Inventory {
             if (glowNarrationClip != null) glowNarrationReady = true;
         }
 
+        // Plays the pickup narration if possible
+        public void PlayPickupNarration()
+        {
+            if (pickupNarrationReady == true)
+            {
+                Narration.Narrate(pickupNarrationClip);
+                pickupNarrationReady = false;
+            }
+        }
+
+        // Plays the glow narration if possible
+        public void PlayGlowNarration()
+        {
+            if (glowNarrationReady == true)
+            {
+                Narration.Narrate(glowNarrationClip);
+                glowNarrationReady = false;
+            }
+        }
+
     }
 }
