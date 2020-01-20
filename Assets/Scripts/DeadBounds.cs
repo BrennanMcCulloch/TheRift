@@ -6,11 +6,13 @@ public class DeadBounds : MonoBehaviour
 {
     public GameObject toggleA;//set this active
     public GameObject toggleB;//set this inactive
+    public AudioClip narrationClip;
 
     private Collider itemColliding;
     private Vector3 top;
     private Vector3 middle;
     private Vector3 bottom;
+    private bool narrationReady = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,27 +22,31 @@ public class DeadBounds : MonoBehaviour
         Vector3 scale = itemColliding.bounds.extents;
         top = new Vector3(middle.x + scale.x, middle.y + scale.y, middle.z + scale.z);
         bottom = new Vector3(middle.x - scale.x, middle.y - scale.y, middle.z - scale.z);
+        //if we have narration, we can read it later
+        if (narrationClip != null)
+        {
+            narrationReady = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
-    }
-
-    // If this collides with DeadDimension, turn it "on"
+    // If this collides with DeadDimension, turn it "on" and play any narration
     void OnTriggerEnter (Collider other)
     {
-        Debug.Log("seeing");//test
         if (other.gameObject.tag == "DeadDimension")
         {
-            Debug.Log("believing");//test
             if (other.bounds.Contains(top) &&
                 other.bounds.Contains(middle) &&
                 other.bounds.Contains(bottom))
             {
-                Debug.Log("all in");//test
+                //let the rift know we need to know when it's gone
                 RiftMeshManager.AddDeadObject(this);
+                //read the narration once
+                if(narrationReady == true)
+                {
+                    Narration.narrate(narrationClip);
+                    narrationReady = false;
+                }
+                //make changes to the scene in response to this being revealed
                 if(toggleA != null)
                 {
                     toggleA.SetActive(true);

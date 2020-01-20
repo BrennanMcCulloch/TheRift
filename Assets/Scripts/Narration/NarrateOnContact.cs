@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class NarrateOnContact : MonoBehaviour
 {
-    public AudioClip clip;
+    public AudioClip narrationClip;
 
     // Play the sudio source's sound when the player touches this, then disable the collider
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Narration.narrate(clip);
+            Narration.narrate(narrationClip);
         }
     }
     
