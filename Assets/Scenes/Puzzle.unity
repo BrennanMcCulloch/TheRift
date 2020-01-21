@@ -1878,7 +1878,7 @@ Transform:
   - {fileID: 320313066}
   - {fileID: 449902682}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &649975901
 GameObject:
@@ -2001,7 +2001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674411386
 GameObject:
@@ -2230,7 +2230,7 @@ Transform:
   - {fileID: 1107189084}
   - {fileID: 183957990}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730572588
 GameObject:
@@ -2400,7 +2400,7 @@ PrefabInstance:
     - target: {fileID: 5323294995318948022, guid: d13f9a9d242c20c4fadddc64e53e541c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5323294995318948022, guid: d13f9a9d242c20c4fadddc64e53e541c,
         type: 3}
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1876681647}
+  nearbyNarrationClip: {fileID: 0}
 --- !u!1 &838005476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,7 +2657,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965877408
 GameObject:
@@ -2766,9 +2767,6 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   description: 
   pickupNarrationClip: {fileID: 0}
-  glowNarrationClip: {fileID: 0}
-  pickupNarrationReady: 0
-  glowNarrationReady: 0
 --- !u!1001 &1010084826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2841,6 +2839,11 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 436259755}
+    - target: {fileID: 2341917352179031236, guid: d34a717b5b3be455aa0c42059b568461,
+        type: 3}
+      propertyPath: nearbyNarrationClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2707233508792915366, guid: d34a717b5b3be455aa0c42059b568461,
         type: 3}
       propertyPath: m_Name
@@ -3446,6 +3449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1935118257}
+  nearbyNarrationClip: {fileID: 0}
 --- !u!65 &1107189087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4148,7 +4152,7 @@ PrefabInstance:
     - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1572326190156678451, guid: d34a717b5b3be455aa0c42059b568461,
         type: 3}
@@ -4499,7 +4503,7 @@ Transform:
   - {fileID: 1572326188582797876}
   - {fileID: 1396832595}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1396832595 stripped
 Transform:
@@ -4536,7 +4540,7 @@ Transform:
   m_GameObject: {fileID: 1560102380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1238875777}
   m_RootOrder: 0
@@ -4555,10 +4559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 0}
   description: Janice's Wallet
-  pickupNarrationClip: {fileID: 0}
-  glowNarrationClip: {fileID: 0}
-  pickupNarrationReady: 0
-  glowNarrationReady: 0
+  pickupNarrationClip: {fileID: 8300000, guid: bbd2f88179be240e8bacff6a2382f728, type: 3}
 --- !u!136 &1560102383
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4805,6 +4806,80 @@ Transform:
   m_Father: {fileID: 2059817408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1677935563
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487185, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887843486628487186, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: narrationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bbd2f88179be240e8bacff6a2382f728, type: 3}
+    - target: {fileID: 8887843486628487191, guid: 347bca1b9497c47b78a59d964e9935a2,
+        type: 3}
+      propertyPath: m_Name
+      value: LocationNarration
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 347bca1b9497c47b78a59d964e9935a2, type: 3}
 --- !u!1 &1690111869
 GameObject:
   m_ObjectHideFlags: 0
@@ -5380,10 +5455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 0}
   description: Key
-  pickupNarrationClip: {fileID: 0}
-  glowNarrationClip: {fileID: 0}
-  pickupNarrationReady: 0
-  glowNarrationReady: 0
+  pickupNarrationClip: {fileID: 8300000, guid: 868be6bb8356240999f134ac06590538, type: 3}
 --- !u!65 &1878515391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6943,7 +7015,7 @@ PrefabInstance:
     - target: {fileID: 5323294995318948022, guid: d13f9a9d242c20c4fadddc64e53e541c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5323294995318948022, guid: d13f9a9d242c20c4fadddc64e53e541c,
         type: 3}
@@ -6987,6 +7059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 72607108}
+  nearbyNarrationClip: {fileID: 0}
 --- !u!4 &3809773751937680287
 Transform:
   m_ObjectHideFlags: 0
