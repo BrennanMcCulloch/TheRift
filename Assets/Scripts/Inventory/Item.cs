@@ -7,16 +7,13 @@ namespace Inventory {
         public Sprite itemSprite;
         public string description;
         public AudioClip pickupNarrationClip;
-        public AudioClip glowNarrationClip;
         
         private bool pickupNarrationReady = false;
-        private bool glowNarrationReady = false;
 
         // Check if when we can narrate abou this
         void Start ()
         {
             if (pickupNarrationClip != null) pickupNarrationReady = true;
-            if (glowNarrationClip != null) glowNarrationReady = true;
         }
 
         // Plays the pickup narration if possible
@@ -26,16 +23,6 @@ namespace Inventory {
             {
                 Narration.Narrate(pickupNarrationClip);
                 pickupNarrationReady = false;
-            }
-        }
-
-        // Plays the glow narration if possible
-        public void PlayGlowNarration()
-        {
-            if (glowNarrationReady == true)
-            {
-                Narration.Narrate(glowNarrationClip);
-                glowNarrationReady = false;
             }
         }
 
