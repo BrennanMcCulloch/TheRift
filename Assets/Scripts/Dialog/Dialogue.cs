@@ -16,15 +16,22 @@ namespace DialogueTree {
     public class Dialogue : MonoBehaviour
     {
         public string title;
+        public AudioClip startNarrationClip;
+        public AudioClip exitNarrationClip;
+
         private Page currentPage;
         private Page currentChapter;
         private List<Page> chapters;
+        private bool startNarrationReady = false;
+        private bool exitNarrationReady = false;
 
         void Awake() {
             LoadPages();
             currentChapter = chapters[0];
             currentPage = currentChapter;
-        }
+            if (startNarrationClip != null) startNarrationReady = true;
+            if (exitNarrationClip != null) exitNarrationReady = true;
+         }
 
         private void LoadPages() {
             chapters = new List<Page>();
@@ -72,6 +79,26 @@ namespace DialogueTree {
 
         public void Reset() {
             currentPage = currentChapter;
+        }
+
+        // Plays the start narration once, if possible
+        public void playStartNarration()
+        {
+            if (startNarrationReady == true)
+            {
+                Narration.Narrate(startNarrationClip);
+                startNarrationReady = false;
+            }
+        }
+
+        // Plays the exit narration once, if possible
+        public void PlayExitNarration()
+        {
+            if (exitNarrationReady == true)
+            {
+                Narration.Narrate(exitNarrationClip);
+                exitNarrationReady = false;
+            }
         }
     }
 }

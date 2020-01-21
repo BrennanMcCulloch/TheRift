@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateMesh : MonoBehaviour
+public class RiftMeshManager : MonoBehaviour
 {
     //singleton
-    public static CreateMesh instance;
+    public static RiftMeshManager instance;
     //offsetting the position of rift
     public float camDis = 5f;
-    //public float xOffset;
-    //public float yOffset;
+    public bool firstHeld;
 
     private static Mesh mesh;
     private static List<Vector3> meshPoints;
@@ -19,7 +18,7 @@ public class CreateMesh : MonoBehaviour
     private static List<int> reflexIndices;
     private static List<int> earIndices;
     private static bool flipConvex;
-    public bool firstHeld;
+    private static List<DeadBounds> collidedDead = new List<DeadBounds>();
 
     private Plane planeObj;
     private Vector3 startPos;
@@ -41,6 +40,12 @@ public class CreateMesh : MonoBehaviour
     // Create polygon collider connecting points from one index to another of a list
     public static void Create(int start, int end, List<Vector3> points)
     {
+        //let the objects that we collided with know we're gone
+        foreach(DeadBounds deadThing in collidedDead)
+        {
+            deadThing.DeadOutOfBounds();
+        }
+        collidedDead = new List<DeadBounds>();
         //limit mesh points to those within the closed polygon
         meshPoints = points.GetRange(start, points.Count - start - (points.Count - end));
         //adjust points for camera and add new ones for the back face
@@ -218,5 +223,11 @@ public class CreateMesh : MonoBehaviour
     private static Vector3 GetActivePointAfter(int index)
     {
         return meshPoints[activeIndices.ValueAfter(index)];
+    }
+
+    //Dead objects call this when we collide with them, so we let them know when we're gone
+    public static void AddDeadObject(DeadBounds other)
+    {
+        collidedDead.Add(other);
     }
 }

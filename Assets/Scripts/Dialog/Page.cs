@@ -93,6 +93,7 @@ namespace DialogueTree {
         public Page LastPage() {
             return lastPage;
         }
+        
         public void Visited() {
             visited = true;
             GiveItems();

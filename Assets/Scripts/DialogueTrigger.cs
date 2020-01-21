@@ -10,26 +10,45 @@ using DialogueTree;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    public AudioClip nearbyNarrationClip;
+
+
+    private bool nearbyNarrationReady = false;
 
     private Material material;
 
     private bool interactable;
 
+
     void Start() {
         material = gameObject.GetComponent<MeshRenderer>().material;
+        if (nearbyNarrationClip != null) nearbyNarrationReady = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Todo (matt) - These methods assume that the player is the only object that will be moving around and triggering things.
-        // if at some point this is no longer the case, add logic to bail unless the colliding object is the player.
-        material.color = Color.green;
-        interactable = true;
+        //only activate when the player is near
+        if (other.gameObject.tag == "Player")
+        {
+            material.color = Color.green;
+            interactable = true;
+            //play narration if possible
+            if (nearbyNarrationReady == true)
+            {
+                Narration.Narrate(nearbyNarrationClip);
+                nearbyNarrationReady = false;
+            }
+        }
     }
 
-    private void OnTriggerExit(Collider other) {
-        material.color = Color.yellow;
-        interactable = false;
+    private void OnTriggerExit(Collider other)
+    {
+        //only deactivate when the player leaves
+        if (other.gameObject.tag == "Player")
+        {
+            material.color = Color.yellow;
+            interactable = false;
+        }
     }
 
     private void OnMouseUpAsButton()

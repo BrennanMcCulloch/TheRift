@@ -35,11 +35,16 @@ public class DialogueManager : MonoBehaviour
         ShowPage();
         // Stops us from moving around when dialoguing
         StateManager.setState((int)StateManager.StateEnum.Talking);
+        //play narration if any exists
+        dialogue.playStartNarration();
     }
 
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        //play narration if any exists
+        dialogue.PlayExitNarration();
+        //reset dialogue, etc.
         dialogue.Reset();
         dialogue = null;
         choiceButtonsPanel.gameObject.SetActive(false);
@@ -48,7 +53,6 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingPage);
             typingPage = null;
         }
-
         // Lets us start moving again
         StateManager.returnToPreviousState();
     }

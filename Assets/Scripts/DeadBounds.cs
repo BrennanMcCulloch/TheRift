@@ -4,55 +4,71 @@ using UnityEngine;
 
 public class DeadBounds : MonoBehaviour
 {
-    public GameObject deadDimension;
     public GameObject toggleA;//set this active
     public GameObject toggleB;//set this inactive
+    public AudioClip narrationClip;
 
-    new private Collider collider;
     private Collider itemColliding;
-
     private Vector3 top;
     private Vector3 middle;
     private Vector3 bottom;
+    private bool narrationReady = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = deadDimension.GetComponent<Collider>();
         itemColliding = this.GetComponent<Collider>();
         middle = itemColliding.bounds.center;
         Vector3 scale = itemColliding.bounds.extents;
         top = new Vector3(middle.x + scale.x, middle.y + scale.y, middle.z + scale.z);
         bottom = new Vector3(middle.x - scale.x, middle.y - scale.y, middle.z - scale.z);
+        //if we have narration, we can read it later
+        if (narrationClip != null)
+        {
+            narrationReady = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // If this collides with DeadDimension, turn it "on" and play any narration
+    void OnTriggerEnter (Collider other)
     {
-        deadDimension.transform.position += new Vector3(0f, 0f, 0.0000001f);
-
-        if (collider.bounds.Contains(top) && collider.bounds.Contains(middle) && collider.bounds.Contains(bottom))
+        if (other.gameObject.tag == "DeadDimension")
         {
-            if(toggleA != null)
+            if (other.bounds.Contains(top) &&
+                other.bounds.Contains(middle) &&
+                other.bounds.Contains(bottom))
             {
-                toggleA.SetActive(true);
-            }
-            if(toggleB != null)
-            {
-                toggleB.SetActive(false);
+                //let the rift know we need to know when it's gone
+                RiftMeshManager.AddDeadObject(this);
+                //read the narration once
+                if(narrationReady == true)
+                {
+                    Narration.Narrate(narrationClip);
+                    narrationReady = false;
+                }
+                //make changes to the scene in response to this being revealed
+                if(toggleA != null)
+                {
+                    toggleA.SetActive(true);
+                }
+                if(toggleB != null)
+                {
+                    toggleB.SetActive(false);
+                }
             }
         }
-        else
-        {
-            if (toggleA != null)
-            {
-                toggleA.SetActive(false);
-            }
-            if (toggleB != null)
-            {
-                toggleB.SetActive(true);
-            }
-        }
+    }
 
+    //This is essentially works like "OnTriggerExit" for when the rift is redrawn
+    public void DeadOutOfBounds ()
+    {
+        if (toggleA != null)
+        {
+            toggleA.SetActive(false);
+        }
+        if (toggleB != null)
+        {
+            toggleB.SetActive(true);
+        }
     }
 }

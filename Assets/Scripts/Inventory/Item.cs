@@ -6,6 +6,25 @@ namespace Inventory {
     {
         public Sprite itemSprite;
         public string description;
+        public AudioClip pickupNarrationClip;
+        
+        private bool pickupNarrationReady = false;
+
+        // Check if when we can narrate abou this
+        void Start ()
+        {
+            if (pickupNarrationClip != null) pickupNarrationReady = true;
+        }
+
+        // Plays the pickup narration if possible
+        public void PlayPickupNarration()
+        {
+            if (pickupNarrationReady == true)
+            {
+                Narration.Narrate(pickupNarrationClip);
+                pickupNarrationReady = false;
+            }
+        }
 
     }
 }
