@@ -8,8 +8,9 @@ namespace Inventory {
         public string description;
         public AudioClip pickupNarrationClip;
         public AudioClip glowNarrationClip;
-        public bool pickupNarrationReady = false;
-        public bool glowNarrationReady = false;
+        
+        private bool pickupNarrationReady = false;
+        private bool glowNarrationReady = false;
 
         // Check if when we can narrate abou this
         void Start ()
