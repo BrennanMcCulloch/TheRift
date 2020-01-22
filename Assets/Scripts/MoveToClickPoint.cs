@@ -9,14 +9,12 @@ public class MoveToClickPoint : MonoBehaviour
     public static MoveToClickPoint instance;
 
     public NavMeshAgent agent;
-
-    private Footsteps footstepGenerator;
+    public Footsteps footstepGenerator;
 
     // Awake is called once before start
     void Awake()
     {
         instance = this;
-        footstepGenerator = instance.GetComponent<Footsteps>();
     }
 
     void Start()

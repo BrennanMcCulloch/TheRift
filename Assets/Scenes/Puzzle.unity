@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 149996689}
   m_Layer: 9
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Floor,Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -807,9 +807,10 @@ GameObject:
   - component: {fileID: 230098998}
   - component: {fileID: 230098997}
   - component: {fileID: 230098996}
+  - component: {fileID: 230098999}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Floor,Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -858,7 +859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32d644b260a434016894e024e2e70fb2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -887,6 +888,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230098994}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &230098999
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230098994}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &251073219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,6 +3555,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1115564737}
   - component: {fileID: 1115564738}
+  - component: {fileID: 1115564740}
+  - component: {fileID: 1115564739}
   m_Layer: 2
   m_Name: NoisyFeet
   m_TagString: Untagged
@@ -3553,7 +3572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115564736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2059817408}
@@ -3655,6 +3674,68 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1115564739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115564736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1820ac1dd33b4237bd3988acfcc6cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  concreteStepClips:
+  - {fileID: 8300000, guid: d96196beba46249cba99b891c30b7f1d, type: 3}
+  - {fileID: 8300000, guid: 54132cda89dd945c29911ca9c8ca1c9b, type: 3}
+  - {fileID: 8300000, guid: 6328c07d85c404f438e8c6a23a2ed9e4, type: 3}
+  - {fileID: 8300000, guid: 9c9b8546896b648eb82261d2cd27538b, type: 3}
+  - {fileID: 8300000, guid: 33b12c778cba94cb58b48748609db837, type: 3}
+  - {fileID: 8300000, guid: 62c9ab143b7934f07b295336c17c578b, type: 3}
+  - {fileID: 8300000, guid: 0d6be7a3edc124db2b95a6a8e761506b, type: 3}
+  - {fileID: 8300000, guid: 4b37853a07afa4ebb9b1ce833f924e40, type: 3}
+  - {fileID: 8300000, guid: a4f29abc79b154dc5bd9deda484352c8, type: 3}
+  - {fileID: 8300000, guid: e0f63435492bc4fcf8f3d28746de3f4c, type: 3}
+  - {fileID: 8300000, guid: 2e6ab20fb340e4135ad4ee81a007a978, type: 3}
+  - {fileID: 8300000, guid: 6364b517eccb24f7eae13155a35da67e, type: 3}
+  - {fileID: 8300000, guid: 3502f78d77a884f5f958217656912888, type: 3}
+  - {fileID: 8300000, guid: b096ed15dbe3843469c219cbda8d09b8, type: 3}
+  - {fileID: 8300000, guid: af2493a4bb6fc4395bd08cae8b739306, type: 3}
+  - {fileID: 8300000, guid: 88253373a16c14e5582cffae09d98cd1, type: 3}
+  grassStepClips: []
+  woodStepClips:
+  - {fileID: 8300000, guid: f08fc546e579c4ceba0052c7bdff5d8f, type: 3}
+  - {fileID: 8300000, guid: 05664c901b86d4cbcb7d18eedc51af66, type: 3}
+  - {fileID: 8300000, guid: 9f18fd4092d0a44fdb6237c85dd1b143, type: 3}
+  - {fileID: 8300000, guid: 4a51bf8efd76c4112b22522f24eb74b4, type: 3}
+  - {fileID: 8300000, guid: 305222f01ccd64ca5a9127c1b850c065, type: 3}
+  - {fileID: 8300000, guid: e258549eb6456404babdeca5c29f7029, type: 3}
+  - {fileID: 8300000, guid: 44ce68093fa3b4aad8c10dcec17f786f, type: 3}
+  - {fileID: 8300000, guid: a7722275043724f8e8974abc14921355, type: 3}
+  - {fileID: 8300000, guid: 925eb8523a22f4ad59486420863f4922, type: 3}
+  - {fileID: 8300000, guid: 9edad4b7989c84642a79711faf18b935, type: 3}
+  - {fileID: 8300000, guid: 55f45806ac7484477b59be59b82d90c5, type: 3}
+  - {fileID: 8300000, guid: ad97a42ec753946d69ef2bd8952cc5a5, type: 3}
+  - {fileID: 8300000, guid: f37e8a914361c4b00967750c8194511c, type: 3}
+  terrainType: 0
+  timeBetweenSteps: 0.5
+  timeVariance: 0.025
+  source: {fileID: 1115564738}
+  agent: {fileID: 2059817410}
+--- !u!65 &1115564740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115564736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1162948860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4945,9 +5026,10 @@ GameObject:
   - component: {fileID: 1690111873}
   - component: {fileID: 1690111872}
   - component: {fileID: 1690111871}
+  - component: {fileID: 1690111874}
   m_Layer: 8
   m_Name: Ground (2)
-  m_TagString: Untagged
+  m_TagString: Floor,Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5025,6 +5107,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690111869}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1690111874
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690111869}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1704271864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,9 +5248,10 @@ GameObject:
   - component: {fileID: 1706518274}
   - component: {fileID: 1706518273}
   - component: {fileID: 1706518272}
+  - component: {fileID: 1706518275}
   m_Layer: 8
   m_Name: Ground (1)
-  m_TagString: Untagged
+  m_TagString: Floor,Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5230,6 +5329,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706518270}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1706518275
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706518270}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1747246364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5880,7 +5995,6 @@ GameObject:
   - component: {fileID: 2059817412}
   - component: {fileID: 2059817413}
   - component: {fileID: 2059817414}
-  - component: {fileID: 2059817415}
   m_Layer: 2
   m_Name: Esmerelda
   m_TagString: Player
@@ -6013,6 +6127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2059817410}
+  footstepGenerator: {fileID: 1115564739}
 --- !u!54 &2059817412
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6137,54 +6252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ef98432ed904763a0636b886e521b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2059817415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059817404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1820ac1dd33b4237bd3988acfcc6cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  concreteStepClips:
-  - {fileID: 8300000, guid: d96196beba46249cba99b891c30b7f1d, type: 3}
-  - {fileID: 8300000, guid: 54132cda89dd945c29911ca9c8ca1c9b, type: 3}
-  - {fileID: 8300000, guid: 6328c07d85c404f438e8c6a23a2ed9e4, type: 3}
-  - {fileID: 8300000, guid: 9c9b8546896b648eb82261d2cd27538b, type: 3}
-  - {fileID: 8300000, guid: 33b12c778cba94cb58b48748609db837, type: 3}
-  - {fileID: 8300000, guid: 62c9ab143b7934f07b295336c17c578b, type: 3}
-  - {fileID: 8300000, guid: 0d6be7a3edc124db2b95a6a8e761506b, type: 3}
-  - {fileID: 8300000, guid: 4b37853a07afa4ebb9b1ce833f924e40, type: 3}
-  - {fileID: 8300000, guid: a4f29abc79b154dc5bd9deda484352c8, type: 3}
-  - {fileID: 8300000, guid: e0f63435492bc4fcf8f3d28746de3f4c, type: 3}
-  - {fileID: 8300000, guid: 2e6ab20fb340e4135ad4ee81a007a978, type: 3}
-  - {fileID: 8300000, guid: 6364b517eccb24f7eae13155a35da67e, type: 3}
-  - {fileID: 8300000, guid: 3502f78d77a884f5f958217656912888, type: 3}
-  - {fileID: 8300000, guid: b096ed15dbe3843469c219cbda8d09b8, type: 3}
-  - {fileID: 8300000, guid: af2493a4bb6fc4395bd08cae8b739306, type: 3}
-  - {fileID: 8300000, guid: 88253373a16c14e5582cffae09d98cd1, type: 3}
-  grassStepClips: []
-  woodStepClips:
-  - {fileID: 8300000, guid: f08fc546e579c4ceba0052c7bdff5d8f, type: 3}
-  - {fileID: 8300000, guid: 05664c901b86d4cbcb7d18eedc51af66, type: 3}
-  - {fileID: 8300000, guid: 9f18fd4092d0a44fdb6237c85dd1b143, type: 3}
-  - {fileID: 8300000, guid: 4a51bf8efd76c4112b22522f24eb74b4, type: 3}
-  - {fileID: 8300000, guid: 305222f01ccd64ca5a9127c1b850c065, type: 3}
-  - {fileID: 8300000, guid: e258549eb6456404babdeca5c29f7029, type: 3}
-  - {fileID: 8300000, guid: 44ce68093fa3b4aad8c10dcec17f786f, type: 3}
-  - {fileID: 8300000, guid: a7722275043724f8e8974abc14921355, type: 3}
-  - {fileID: 8300000, guid: 925eb8523a22f4ad59486420863f4922, type: 3}
-  - {fileID: 8300000, guid: 9edad4b7989c84642a79711faf18b935, type: 3}
-  - {fileID: 8300000, guid: 55f45806ac7484477b59be59b82d90c5, type: 3}
-  - {fileID: 8300000, guid: ad97a42ec753946d69ef2bd8952cc5a5, type: 3}
-  - {fileID: 8300000, guid: f37e8a914361c4b00967750c8194511c, type: 3}
-  terrainType: 0
-  timeBetweenSteps: 0.5
-  timeVariance: 0.025
-  source: {fileID: 1115564738}
 --- !u!1 &2138740496
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,18 +14,18 @@ public class Footsteps : MonoBehaviour
     public float timeBetweenSteps = 1f;
     public float timeVariance = 0f;
     public AudioSource source;
+    public UnityEngine.AI.NavMeshAgent agent;
 
     private AudioClip[][] clipsPerTerrain;
     private float elapsedTime = 0f;
     private float originalTimeBetweenSteps;
-    private UnityEngine.AI.NavMeshAgent agent;
+    private int newTerrainType = (int)FloorEnum.Concrete;
 
     // Start is called before the first frame update
     void Start()
     {
         clipsPerTerrain = new AudioClip[][] {concreteStepClips, grassStepClips, woodStepClips};
         originalTimeBetweenSteps = timeBetweenSteps;
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -43,6 +43,29 @@ public class Footsteps : MonoBehaviour
             source.Play();
             elapsedTime = 0;
             timeBetweenSteps = Random.Range(originalTimeBetweenSteps - timeVariance, originalTimeBetweenSteps + timeVariance);
+        }
+    }
+
+    // Queue the new terrain type for when we exit our current one
+    void OnTriggerEnter(Collider other)
+    {
+        string[] commaSplitStrings = other.gameObject.tag.Split(',');
+        if (commaSplitStrings[0] == "Floor")
+        {
+            newTerrainType = (int)FloorEnum.Parse(typeof(FloorEnum), commaSplitStrings[1]);
+        }
+    }
+
+    // Change our terrain type only after leaving our old one
+    void OnTriggerExit(Collider other)
+    {
+        string[] commaSplitStrings = other.gameObject.tag.Split(',');
+        if (commaSplitStrings[0] == "Floor")
+        {
+            if (terrainType == (int)FloorEnum.Parse(typeof(FloorEnum), commaSplitStrings[1]))
+            {
+                terrainType = newTerrainType;
+            }
         }
     }
 
