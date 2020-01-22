@@ -18,17 +18,24 @@ public class Footsteps : MonoBehaviour
     private AudioClip[][] clipsPerTerrain;
     private float elapsedTime = 0f;
     private float originalTimeBetweenSteps;
+    private UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
     {
         clipsPerTerrain = new AudioClip[][] {concreteStepClips, grassStepClips, woodStepClips};
         originalTimeBetweenSteps = timeBetweenSteps;
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (agent.remainingDistance < 0.01)
+        {
+            this.enabled = false;
+            return;
+        }
         elapsedTime += Time.deltaTime;
         if (elapsedTime > timeBetweenSteps)
         {
@@ -38,4 +45,5 @@ public class Footsteps : MonoBehaviour
             timeBetweenSteps = Random.Range(originalTimeBetweenSteps - timeVariance, originalTimeBetweenSteps + timeVariance);
         }
     }
+
 }

@@ -10,10 +10,13 @@ public class MoveToClickPoint : MonoBehaviour
 
     public NavMeshAgent agent;
 
+    private Footsteps footstepGenerator;
+
     // Awake is called once before start
     void Awake()
     {
         instance = this;
+        footstepGenerator = instance.GetComponent<Footsteps>();
     }
 
     void Start()
@@ -30,6 +33,7 @@ public class MoveToClickPoint : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 agent.destination = hit.point;
+                footstepGenerator.enabled = true;
             }
         }
     }
