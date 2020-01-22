@@ -21,16 +21,23 @@ public class MoveToClickPoint : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
+    // Set up event handlers
+	void OnEnable () {
+		InputManager.OnPress += OnPress;
+	}
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
-            {
-                agent.destination = hit.point;
-            }
+	// Remove event handlers
+	void OnDisable () {
+		InputManager.OnPress -= OnPress;
+	}
+
+    // Set destination to the clicked point upon click
+    public void OnPress()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        {
+            agent.destination = hit.point;
         }
     }
 }
