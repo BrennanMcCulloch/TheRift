@@ -22,12 +22,14 @@ public class MoveToClickPoint : MonoBehaviour
     }
 
     // Set up event handlers
-	void OnEnable () {
+	void OnEnable()
+    {
 		InputManager.OnPress += OnPress;
 	}
 
 	// Remove event handlers
-	void OnDisable () {
+	void OnDisable()
+    {
 		InputManager.OnPress -= OnPress;
 	}
 
