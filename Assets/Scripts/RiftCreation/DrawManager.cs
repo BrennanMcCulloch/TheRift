@@ -39,13 +39,21 @@ public class DrawManager : MonoBehaviour
         planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
+	// Add event handlers
+	void OnEnable()
     {
-             if (InputStarts)    SetDrawOrigin();
-        else if (InputContinues) DrawLine();
-        else if (InputEnds)      FinishDrawing();
-    }
+		InputManager.OnPress += SetDrawOrigin;
+        InputManager.OnHold += DrawLine;
+        InputManager.OnRelease += FinishDrawing;
+	}
+
+	// Remove event handlers
+	void OnDisable()
+    {
+		InputManager.OnPress -= SetDrawOrigin;
+        InputManager.OnHold -= DrawLine;
+        InputManager.OnRelease -= FinishDrawing;
+	}
 
     // Make a note of where we started drawing.
     void SetDrawOrigin() {
@@ -160,21 +168,6 @@ public class DrawManager : MonoBehaviour
             loopEnd = points.Count - 1;
             return;
         }
-    }
-
-    // When finger or mouse have just been pushed down
-    bool InputStarts {
-        get {return Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began); }
-    }
-
-    // When finger or mouse are already down and moving
-    bool InputContinues {
-        get { return Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved); }
-    }
-
-    // When finger or mousebutton is lifted
-    bool InputEnds {
-        get { return Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended); }
     }
 
     // Determine whether a given Vector3 is far enough away from the starting Vector3
