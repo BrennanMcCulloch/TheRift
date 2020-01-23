@@ -9,6 +9,7 @@ public class MoveToClickPoint : MonoBehaviour
     public static MoveToClickPoint instance;
 
     public NavMeshAgent agent;
+    public Footsteps footstepGenerator;
 
     // Awake is called once before start
     void Awake()
@@ -40,6 +41,7 @@ public class MoveToClickPoint : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
         {
             agent.destination = hit.point;
+            footstepGenerator.enabled = true;
         }
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - NPC
   - DeadDimension
+  - Floor,Concrete
+  - Floor,Grass
+  - Floor,Wood
   layers:
   - Default
   - TransparentFX
