@@ -23,9 +23,19 @@ public class DialogueManager : MonoBehaviour
     public Dialogue dialogue;
     public Animator animator;
 
+    // Sound effects
+    public AudioClip[] textSoundClips;
+    private AudioSource source;
+
     // Allows us to stop the coroutine on the fly, and prevent simultaneous execution
     private Coroutine typingPage;
     private string currentText;
+
+    // Plays once for initialization
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public void StartDialogue(Dialogue newDialogue)
     {
@@ -106,6 +116,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
             float jitter = Random.Range(0.01f, 0.075f);
+            PlayRandomTextSound();
             yield return new WaitForSeconds(jitter);
         }
         DisplayChoicesIfPresent();
@@ -158,5 +169,12 @@ public class DialogueManager : MonoBehaviour
         rollButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
         dialogue.MakeChoice(choice, roll);
         ShowPage();
+    }
+
+    // Plays a random textSoundClip
+    private void PlayRandomTextSound()
+    {
+        source.clip = textSoundClips[Random.Range(0, textSoundClips.Length)];
+        source.Play();
     }
 }
