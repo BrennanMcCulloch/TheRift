@@ -8,6 +8,7 @@ public class WordScamble : MonoBehaviour
     private Text textComp;
     private char[] baseWord;
     private char[] newWord;
+    private char letter;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class WordScamble : MonoBehaviour
         textComp = GetComponent<Text>();
         baseWord = textComp.text.ToCharArray();
         newWord = new char[baseWord.Length];
+        letter = baseWord[0];
     }
 
     // Update is called once per frame
@@ -25,5 +27,11 @@ public class WordScamble : MonoBehaviour
             newWord[i] = baseWord[Random.Range(0, baseWord.Length)];
         }
         textComp.text = new string(newWord);
+    }
+
+    // switch the text to its original letter
+    void OnDisable()
+    {
+        textComp.text = letter.ToString();
     }
 }

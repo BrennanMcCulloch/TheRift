@@ -31,4 +31,10 @@ public class Jitter : MonoBehaviour
                                          Random.Range(lowerBound.z, upperBound.z)
                                         );
     }
+
+    // switch to the original position
+    void OnDisable()
+    {
+        transform.position = originalPosition;
+    }
 }
