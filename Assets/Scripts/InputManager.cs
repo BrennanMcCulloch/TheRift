@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     public static InputDelegate OnRelease;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //handle first frame of input
         if(InputStarts && OnPress != null) OnPress();
