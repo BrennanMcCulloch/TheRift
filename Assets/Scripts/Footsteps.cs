@@ -17,6 +17,7 @@ public class Footsteps : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
 
     private AudioClip[][] clipsPerTerrain;
+    private List<AudioClip>[] possibleClips;
     private float elapsedTime = 0f;
     private float originalTimeBetweenSteps;
     private int newTerrainType = (int)FloorEnum.Concrete;
@@ -25,6 +26,10 @@ public class Footsteps : MonoBehaviour
     void Start()
     {
         clipsPerTerrain = new AudioClip[][] {concreteStepClips, grassStepClips, woodStepClips};
+        possibleClips = new List<AudioClip>[] {new List<AudioClip>(concreteStepClips),
+                                               new List<AudioClip>(grassStepClips),
+                                               new List<AudioClip>(woodStepClips)
+                                              };
         originalTimeBetweenSteps = timeBetweenSteps;
     }
 
@@ -39,7 +44,13 @@ public class Footsteps : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if (elapsedTime > timeBetweenSteps)
         {
-            source.clip = clipsPerTerrain[terrainType][Random.Range(0, clipsPerTerrain[terrainType].Length)];
+            if (possibleClips[terrainType].Count == 0)
+            {
+                possibleClips[terrainType] = new List<AudioClip>(clipsPerTerrain[terrainType]);
+            }
+            int clipIndex = Random.Range(0, possibleClips[terrainType].Count);
+            source.clip = possibleClips[terrainType][clipIndex];
+            possibleClips[terrainType].RemoveAt(clipIndex);
             source.Play();
             elapsedTime = 0;
             timeBetweenSteps = Random.Range(originalTimeBetweenSteps - timeVariance, originalTimeBetweenSteps + timeVariance);
