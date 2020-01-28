@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
  using UnityEngine.UI;
 
-public class WordScamble : MonoBehaviour
+public class WordScramble : MonoBehaviour
 {
     private Text textComp;
     private char[] baseWord;
