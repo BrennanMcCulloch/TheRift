@@ -25,7 +25,13 @@ public class DialogueManager : MonoBehaviour
 
     // Sound effects
     public AudioClip[] textSoundClips;
-    private AudioSource source;
+    public float audioStutter = 0f;
+    public float basePitch = 1f;
+    public float pitchVariance = 0f;
+    private float pitchLowerBound;
+    private float pitchUpperBound;
+    private int currentSource = 0;
+    private AudioSource[] sources;
 
     // Allows us to stop the coroutine on the fly, and prevent simultaneous execution
     private Coroutine typingPage;
@@ -34,7 +40,9 @@ public class DialogueManager : MonoBehaviour
     // Plays once for initialization
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        sources = GetComponents<AudioSource>();
+        pitchLowerBound = basePitch - pitchVariance;
+        pitchUpperBound = basePitch + pitchVariance;
     }
 
     public void StartDialogue(Dialogue newDialogue)
@@ -174,7 +182,13 @@ public class DialogueManager : MonoBehaviour
     // Plays a random textSoundClip
     private void PlayRandomTextSound()
     {
-        source.clip = textSoundClips[Random.Range(0, textSoundClips.Length)];
-        source.Play();
+        if (Random.Range(0f, audioStutter) < 1f)
+        {
+            if (currentSource == 0) currentSource = 1;
+            else currentSource = 0;
+            sources[currentSource].pitch = Random.Range(pitchLowerBound, pitchUpperBound);
+            sources[currentSource].clip = textSoundClips[Random.Range(0, textSoundClips.Length)];
+            sources[currentSource].Play();
+        }
     }
 }
