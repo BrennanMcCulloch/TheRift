@@ -76,7 +76,6 @@ public class DrawManager : MonoBehaviour
 
     // Tries to open a rift when we stop drawing
     void FinishDrawing() {
-        Debug.Log("finished");//test
         //create mesh if there was a collision
         if(loopEnd - loopStart > 5)
         {
