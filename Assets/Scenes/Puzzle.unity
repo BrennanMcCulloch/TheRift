@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -188,8 +189,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
-    1Choice 1Choice 1Choice 1Choice 1
+  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
+    1Choice 1Choice 1Choice 1Choice 1Choice 1
 --- !u!222 &52936268
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -424,6 +425,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -547,6 +549,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -763,6 +766,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -856,6 +860,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1044,6 +1049,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1303,6 +1309,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1532,6 +1539,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1640,6 +1648,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1796,8 +1805,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599018045}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -2069,6 +2079,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2653,8 +2664,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4dceea0ba45784bf3a50eb398ede6ece, type: 3}
   - {fileID: 8300000, guid: afd6301a6ef364022b3ded1f14bd1206, type: 3}
   - {fileID: 8300000, guid: 754760e3cf5a24f15b0f61eaa05565c9, type: 3}
-  audioStutter: 1.2
-  basePitch: 1
+  audioStutter: 1.5
+  basePitch: 0.85
   pitchVariance: 0.05
 --- !u!82 &894207453
 AudioSource:
@@ -2970,6 +2981,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3113,10 +3125,10 @@ PrefabInstance:
         type: 3}
       propertyPath: sentences.Array.data[0].whatToSay
       value: "You see Janice Swensen through her window. She's reading a book and
-        listening to music at the same time. \nExplains why she wasn't coming to the
-        door.\nYou admire her multitasking skills. \nShe sees you. She takes her headphones
-        off, startled that someone's standing in the planter box outside her window.
-        \nNow's your chance. "
+        listening to music at the same time. \nExplains why she wasn't coming to
+        the door.\nYou admire her multitasking skills. \nShe sees you. She takes
+        her headphones off, startled that someone's standing in the planter box outside
+        her window. \nNow's your chance. "
       objectReference: {fileID: 0}
     - target: {fileID: 4165462193797350200, guid: d34a717b5b3be455aa0c42059b568461,
         type: 3}
@@ -3727,6 +3739,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4199,6 +4212,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5072,6 +5086,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5172,8 +5187,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
-    1Choice 1Choice 1Choice 1Choice 1
+  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
+    1Choice 1Choice 1Choice 1Choice 1Choice 1
 --- !u!222 &1608743328
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5214,6 +5229,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5351,6 +5367,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5573,6 +5590,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5927,6 +5945,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6143,6 +6162,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6243,8 +6263,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
-    1Choice 1Choice 1Choice 1Choice 1
+  m_Text: Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice 1Choice
+    1Choice 1Choice 1Choice 1Choice 1Choice 1
 --- !u!222 &2037316174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6306,6 +6326,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7652,9 +7673,9 @@ PrefabInstance:
     - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
         type: 3}
       propertyPath: sentences.Array.data[0].whatToSay
-      value: "\"Hello, sweetie!\" your Grandma says. You always feel welcomed by the
-        warmness in her voice. \n\"Have you spoken to the doorman yet? I bet he knows
-        something.\""
+      value: "\"Hello, sweetie!\" your Grandma says. You always feel welcomed by
+        the warmness in her voice. \n\"Have you spoken to the doorman yet? I bet
+        he knows something.\""
       objectReference: {fileID: 0}
     - target: {fileID: 8397114693814889815, guid: 1ed86dceec09a4f3d8392712bbd55b3c,
         type: 3}
