@@ -22,10 +22,6 @@ public class HaltOnClick : MonoBehaviour
         for(int i = 0; i < childJitters.Length; i++)
         {
             childWordScrambles[i].enabled = false;
-            yield return new WaitForSeconds(timeBetweenStops);
-        }
-        for(int i = 0; i < childJitters.Length; i++)
-        {
             childJitters[i].enabled = false;
             yield return new WaitForSeconds(timeBetweenStops);
         }
