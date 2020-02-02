@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class CamSwitcher : MonoBehaviour
 {
-    public Camera camMain;
-    public Camera camBar;
+    public Camera camOff;
+    public Camera camOn;
     public UnityEvent thingsToTrigger;
 
    private void OnTriggerEnter(Collider other)
@@ -14,12 +14,12 @@ public class CamSwitcher : MonoBehaviour
         Debug.Log("It's Triggering!");
 
         //Change the tag names for the cameras
-        camBar.tag = "MainCamera";
-        camMain.tag = "Untagged";
+        camOn.tag = "MainCamera";
+        camOff.tag = "Untagged";
 
         //Swtich cameras on/off to toggle which camera the player sees
-        camBar.enabled = true;
-        camMain.enabled = false;
+        camOn.enabled = true;
+        camOff.enabled = false;
 
         thingsToTrigger.Invoke();
     }

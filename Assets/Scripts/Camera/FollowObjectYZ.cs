@@ -3,7 +3,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class FollowObject : MonoBehaviour {
+public class FollowObjectYZ : MonoBehaviour {
     
     public GameObject objectToFollow;
     
@@ -16,7 +16,7 @@ public class FollowObject : MonoBehaviour {
         
         Vector3 position = this.transform.position;
         position.y = Mathf.Lerp(this.transform.position.y, objectToFollow.transform.position.y + verticalOffset, interpolation);
-        position.x = Mathf.Lerp(this.transform.position.x, objectToFollow.transform.position.x, interpolation);
+        position.z = Mathf.Lerp(this.transform.position.z, objectToFollow.transform.position.z, interpolation);
         
         this.transform.position = position;
     }
