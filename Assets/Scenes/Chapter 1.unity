@@ -648,7 +648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 2059817404}
-  cam: {fileID: 519420031}
   speed: 2
   verticalOffset: 2
 --- !u!20 &519420031
@@ -2721,8 +2720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfea17205379d9940b30114326e5d5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camMain: {fileID: 519420031}
-  camBar: {fileID: 1872909114}
+  camMain: {fileID: 0}
+  camBar: {fileID: 0}
   thingsToTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -3344,13 +3343,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872909111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 689b9151a5a521b498d3c0811ddc2f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 2059817404}
-  cam: {fileID: 1872909114}
   speed: 2
   verticalOffset: 2
 --- !u!81 &1872909113
@@ -3368,7 +3366,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872909111}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.18758285, g: 0.13203098, b: 0.4056604, a: 0}
@@ -3413,7 +3411,7 @@ Transform:
   m_GameObject: {fileID: 1872909111}
   m_LocalRotation: {x: 0.10054905, y: 0.7221144, z: -0.08809621, w: 0.67873394}
   m_LocalPosition: {x: -14.81, y: 3.28, z: 18.78}
-  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
