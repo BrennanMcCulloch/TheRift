@@ -174,4 +174,9 @@ public class DrawManager : MonoBehaviour
     bool DraggedPastThreshold(Vector3 startingPosition) {
         return Vector3.Distance(Input.mousePosition, startingPosition) > MINIMUM_DRAW_DISTANCE;
     }
+
+    public void resetPlane()
+    {
+        planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+    }
 }
