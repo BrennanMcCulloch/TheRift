@@ -9,7 +9,7 @@ public class FollowObjectYZ : MonoBehaviour {
     
     public float speed = 2.0f;
 
-    public float verticalOffset = 1.0f;
+    public float verticalOffset = -1000.0f;
     
     void Update () {
         float interpolation = speed * Time.deltaTime;

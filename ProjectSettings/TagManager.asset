@@ -9,6 +9,7 @@ TagManager:
   - Floor,Concrete
   - Floor,Grass
   - Floor,Wood
+  - Seethrough
   layers:
   - Default
   - TransparentFX
