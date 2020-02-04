@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 namespace Inventory {
@@ -37,7 +38,7 @@ namespace Inventory {
             itemBox.transform.parent = itemPanel.transform;
             itemBox.transform.localPosition = Vector2.zero;
             itemBox.transform.localScale = Vector2.one;
-
+            itemBox.GetComponent<Image>().sprite = item.itemSprite;
 
             itemBox.transform.localPosition = NextItemBoxPosition();
 

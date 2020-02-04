@@ -159,7 +159,7 @@ public class DrawManager : MonoBehaviour
     //Sets variables to represent the created loop if it is big enough
     private void HandleLoop(int index, Vector3 intersection)
     {
-        if(points.Count - index > 10)
+        if(points.Count - index > 7)
         {
             //set points to encapsulate the loop created
             loopStart = index + 1;

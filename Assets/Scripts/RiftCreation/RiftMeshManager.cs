@@ -45,6 +45,10 @@ public class RiftMeshManager : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        else
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     // Create polygon collider connecting points from one index to another of a list

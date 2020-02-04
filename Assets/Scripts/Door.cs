@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     public GameObject otherSide;
     public GameObject otherCamera;
     public GameObject thisCamera;
+    public AudioSource otherAudio;
+    public AudioSource thisAudio;
 
     private static NavMeshAgent playerAgent;
     private Material material;
@@ -56,6 +58,8 @@ public class Door : MonoBehaviour
             //Player.Instance.transform.Translate(otherSide.transform.forward);
             playerAgent.Warp(otherSide.transform.position);
             Debug.Log(Player.Instance.gameObject.transform.position);//test
+            //THIS SUCKS
+            MusicManager.instance.ChangeMusic();
         }
     }
 }
