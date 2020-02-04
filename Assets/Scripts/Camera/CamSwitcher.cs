@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class CamSwitcher : MonoBehaviour
 {
-    public Camera camOff;
-    public Camera camOn;
+    public GameObject camOff;
+    public GameObject camOn;
     public UnityEvent thingsToTrigger;
 
     private void OnTriggerEnter(Collider other)
