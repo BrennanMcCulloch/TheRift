@@ -1525,6 +1525,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395703579}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &406912798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2589404903783375464, guid: 2413f742ce0cd9446bccaa78f2f08448,
+    type: 3}
+  m_PrefabInstance: {fileID: 590093042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &406912799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2589404903783375479, guid: 2413f742ce0cd9446bccaa78f2f08448,
+    type: 3}
+  m_PrefabInstance: {fileID: 590093042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2b8e5d57bec0458867881c3dc69d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &417650339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2883,7 @@ PrefabInstance:
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
@@ -3951,6 +3969,11 @@ PrefabInstance:
       propertyPath: text
       value: The key that's very clearly labeled Joe's.
       objectReference: {fileID: 0}
+    - target: {fileID: 2589404902961597321, guid: 2413f742ce0cd9446bccaa78f2f08448,
+        type: 3}
+      propertyPath: successPage
+      value: 
+      objectReference: {fileID: 406912799}
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5488,6 +5511,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2780432393201277022}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1354809578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354809579}
+  - component: {fileID: 1354809580}
+  m_Layer: 0
+  m_Name: The Key Just Keys Bro No Locks Allowed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1354809579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354809578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5437622, y: 0.37104607, z: -23.264912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 406912798}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354809580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354809578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e86e36c85be4c84e964a86cb75ed0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 0}
+  description: Key
+  pickupNarrationClip: {fileID: 0}
 --- !u!1 &1384832687
 GameObject:
   m_ObjectHideFlags: 0
@@ -7285,7 +7354,7 @@ PrefabInstance:
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}

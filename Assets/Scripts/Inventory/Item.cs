@@ -21,6 +21,7 @@ namespace Inventory {
         {
             if (pickupNarrationReady == true)
             {
+                Debug.Log("cool key");//test
                 Narration.Narrate(pickupNarrationClip);
                 pickupNarrationReady = false;
             }
