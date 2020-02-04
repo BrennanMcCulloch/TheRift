@@ -9,19 +9,13 @@ public class CamSwitcher : MonoBehaviour
     public Camera camOn;
     public UnityEvent thingsToTrigger;
 
-   private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("It's Triggering!");
 
-        //Change the tag names for the cameras
-        camOn.tag = "MainCamera";
-        camOff.tag = "Untagged";
-
-        //Swtich cameras on/off to toggle which camera the player sees
-        camOn.enabled = true;
-        camOff.enabled = false;
+        camOn.SetActive(true);
+        camOff.SetActive(false);
 
         thingsToTrigger.Invoke();
     }
 }
-
