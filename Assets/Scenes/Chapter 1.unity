@@ -1627,8 +1627,7 @@ PrefabInstance:
     - target: {fileID: 2589404902961597321, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
       propertyPath: text
-      value: Listen bartender, if you don't let me see the lost and found your insides
-        are about to very quickly become outsides.
+      value: Let me see the lost and found or your insides will become outsides.
       objectReference: {fileID: 0}
     - target: {fileID: 2589404902961597321, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
