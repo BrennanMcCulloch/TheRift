@@ -64,7 +64,7 @@ public class RiftMeshManager : MonoBehaviour
         for (int i = 0; i < halfCount; i++)
         {
             meshPoints[i] = new Vector3(meshPoints[i].x, meshPoints[i].y, 0);
-            meshPoints.Add(meshPoints[i] + new Vector3(0, 0, 10));
+            meshPoints.Add(meshPoints[i] + new Vector3(0, 0, 20));
         }
         //fill the list of point indices not yet fully handled
         int[] allIndices = new int[halfCount];
