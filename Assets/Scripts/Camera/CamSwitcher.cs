@@ -11,11 +11,9 @@ public class CamSwitcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("It's Triggering!");
-
         camOn.SetActive(true);
         camOff.SetActive(false);
-
-        thingsToTrigger.Invoke();
+        //reset things which rely on camera position
+        DrawManager.instance.Reposition();
     }
 }

@@ -20,7 +20,6 @@ public class RiftMeshManager : MonoBehaviour
     private static bool flipConvex;
     private static List<DeadBounds> collidedDead = new List<DeadBounds>();
 
-    private Plane planeObj;
     private Vector3 startPos;
     private float distance;
 
@@ -33,8 +32,19 @@ public class RiftMeshManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
-        firstHeld = true;
+        Reposition();
+    }
+
+    public void Reposition()
+    {
+        //Quaternion tempRotation = transform.rotation;
+        //tempRotation.x = Camera.main.transform.rotation.x;
+        transform.rotation = Camera.main.transform.rotation;
+        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z));
+        if(transform.rotation.eulerAngles.y != 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     // Create polygon collider connecting points from one index to another of a list
@@ -52,8 +62,8 @@ public class RiftMeshManager : MonoBehaviour
         int halfCount = meshPoints.Count;
         for (int i = 0; i < halfCount; i++)
         {
-            meshPoints[i] = new Vector3(meshPoints[i].x, meshPoints[i].y, instance.camDis);
-            meshPoints.Add(meshPoints[i] + new Vector3(0, 0, 10));
+            meshPoints[i] = new Vector3(meshPoints[i].x, meshPoints[i].y, 0);
+            meshPoints.Add(meshPoints[i] + new Vector3(0, 0, 20));
         }
         //fill the list of point indices not yet fully handled
         int[] allIndices = new int[halfCount];

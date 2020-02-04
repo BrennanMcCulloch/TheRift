@@ -35,8 +35,7 @@ public class DrawManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // call this here instead of awake to make sure the camera object is ready
-        planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
+        Reposition();
     }
 
 	// Add event handlers
@@ -175,8 +174,12 @@ public class DrawManager : MonoBehaviour
         return Vector3.Distance(Input.mousePosition, startingPosition) > MINIMUM_DRAW_DISTANCE;
     }
 
-    public void resetPlane()
+    // Set objects position based on camera, then get the plane on which to draw from that
+    public void Reposition()
     {
+        transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
+        transform.Translate(Camera.main.transform.forward);
         planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
+        RiftMeshManager.instance.Reposition();
     }
 }
