@@ -7,7 +7,6 @@ public class CamSwitcher : MonoBehaviour
 {
     public GameObject camOff;
     public GameObject camOn;
-    public UnityEvent thingsToTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
