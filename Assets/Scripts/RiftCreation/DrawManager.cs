@@ -36,7 +36,7 @@ public class DrawManager : MonoBehaviour
     void Start()
     {
         // call this here instead of awake to make sure the camera object is ready
-        planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
     }
 
 	// Add event handlers
@@ -177,6 +177,6 @@ public class DrawManager : MonoBehaviour
 
     public void resetPlane()
     {
-        planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
     }
 }
