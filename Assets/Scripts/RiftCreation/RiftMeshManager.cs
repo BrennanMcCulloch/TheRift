@@ -34,9 +34,12 @@ public class RiftMeshManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Reposition();
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
+        mesh = new Mesh();
+        meshFilter.sharedMesh = mesh;
+        meshCollider.sharedMesh = mesh;
+        Reposition();
     }
 
     public void Reposition()
@@ -51,8 +54,7 @@ public class RiftMeshManager : MonoBehaviour
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        //meshFilter.enabled = false;
-        //meshCollider.enabled = false;
+        mesh.Clear();
     }
 
     // Create polygon collider connecting points from one index to another of a list
@@ -151,7 +153,6 @@ public class RiftMeshManager : MonoBehaviour
         meshIndices.Add(halfCount);
         meshIndices.Add(0);
         //load in the new mesh
-        mesh = new Mesh();
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
         mesh.vertices = meshPoints.ToArray();

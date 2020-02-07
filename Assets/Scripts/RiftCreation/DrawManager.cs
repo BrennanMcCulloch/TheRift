@@ -41,26 +41,26 @@ public class DrawManager : MonoBehaviour
 	// Add event handlers
 	void OnEnable()
     {
-		InputManager.OnPress += SetDrawOrigin;
-        InputManager.OnHold += DrawLine;
-        InputManager.OnRelease += FinishDrawing;
+		InputManager.OnPress += OnPress;
+        InputManager.OnHold += OnHold;
+        InputManager.OnRelease += OnRelease;
 	}
 
 	// Remove event handlers
 	void OnDisable()
     {
-		InputManager.OnPress -= SetDrawOrigin;
-        InputManager.OnHold -= DrawLine;
-        InputManager.OnRelease -= FinishDrawing;
+		InputManager.OnPress -= OnPress;
+        InputManager.OnHold -= OnHold;
+        InputManager.OnRelease -= OnRelease;
 	}
 
     // Make a note of where we started drawing.
-    void SetDrawOrigin() {
+    void OnPress() {
         startedHoldingPosition = Input.mousePosition;
     }
 
     // Use a deadzone for draw detection so we can separate drawing actions from navigation actions
-    void DrawLine() {
+    void OnHold() {
         // Bail unless we're already drawing, or we're too close to the start position.
         if (!drawing && !DraggedPastThreshold(startedHoldingPosition)) return;
 
@@ -68,13 +68,13 @@ public class DrawManager : MonoBehaviour
             DrawTrail();
         }
         else {
-            ResetTrail();
+            StartTrail();
             drawing = true;
         }
     }
 
     // Tries to open a rift when we stop drawing
-    void FinishDrawing() {
+    void OnRelease() {
         //create mesh if there was a collision
         if(loopEnd - loopStart > 5)
         {
@@ -82,6 +82,7 @@ public class DrawManager : MonoBehaviour
         }
         //destroy the game object 6 seconds after drawing
         Destroy(theTrail, 6);
+        ClearTrail();
         drawing = false;
     }
 
@@ -97,12 +98,6 @@ public class DrawManager : MonoBehaviour
                 AddPoint(point);
             }
         }
-    }
-
-    // When user begins drawing, clean and prepare trail data
-    void ResetTrail() {
-        ClearTrail();
-        StartTrail();
     }
 
     // Cleans up all the trail elements before drawing a new trail
