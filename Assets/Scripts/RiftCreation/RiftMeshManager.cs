@@ -19,6 +19,8 @@ public class RiftMeshManager : MonoBehaviour
     private static List<int> earIndices;
     private static bool flipConvex;
     private static List<DeadBounds> collidedDead = new List<DeadBounds>();
+    private static MeshFilter meshFilter;
+    private static MeshCollider meshCollider;
 
     private Vector3 startPos;
     private float distance;
@@ -33,12 +35,12 @@ public class RiftMeshManager : MonoBehaviour
     void Start()
     {
         Reposition();
+        meshFilter = GetComponent<MeshFilter>();
+        meshCollider = GetComponent<MeshCollider>();
     }
 
     public void Reposition()
     {
-        //Quaternion tempRotation = transform.rotation;
-        //tempRotation.x = Camera.main.transform.rotation.x;
         transform.rotation = Camera.main.transform.rotation;
         transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z));
         if(transform.rotation.eulerAngles.y != 0)
@@ -49,6 +51,8 @@ public class RiftMeshManager : MonoBehaviour
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+        //meshFilter.enabled = false;
+        //meshCollider.enabled = false;
     }
 
     // Create polygon collider connecting points from one index to another of a list
@@ -148,8 +152,8 @@ public class RiftMeshManager : MonoBehaviour
         meshIndices.Add(0);
         //load in the new mesh
         mesh = new Mesh();
-        instance.GetComponent<MeshFilter>().mesh = mesh;
-        instance.GetComponent<MeshCollider>().sharedMesh = mesh;
+        meshFilter.mesh = mesh;
+        meshCollider.sharedMesh = mesh;
         mesh.vertices = meshPoints.ToArray();
         mesh.triangles = meshIndices.ToArray();
     }

@@ -52,12 +52,7 @@ public class Door : MonoBehaviour
         if (interactable)
         {
             CamSwitcher.SwitchTo(otherCamera, thisCamera);
-            Debug.Log(Player.Instance.gameObject.transform.position);//test
-            //Player.Instance.gameObject.transform.position = otherSide.transform.position;
-            //Debug.Log(Player.Instance.gameObject.transform.position);//test
-            //Player.Instance.transform.Translate(otherSide.transform.forward);
             playerAgent.Warp(otherSide.transform.position);
-            Debug.Log(Player.Instance.gameObject.transform.position);//test
             //THIS SUCKS
             MusicManager.instance.ChangeMusic();
         }
