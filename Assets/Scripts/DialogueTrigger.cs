@@ -12,16 +12,15 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     public AudioClip nearbyNarrationClip;
 
-
-    private bool nearbyNarrationReady = false;
-
     private Material material;
-
+    private Color originalColor;
     private bool interactable;
+    private bool nearbyNarrationReady = false;
 
 
     void Start() {
         material = gameObject.GetComponent<MeshRenderer>().material;
+        originalColor = material.color;
         if (nearbyNarrationClip != null) nearbyNarrationReady = true;
     }
 
@@ -46,7 +45,7 @@ public class DialogueTrigger : MonoBehaviour
         //only deactivate when the player leaves
         if (other.gameObject.tag == "Player")
         {
-            material.color = Color.yellow;
+            material.color = originalColor;
             interactable = false;
         }
     }

@@ -35,8 +35,7 @@ public class DrawManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // call this here instead of awake to make sure the camera object is ready
-        planeObj = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+        Reposition();
     }
 
 	// Add event handlers
@@ -160,7 +159,7 @@ public class DrawManager : MonoBehaviour
     //Sets variables to represent the created loop if it is big enough
     private void HandleLoop(int index, Vector3 intersection)
     {
-        if(points.Count - index > 10)
+        if(points.Count - index > 7)
         {
             //set points to encapsulate the loop created
             loopStart = index + 1;
@@ -173,5 +172,14 @@ public class DrawManager : MonoBehaviour
     // Determine whether a given Vector3 is far enough away from the starting Vector3
     bool DraggedPastThreshold(Vector3 startingPosition) {
         return Vector3.Distance(Input.mousePosition, startingPosition) > MINIMUM_DRAW_DISTANCE;
+    }
+
+    // Set objects position based on camera, then get the plane on which to draw from that
+    public void Reposition()
+    {
+        transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
+        transform.Translate(Camera.main.transform.forward);
+        planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
+        RiftMeshManager.instance.Reposition();
     }
 }

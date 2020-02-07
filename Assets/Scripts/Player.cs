@@ -5,8 +5,10 @@ using DialogueTree;
 
 public enum StatType { neutral, body, mind, soul, karma }
 
-public class Player : Singleton<Player>
+public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
     const string NEGATIVE_KARMA_MESSAGE = "A negative karma message";
     const string POSITIVE_KARMA_MESSAGE = "A positive karma message";
     const int DICE_MIN_VALUE = 1;
@@ -15,6 +17,7 @@ public class Player : Singleton<Player>
     public Dictionary<StatType, int> stats;
 
     void Awake() {
+        Instance = this;
         BuildStats();
     }
 
@@ -30,9 +33,6 @@ public class Player : Singleton<Player>
     public int StatRoll(StatType statType) {
         // body or soul rolls influence karma
         string karmaMessage = ModifyKarma(statType);
-
-        // Todo(matt) - show the results of the karma change in the dialogue somehow?
-        // DialogueManager.DispalyMessage(karmaMessage);
 
         int roll = Random.Range(DICE_MIN_VALUE,DICE_MAX_VALUE);
         return stats[statType] + roll;
