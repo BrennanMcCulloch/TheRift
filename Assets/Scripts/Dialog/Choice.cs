@@ -77,7 +77,7 @@ namespace DialogueTree {
         private void ConsumeRequisiteItems() {
             foreach (ItemPrerequisite  itemPrerequisite in GetComponents<ItemPrerequisite>()) {
                 if (itemPrerequisite.destroyItem == true) {
-                    InventoryManager.Instance.RemoveItem(itemPrerequisite.requisiteItem);
+                    InventoryManager.instance.RemoveItem(itemPrerequisite.requisiteItem);
                 }
             }
         }

@@ -101,7 +101,7 @@ namespace DialogueTree {
 
         private void GiveItems() {
             if (items !=  null && items.Count > 0) {
-                InventoryManager.Instance.AddItems(items);
+                InventoryManager.instance.AddItems(items);
                 items = null;
             }
         }
