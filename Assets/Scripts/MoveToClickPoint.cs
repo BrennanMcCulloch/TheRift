@@ -3,19 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveToClickPoint : MonoBehaviour
+public class MoveToClickPoint : Singleton<MoveToClickPoint>
 {
-    //Making this a singleton because I assume we'll only ever control the pc this way
-    public static MoveToClickPoint instance;
-
     public NavMeshAgent agent;
     public Footsteps footstepGenerator;
-
-    // Awake is called once before start
-    void Awake()
-    {
-        instance = this;
-    }
 
     void Start()
     {

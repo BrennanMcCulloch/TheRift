@@ -4,9 +4,8 @@ using UnityEngine;
 
 
 //BAD CODE TO BE REWRITTEN
-public class MusicManager : MonoBehaviour
+public class MusicManager : Singleton<MusicManager>
 {
-    public static MusicManager instance;
     public AudioSource source1;
     public AudioSource source2;
 
@@ -15,7 +14,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+
     }
 
     // Update is called once per frame

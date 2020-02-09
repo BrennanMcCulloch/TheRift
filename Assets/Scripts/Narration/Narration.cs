@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Narration : MonoBehaviour
+public class Narration : Singleton<Narration>
 {
-    public static Narration instance;
     private static AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
         source = instance.gameObject.GetComponent<AudioSource>();
     }
 

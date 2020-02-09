@@ -5,21 +5,14 @@ using DialogueTree;
 
 public enum StatType { neutral, body, mind, soul, karma }
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
-    public static Player Instance;
-
     const string NEGATIVE_KARMA_MESSAGE = "A negative karma message";
     const string POSITIVE_KARMA_MESSAGE = "A positive karma message";
     const int DICE_MIN_VALUE = 1;
     const int DICE_MAX_VALUE = 12;
 
     public Dictionary<StatType, int> stats;
-
-    void Awake() {
-        Instance = this;
-        BuildStats();
-    }
 
     private void BuildStats() {
         stats = new Dictionary<StatType, int>();

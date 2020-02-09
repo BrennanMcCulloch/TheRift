@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RiftMeshManager : MonoBehaviour
+public class RiftMeshManager : Singleton<RiftMeshManager>
 {
-    //singleton
-    public static RiftMeshManager instance;
     //offsetting the position of rift
     public float camDis = 5f;
     public bool firstHeld;
@@ -24,12 +22,6 @@ public class RiftMeshManager : MonoBehaviour
 
     private Vector3 startPos;
     private float distance;
-
-    // Awake is called once before start
-    void Awake()
-    {
-        instance = this;
-    }
 
     // Start is called before the first frame update
     void Start()

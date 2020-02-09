@@ -3,14 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawManager : MonoBehaviour
+public class DrawManager : Singleton<DrawManager>
 {
     // minimum distance must be dragged before drawing kicks in. helps separate player nav and drawing actions
     const float MINIMUM_DRAW_DISTANCE = 50.0f;
     // todo (matt) - magic number from code. shuold ask brennan what this was for
     const float SCREEN_TO_WORLD_ADJUSTMENT = 5.0f;
-    //This makes the class act as a singleton
-    public static DrawManager instance;
     //When something is drawn, we make planes. Trail render.
     public GameObject drawPrefab;
     // Track where we started touching/dragging. Used to calculate deadzone
@@ -27,7 +25,6 @@ public class DrawManager : MonoBehaviour
     // Awake is called once before start
     void Awake()
     {
-        instance = this;
         points = new List<Vector3>();
         segments = new List<Segment>();
     }
