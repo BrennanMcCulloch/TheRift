@@ -7,12 +7,6 @@ namespace DialogueTree {
 
     [System.Serializable]
 
-    // Used in various components to standardize roll checks
-    public class StatCheck {
-        public StatType statType;
-        public int statRequirement;
-    }
-
     public class Dialogue : MonoBehaviour
     {
         public string title;

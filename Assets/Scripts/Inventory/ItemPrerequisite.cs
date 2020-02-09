@@ -11,7 +11,7 @@ namespace Inventory {
         public bool destroyItem;
 
         public override bool Met() {
-            return (requisiteItem == null) || InventoryManager.Instance.HasItem(requisiteItem);
+            return (requisiteItem == null) || InventoryManager.instance.HasItem(requisiteItem);
         }
     }
 }

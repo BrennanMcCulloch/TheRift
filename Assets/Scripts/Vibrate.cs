@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vibrate : MonoBehaviour
 {
-    private float diff = 0.1f;
+    private float diff = .001f;
 
     // Update is called once per frame
     void Update()

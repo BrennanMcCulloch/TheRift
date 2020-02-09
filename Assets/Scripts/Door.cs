@@ -7,9 +7,6 @@ public class Door : MonoBehaviour
 {
     public GameObject otherSide;
     public GameObject otherCamera;
-    public GameObject thisCamera;
-    public AudioSource otherAudio;
-    public AudioSource thisAudio;
 
     private static NavMeshAgent playerAgent;
     private Material material;
@@ -21,7 +18,7 @@ public class Door : MonoBehaviour
     {
         material = gameObject.GetComponent<MeshRenderer>().material;
         originalColor = material.color;
-        playerAgent = Player.Instance.GetComponent<NavMeshAgent>();
+        playerAgent = Player.instance.GetComponent<NavMeshAgent>();
     }
 
     // Make this interactible when in range of the player
@@ -51,15 +48,8 @@ public class Door : MonoBehaviour
     {
         if (interactable)
         {
-            CamSwitcher.SwitchTo(otherCamera, thisCamera);
-            Debug.Log(Player.Instance.gameObject.transform.position);//test
-            //Player.Instance.gameObject.transform.position = otherSide.transform.position;
-            //Debug.Log(Player.Instance.gameObject.transform.position);//test
-            //Player.Instance.transform.Translate(otherSide.transform.forward);
+            CamSwitcher.SwitchTo(otherCamera);
             playerAgent.Warp(otherSide.transform.position);
-            Debug.Log(Player.Instance.gameObject.transform.position);//test
-            //THIS SUCKS
-            MusicManager.instance.ChangeMusic();
         }
     }
 }

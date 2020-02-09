@@ -17,7 +17,6 @@ public class DialogueTrigger : MonoBehaviour
     private bool interactable;
     private bool nearbyNarrationReady = false;
 
-
     void Start() {
         material = gameObject.GetComponent<MeshRenderer>().material;
         originalColor = material.color;
@@ -52,7 +51,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (interactable && dialogue != null)
+        if (MasterDialogueTrigger.instance.enabled && interactable && dialogue != null)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         }

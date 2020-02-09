@@ -148,9 +148,8 @@ public class DialogueManager : MonoBehaviour
             Choice choice = dialogue.CurrentPage().Choices()[i];
 
             // Prepare data for button text
-            string rollType = choice.statCheck.statType.ToString();
-            string buttonName = rollType + " Roll";
-            string buttonText = " (" + rollType + " " + choice.statCheck.statRequirement + ") " + choice.text;
+            string buttonName = "Roll";
+            string buttonText = "(" + ((1200 - (choice.rollRequirement * 100)) / 12) + "%) " + choice.text;
 
             // Populate button with text
             button.name = buttonName;
@@ -173,7 +172,7 @@ public class DialogueManager : MonoBehaviour
     public void Choose(Choice choice) {
         choiceButtonsPanel.gameObject.SetActive(false);
 
-        int roll = Player.Instance.StatRoll(choice.statCheck.statType);
+        int roll = Player.instance.StatRoll();
         rollButton.GetComponentInChildren<Text>().text = "You Rolled: " + roll;
         dialogue.MakeChoice(choice, roll);
         ShowPage();

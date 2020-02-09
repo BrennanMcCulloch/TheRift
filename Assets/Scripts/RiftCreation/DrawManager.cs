@@ -3,14 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawManager : MonoBehaviour
+public class DrawManager : Singleton<DrawManager>
 {
     // minimum distance must be dragged before drawing kicks in. helps separate player nav and drawing actions
     const float MINIMUM_DRAW_DISTANCE = 50.0f;
     // todo (matt) - magic number from code. shuold ask brennan what this was for
     const float SCREEN_TO_WORLD_ADJUSTMENT = 5.0f;
-    //This makes the class act as a singleton
-    public static DrawManager instance;
     //When something is drawn, we make planes. Trail render.
     public GameObject drawPrefab;
     // Track where we started touching/dragging. Used to calculate deadzone
@@ -27,7 +25,6 @@ public class DrawManager : MonoBehaviour
     // Awake is called once before start
     void Awake()
     {
-        instance = this;
         points = new List<Vector3>();
         segments = new List<Segment>();
     }
@@ -41,26 +38,26 @@ public class DrawManager : MonoBehaviour
 	// Add event handlers
 	void OnEnable()
     {
-		InputManager.OnPress += SetDrawOrigin;
-        InputManager.OnHold += DrawLine;
-        InputManager.OnRelease += FinishDrawing;
+		InputManager.OnPress += OnPress;
+        InputManager.OnHold += OnHold;
+        InputManager.OnRelease += OnRelease;
 	}
 
 	// Remove event handlers
 	void OnDisable()
     {
-		InputManager.OnPress -= SetDrawOrigin;
-        InputManager.OnHold -= DrawLine;
-        InputManager.OnRelease -= FinishDrawing;
+		InputManager.OnPress -= OnPress;
+        InputManager.OnHold -= OnHold;
+        InputManager.OnRelease -= OnRelease;
 	}
 
     // Make a note of where we started drawing.
-    void SetDrawOrigin() {
+    void OnPress() {
         startedHoldingPosition = Input.mousePosition;
     }
 
     // Use a deadzone for draw detection so we can separate drawing actions from navigation actions
-    void DrawLine() {
+    void OnHold() {
         // Bail unless we're already drawing, or we're too close to the start position.
         if (!drawing && !DraggedPastThreshold(startedHoldingPosition)) return;
 
@@ -68,13 +65,13 @@ public class DrawManager : MonoBehaviour
             DrawTrail();
         }
         else {
-            ResetTrail();
+            StartTrail();
             drawing = true;
         }
     }
 
     // Tries to open a rift when we stop drawing
-    void FinishDrawing() {
+    void OnRelease() {
         //create mesh if there was a collision
         if(loopEnd - loopStart > 5)
         {
@@ -82,6 +79,7 @@ public class DrawManager : MonoBehaviour
         }
         //destroy the game object 6 seconds after drawing
         Destroy(theTrail, 6);
+        ClearTrail();
         drawing = false;
     }
 
@@ -97,12 +95,6 @@ public class DrawManager : MonoBehaviour
                 AddPoint(point);
             }
         }
-    }
-
-    // When user begins drawing, clean and prepare trail data
-    void ResetTrail() {
-        ClearTrail();
-        StartTrail();
     }
 
     // Cleans up all the trail elements before drawing a new trail
@@ -135,7 +127,7 @@ public class DrawManager : MonoBehaviour
         if(points.Count > 1)
         {
             //check for direct intersection
-            for (int i = 0; i < points.Count - 5; i++)
+            for (int i = 0; i < points.Count - 10; i++)
             {
                 if (Vector3.Distance(point, points[i]) < 0.15f)
                 {
@@ -178,7 +170,7 @@ public class DrawManager : MonoBehaviour
     public void Reposition()
     {
         transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
-        transform.Translate(Camera.main.transform.forward);
+        transform.Translate(Camera.main.transform.forward * 2);
         planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
         RiftMeshManager.instance.Reposition();
     }

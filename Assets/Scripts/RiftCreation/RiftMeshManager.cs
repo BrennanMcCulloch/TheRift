@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RiftMeshManager : MonoBehaviour
+public class RiftMeshManager : Singleton<RiftMeshManager>
 {
-    //singleton
-    public static RiftMeshManager instance;
     //offsetting the position of rift
     public float camDis = 5f;
     public bool firstHeld;
@@ -19,28 +17,27 @@ public class RiftMeshManager : MonoBehaviour
     private static List<int> earIndices;
     private static bool flipConvex;
     private static List<DeadBounds> collidedDead = new List<DeadBounds>();
+    private static MeshFilter meshFilter;
+    private static MeshCollider meshCollider;
 
     private Vector3 startPos;
     private float distance;
 
-    // Awake is called once before start
-    void Awake()
-    {
-        instance = this;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        meshFilter = GetComponent<MeshFilter>();
+        meshCollider = GetComponent<MeshCollider>();
+        mesh = new Mesh();
+        meshFilter.sharedMesh = mesh;
+        meshCollider.sharedMesh = mesh;
         Reposition();
     }
 
     public void Reposition()
     {
-        //Quaternion tempRotation = transform.rotation;
-        //tempRotation.x = Camera.main.transform.rotation.x;
         transform.rotation = Camera.main.transform.rotation;
-        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z));
+        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z * 2));
         if(transform.rotation.eulerAngles.y != 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -49,6 +46,7 @@ public class RiftMeshManager : MonoBehaviour
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+        mesh.Clear();
     }
 
     // Create polygon collider connecting points from one index to another of a list
@@ -148,8 +146,8 @@ public class RiftMeshManager : MonoBehaviour
         meshIndices.Add(0);
         //load in the new mesh
         mesh = new Mesh();
-        instance.GetComponent<MeshFilter>().mesh = mesh;
-        instance.GetComponent<MeshCollider>().sharedMesh = mesh;
+        meshFilter.mesh = mesh;
+        meshCollider.sharedMesh = mesh;
         mesh.vertices = meshPoints.ToArray();
         mesh.triangles = meshIndices.ToArray();
     }
