@@ -7,9 +7,6 @@ public class Door : MonoBehaviour
 {
     public GameObject otherSide;
     public GameObject otherCamera;
-    public GameObject thisCamera;
-    public AudioSource otherAudio;
-    public AudioSource thisAudio;
 
     private static NavMeshAgent playerAgent;
     private Material material;
@@ -51,10 +48,8 @@ public class Door : MonoBehaviour
     {
         if (interactable)
         {
-            CamSwitcher.SwitchTo(otherCamera, thisCamera);
+            CamSwitcher.SwitchTo(otherCamera);
             playerAgent.Warp(otherSide.transform.position);
-            //THIS SUCKS
-            MusicManager.instance.ChangeMusic();
         }
     }
 }

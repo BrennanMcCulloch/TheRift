@@ -5,23 +5,25 @@ using UnityEngine.Events;
 
 public class CamSwitcher : MonoBehaviour
 {
-    public GameObject camOff;
     public GameObject camOn;
 
     // Switch cameras when the player goes here
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && camOn.name != Camera.main.gameObject.name)
         {
-            SwitchTo(camOn, camOff);
+            SwitchTo(camOn);
         }
     }
 
     // Switch cameras and perform necessary adjustments to compensate
-    public static void SwitchTo(GameObject newCamera, GameObject oldCamera)
+    public static void SwitchTo(GameObject newCamera)
     {
-        newCamera.SetActive(true);
+        GameObject oldCamera = Camera.main.gameObject;
+        //play music on new camera at the same point as our old music was playing
+        newCamera.GetComponent<AudioSource>().time = oldCamera.GetComponent<AudioSource>().time;
         oldCamera.SetActive(false);
+        newCamera.SetActive(true);
         DrawManager.instance.Reposition();
     }
 }
