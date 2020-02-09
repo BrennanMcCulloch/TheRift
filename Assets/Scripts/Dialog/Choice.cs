@@ -15,7 +15,7 @@ namespace DialogueTree {
         public string visitedText;
 
         [Tooltip("The difficulty of achieveing a successful result for this choice.")]
-        public StatCheck statCheck;
+        public int rollRequirement;
 
         // hide this choice unless the prerequisites are met
         private List<Prerequisite> prerequisites;
@@ -69,7 +69,7 @@ namespace DialogueTree {
         // Called by DialogueManager when a choice is made in the UI
         public ChoiceResult CheckResult(int statRoll) {
             ConsumeRequisiteItems();
-            result = statRoll > statCheck.statRequirement ? ChoiceResult.succeeded : ChoiceResult.failed;
+            result = statRoll > rollRequirement ? ChoiceResult.succeeded : ChoiceResult.failed;
             return result;
         }
 

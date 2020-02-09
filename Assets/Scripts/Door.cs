@@ -21,7 +21,7 @@ public class Door : MonoBehaviour
     {
         material = gameObject.GetComponent<MeshRenderer>().material;
         originalColor = material.color;
-        playerAgent = Player.Instance.GetComponent<NavMeshAgent>();
+        playerAgent = Player.instance.GetComponent<NavMeshAgent>();
     }
 
     // Make this interactible when in range of the player

@@ -4783,9 +4783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: He's not homeless. I found his wallet.
   visitedText: 
-  statCheck:
-    statType: 0
-    statRequirement: 0
+  rollRequirement: 0
   result: 0
   removeAfterAttempt: 0
   successPage: {fileID: 423547439}
@@ -9691,9 +9689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: He's not homeless. I found his keys.
   visitedText: 
-  statCheck:
-    statType: 0
-    statRequirement: 0
+  rollRequirement: 0
   result: 0
   removeAfterAttempt: 0
   successPage: {fileID: 2109537435}
@@ -20048,6 +20044,11 @@ PrefabInstance:
       propertyPath: visitedText
       value: 'Once again, I talked to the cop outside. '
       objectReference: {fileID: 0}
+    - target: {fileID: 2589404902961597321, guid: 2413f742ce0cd9446bccaa78f2f08448,
+        type: 3}
+      propertyPath: rollRequirement
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2589404902961597322, guid: 2413f742ce0cd9446bccaa78f2f08448,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21688,7 +21689,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &1071356413
@@ -21698,13 +21699,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071356409}
-  m_LocalRotation: {x: 0, y: 0.9961947, z: -0.08715578, w: 0}
+  m_LocalRotation: {x: 0.015134449, y: 0.98106027, z: -0.085831694, w: 0.17298746}
   m_LocalPosition: {x: -0.63, y: 6.36, z: 54.11}
   m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 10, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 160, z: 0}
 --- !u!1 &1073289895
 GameObject:
   m_ObjectHideFlags: 0
@@ -24630,9 +24631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: I feel a compulsive need to pick it up.
   visitedText: 
-  statCheck:
-    statType: 0
-    statRequirement: 0
+  rollRequirement: 0
   result: 0
   removeAfterAttempt: 1
   successPage: {fileID: 330834787}
@@ -36776,9 +36775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Here's both his things. Can you leave him alone now?
   visitedText: 
-  statCheck:
-    statType: 0
-    statRequirement: 0
+  rollRequirement: 0
   result: 0
   removeAfterAttempt: 0
   successPage: {fileID: 1951802705}
