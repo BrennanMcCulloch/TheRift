@@ -130,7 +130,7 @@ public class DrawManager : MonoBehaviour
         if(points.Count > 1)
         {
             //check for direct intersection
-            for (int i = 0; i < points.Count - 5; i++)
+            for (int i = 0; i < points.Count - 10; i++)
             {
                 if (Vector3.Distance(point, points[i]) < 0.15f)
                 {
@@ -173,7 +173,7 @@ public class DrawManager : MonoBehaviour
     public void Reposition()
     {
         transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
-        transform.Translate(Camera.main.transform.forward);
+        transform.Translate(Camera.main.transform.forward * 2);
         planeObj = new Plane(Camera.main.transform.forward, this.transform.position);
         RiftMeshManager.instance.Reposition();
     }

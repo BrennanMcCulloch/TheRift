@@ -45,7 +45,7 @@ public class RiftMeshManager : MonoBehaviour
     public void Reposition()
     {
         transform.rotation = Camera.main.transform.rotation;
-        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z));
+        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z * 2));
         if(transform.rotation.eulerAngles.y != 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -153,6 +153,7 @@ public class RiftMeshManager : MonoBehaviour
         meshIndices.Add(halfCount);
         meshIndices.Add(0);
         //load in the new mesh
+        mesh = new Mesh();
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
         mesh.vertices = meshPoints.ToArray();
