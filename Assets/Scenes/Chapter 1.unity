@@ -865,9 +865,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherSide: {fileID: 1594570820}
   otherCamera: {fileID: 1071356409}
-  thisCamera: {fileID: 1872909111}
-  otherAudio: {fileID: 0}
-  thisAudio: {fileID: 0}
 --- !u!65 &29345110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2830,27 +2827,27 @@ PrefabInstance:
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -5.0000114
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
@@ -2860,7 +2857,7 @@ PrefabInstance:
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
         type: 3}
@@ -2876,6 +2873,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448567187148515115, guid: d7d78b72c51c94ccf901b1803a4d32db,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4448567187148515114, guid: d7d78b72c51c94ccf901b1803a4d32db, type: 3}
@@ -13505,7 +13512,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9cc9f6717d50e4c7c95d2576a0b722de, type: 2}
+  - {fileID: 2100000, guid: a69398ebf845f494086bb44b4b6eab87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13541,13 +13548,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674411386}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &674411391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21530,7 +21537,7 @@ Transform:
   m_GameObject: {fileID: 1071356409}
   m_LocalRotation: {x: 0, y: 0.9961947, z: -0.08715578, w: 0}
   m_LocalPosition: {x: -0.63, y: 6.36, z: 54.11}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -31151,9 +31158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherSide: {fileID: 29345108}
   otherCamera: {fileID: 1872909111}
-  thisCamera: {fileID: 1071356409}
-  otherAudio: {fileID: 0}
-  thisAudio: {fileID: 0}
 --- !u!1 &1598136231
 GameObject:
   m_ObjectHideFlags: 0
@@ -40210,7 +40214,7 @@ Transform:
   m_Children:
   - {fileID: 1115564737}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2059817409
 MonoBehaviour:
