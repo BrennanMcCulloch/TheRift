@@ -2422,6 +2422,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1465233861}
   - component: {fileID: 1465233860}
+  - component: {fileID: 1465233862}
+  - component: {fileID: 1465233863}
   m_Layer: 0
   m_Name: StateManager
   m_TagString: Untagged
@@ -2455,6 +2457,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465233862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465233859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289a731d855d44e309b3918fe66d04fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1465233863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465233859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bacaed74b5824e3292516fdfa3bed1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  nameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  navButtonsPanel: {fileID: 0}
+  rollButton: {fileID: 0}
+  continueButton: {fileID: 0}
+  choiceButtons: []
+  choiceButtonsPanel: {fileID: 0}
+  dialogue: {fileID: 0}
+  animator: {fileID: 0}
+  textSoundClips: []
+  audioStutter: 0
+  basePitch: 1
+  pitchVariance: 0
 --- !u!1 &1468120422
 GameObject:
   m_ObjectHideFlags: 0
