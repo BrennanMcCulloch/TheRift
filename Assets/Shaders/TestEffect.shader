@@ -3,7 +3,8 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _NoiseTex ("Noise Texture", 2D) = "white" {}
+        _LightTex ("Light Texture", 2D) = "white" {}
+        _Darkness ("Darkness", float) = 1
     }
     SubShader
     {
@@ -34,8 +35,9 @@
             };
 
             sampler2D _MainTex;
-            sampler2D _NoiseTex;
+            sampler2D _LightTex;
             float4 _MainTex_ST;
+            float _Darkness;
 
             v2f vert (appdata v)
             {
@@ -53,7 +55,7 @@
                 // apply fog
                 //UNITY_APPLY_FOG(i.fogCoord, col);
                 float intensity = length(col);
-                col = col * tex2D(_NoiseTex, float2(intensity, 0));
+                col = col * tex2D(_LightTex, float2(intensity / _Darkness, 0));
                 return col;
             }
             ENDCG
