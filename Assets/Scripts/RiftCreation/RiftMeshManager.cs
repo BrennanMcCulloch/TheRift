@@ -46,6 +46,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+        mesh = new Mesh();
         mesh.Clear();
     }
 
