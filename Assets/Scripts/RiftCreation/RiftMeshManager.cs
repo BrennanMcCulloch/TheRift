@@ -37,6 +37,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
     public void Reposition()
     {
         transform.position = Camera.main.transform.forward * 3;
+        mesh = new Mesh();
         mesh.Clear();
         NotifyOutOfBounds();
     }
