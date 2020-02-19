@@ -1,4 +1,4 @@
-﻿Shader "Custom/Environment"
+Shader "Custom/Environment"
 {
     Properties {
       _MainTex ("Texture", 2D) = "white" {}

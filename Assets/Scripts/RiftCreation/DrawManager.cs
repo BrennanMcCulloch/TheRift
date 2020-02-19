@@ -7,8 +7,6 @@ public class DrawManager : Singleton<DrawManager>
 {
     // minimum distance must be dragged before drawing kicks in. helps separate player nav and drawing actions
     const float MINIMUM_DRAW_DISTANCE = 50.0f;
-    // todo (matt) - magic number from code. shuold ask brennan what this was for
-    const float SCREEN_TO_WORLD_ADJUSTMENT = 5.0f;
     //When something is drawn, we make planes. Trail render.
     public GameObject drawPrefab;
     // Track where we started touching/dragging. Used to calculate deadzone
@@ -99,7 +97,7 @@ public class DrawManager : Singleton<DrawManager>
 
     // Cleans up all the trail elements before drawing a new trail
     void ClearTrail() {
-        Destroy(theTrail);
+        Destroy(theTrail);//test
         points.Clear();
         segments.Clear();
         loopEnd = 0;
@@ -108,7 +106,7 @@ public class DrawManager : Singleton<DrawManager>
 
     // Refreshes positioning data and starts a new trail at the current mousePosition-to-screenPoint.
     void StartTrail() {
-        this.transform.position = Camera.main.ScreenToWorldPoint(startedHoldingPosition + new Vector3(0f,0f,SCREEN_TO_WORLD_ADJUSTMENT));
+        this.transform.position = startedHoldingPosition;
         theTrail = (GameObject)Instantiate(drawPrefab, this.transform.position, Quaternion.identity);
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(planeObj.Raycast(mouseRay, out distance))
@@ -120,9 +118,12 @@ public class DrawManager : Singleton<DrawManager>
 
     // Adds a point and handles what to do if a rift was drawn
     private void AddPoint(Vector3 point) {
+        //show point on trail
+        theTrail.transform.position = point;
+        //maintain points in 2d for easy processing
+        point = Camera.main.WorldToScreenPoint(point);
         //add point
         points.Add(point);
-        theTrail.transform.position = point;
         //if this is not the fist point, add a segment and check for a loop
         if(points.Count > 1)
         {

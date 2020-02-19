@@ -36,29 +36,17 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
 
     public void Reposition()
     {
-        transform.rotation = Camera.main.transform.rotation;
-        transform.position = new Vector3(0f, .01f, Camera.main.transform.position.z + (transform.forward.z * 2));
-        if(transform.rotation.eulerAngles.y != 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
+        transform.position = Camera.main.transform.forward * 3;
         mesh = new Mesh();
         mesh.Clear();
+        NotifyOutOfBounds();
     }
 
     // Create polygon collider connecting points from one index to another of a list
     public static void Create(int start, int end, List<Vector3> points)
     {
-        //let the objects that we collided with know we're gone
-        foreach(DeadBounds deadThing in collidedDead)
-        {
-            deadThing.DeadOutOfBounds();
-        }
-        collidedDead = new List<DeadBounds>();
+        //let deadBounds objects know we're moving
+        NotifyOutOfBounds();
         //limit mesh points to those within the closed polygon
         meshPoints = points.GetRange(start, points.Count - start - (points.Count - end));
         //adjust points for camera and add new ones for the back face
@@ -125,6 +113,11 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
             ReSortPoint(next);
             if (convexBool[next] == true && !earIndices.Contains(next) && IsEar(next)) earIndices.Add(next);
         }
+        //convert points from 2d to 3d
+        for(int i = 0; i < meshPoints.Count; i++)
+        {
+            meshPoints[i] = Camera.main.ScreenToWorldPoint(meshPoints[i]);
+        }
         //draw body connecting the two faces
         int frontVertex = 0;
         int backVertex = halfCount;
@@ -153,7 +146,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         mesh.triangles = meshIndices.ToArray();
     }
 
-    //Sorts the index into the convex or reflex list
+    // Sorts the index into the convex or reflex list
     private static void SortPoint(int index)
     {
         if (GetTriangleFor(index).Convex())
@@ -167,7 +160,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         }
     }
 
-    //Used to properly identify convex/ear points after their neighbors are removed
+    // Used to properly identify convex/ear points after their neighbors are removed
     private static void ReSortPoint(int index)
     {
         if (GetTriangleFor(index).Convex() && convexBool[index] == false)
@@ -187,7 +180,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         }
     }
 
-    //Returns true if no other active point is inside the triangle
+    // Returns true if no other active point is inside the triangle
     private static bool IsEar(int index)
     {
         Triangle tri = GetTriangleFor(index);
@@ -201,7 +194,7 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         return true;
     }
 
-    //Returns the triangle centered around a given index
+    // Returns the triangle centered around a given index
     private static Triangle GetTriangleFor(int index)
     {
         //make triangle in opposite order depending on user drawing direction
@@ -220,27 +213,37 @@ public class RiftMeshManager : Singleton<RiftMeshManager>
         }
     }
 
-    //Returns the point represented by an active index
+    // Returns the point represented by an active index
     private static Vector3 GetActivePointBefore(int index)
     {
         return meshPoints[activeIndices.ValueBefore(index)];
     }
 
-    //Returns the point represented by an active index
+    // Returns the point represented by an active index
     private static Vector3 GetActivePointAt(int index)
     {
         return meshPoints[index];
     }
 
-    //Returns the point represented by an active index
+    // Returns the point represented by an active index
     private static Vector3 GetActivePointAfter(int index)
     {
         return meshPoints[activeIndices.ValueAfter(index)];
     }
-
-    //Dead objects call this when we collide with them, so we let them know when we're gone
+ 
+    // Dead objects call this when we collide with them, so we let them know when we're gone
     public static void AddDeadObject(DeadBounds other)
     {
         collidedDead.Add(other);
+    }
+
+    // Let the objects that we collided with know we're gone
+    public static void NotifyOutOfBounds()
+    {
+        foreach(DeadBounds deadThing in collidedDead)
+        {
+            deadThing.DeadOutOfBounds();
+            collidedDead = new List<DeadBounds>();
+        }
     }
 }
