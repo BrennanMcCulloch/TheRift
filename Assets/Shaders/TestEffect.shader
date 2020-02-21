@@ -1,10 +1,11 @@
-﻿Shader "Unlit/TestEffect"
+﻿Shader "Effect/Noir"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
         _LightTex ("Light Texture", 2D) = "white" {}
         _Darkness ("Darkness", float) = 1
+        _WhitePoint ("White Point", float) = 2
     }
     SubShader
     {
@@ -38,6 +39,7 @@
             sampler2D _LightTex;
             float4 _MainTex_ST;
             float _Darkness;
+            float _WhitePoint;
 
             v2f vert (appdata v)
             {
@@ -52,11 +54,14 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                // apply fog
-                //UNITY_APPLY_FOG(i.fogCoord, col);
-                float intensity = length(col);
-                col = col * tex2D(_LightTex, float2(intensity / _Darkness, 0));
-                return col;
+                //float intensity = length(col);
+                float intensity = max(max(col.r, col.g), col.b);
+                if (length(col) > _WhitePoint) {
+                    return 1;
+                } else {
+                    col = col * tex2D(_LightTex, float2(intensity / (_Darkness), 0));
+                    return col;
+                }
             }
             ENDCG
         }
