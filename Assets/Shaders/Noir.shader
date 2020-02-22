@@ -54,7 +54,6 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                //float intensity = length(col);
                 float intensity = max(max(col.r, col.g), col.b);
                 if (length(col) > _WhitePoint) {
                     return 1;
